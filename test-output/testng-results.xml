@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-06-22T18:15:53 IST" name="All Test Suite" finished-at="2026-06-22T18:16:00 IST" duration-ms="7096">
+    <groups>
+    </groups>
+    <test started-at="2026-06-22T18:15:53 IST" name="C:/Users/2494470/OneDrive - Cognizant/Desktop/Testing Project/RideOnDemandTest" finished-at="2026-06-22T18:16:00 IST" duration-ms="7096">
+      <class name="TestCases.TC_001_UserRegistration">
+        <test-method is-config="true" signature="setup(java.lang.String)[pri:0, instance:TestCases.TC_001_UserRegistration@35b74c5c]" started-at="2026-06-22T18:15:53 IST" name="setup" finished-at="2026-06-22T18:15:58 IST" duration-ms="5428" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verifyAccountRegistration(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:TestCases.TC_001_UserRegistration@35b74c5c]" started-at="2026-06-22T18:15:58 IST" name="verifyAccountRegistration" data-provider="RegistrationData" finished-at="2026-06-22T18:15:58 IST" duration-ms="0" status="FAIL">
+          <exception class="java.lang.RuntimeException">
+            <message>
+              <![CDATA[java.io.FileNotFoundException: C:\Users\2494470\OneDrive - Cognizant\Desktop\Testing Project\RideOnDemandTest\src\test\java\TestData\RegistrationData.xlsx (The process cannot access the file because it is being used by another process)]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.RuntimeException: java.io.FileNotFoundException: C:\Users\2494470\OneDrive - Cognizant\Desktop\Testing Project\RideOnDemandTest\src\test\java\TestData\RegistrationData.xlsx (The process cannot access the file because it is being used by another process)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:58)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeDataProvider(MethodInvocationHelper.java:159)
+at org.testng.internal.Parameters.handleParameters(Parameters.java:809)
+at org.testng.internal.Parameters.handleParameters(Parameters.java:734)
+at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72)
+at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:959)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:744)
+at org.testng.TestRunner.run(TestRunner.java:616)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at com.intellij.rt.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:65)
+at com.intellij.rt.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:105)
+Caused by: java.io.FileNotFoundException: C:\Users\2494470\OneDrive - Cognizant\Desktop\Testing Project\RideOnDemandTest\src\test\java\TestData\RegistrationData.xlsx (The process cannot access the file because it is being used by another process)
+at java.base/java.io.FileInputStream.open0(Native Method)
+at java.base/java.io.FileInputStream.open(FileInputStream.java:213)
+at java.base/java.io.FileInputStream.<init>(FileInputStream.java:152)
+at java.base/java.io.FileInputStream.<init>(FileInputStream.java:106)
+at utilities.ExcelUtility.getRowCount(ExcelUtility.java:36)
+at DataProviders.RegDataProvider.getRegData(RegDataProvider.java:16)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodNoCheckedException(MethodInvocationHelper.java:54)
+... 24 more
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.RuntimeException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyAccountRegistration -->
+        <test-method is-config="true" signature="teadDown()[pri:0, instance:TestCases.TC_001_UserRegistration@35b74c5c]" started-at="2026-06-22T18:15:58 IST" name="teadDown" finished-at="2026-06-22T18:16:00 IST" duration-ms="1569" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- teadDown -->
+      </class> <!-- TestCases.TC_001_UserRegistration -->
+    </test> <!-- C:/Users/2494470/OneDrive - Cognizant/Desktop/Testing Project/RideOnDemandTest -->
+  </suite> <!-- All Test Suite -->
+</testng-results>

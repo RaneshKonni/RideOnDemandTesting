@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Ride On Demand - Customer Module Test Suite">
+
+    <parameter name="browser" value="chrome"></parameter>
+
+    <!-- Customer Dashboard Tests (TC_020, TC_021) -->
+    <test verbose="2" preserve-order="true" name="Customer Dashboard Tests">
+        <classes>
+            <class name="TestCases.TC_CustomerDashboard">
+                <methods>
+                    <include name="verifyDashboardDisplayCorrectContent"/>
+                    <include name="verifyDashboardForNewUser"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Customer Dashboard Navigation Tests (TC_022, TC_023) -->
+    <test verbose="2" preserve-order="true" name="Customer Dashboard Navigation Tests">
+        <classes>
+            <class name="TestCases.TC_CustomerDashboardNavigation">
+                <methods>
+                    <include name="verifyProfileButtonNavigationFromDashboard"/>
+                    <include name="verifyPostRequirementButtonNavigation"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Customer Profile Page Tests (TC_024, TC_025, TC_026, TC_027, TC_028) -->
+    <test verbose="2" preserve-order="true" name="Customer Profile Page Tests">
+        <classes>
+            <class name="TestCases.TC_CustomerProfilePage">
+                <methods>
+                    <include name="verifyProfileHeaderAndLogo"/>
+                    <include name="verifyAccountDetailsSection"/>
+                    <include name="verifyNotificationsSection"/>
+                    <include name="verifyBackToDashboardNavigation"/>
+                    <include name="verifySignOutFunctionality"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Customer Post Requirement Page Tests (TC_029, TC_030, TC_031, TC_032, TC_033, TC_034, TC_035, TC_036) -->
+    <test verbose="2" preserve-order="true" name="Customer Post Requirement Page Tests">
+        <classes>
+            <class name="TestCases.TC_CustomerPostRequirementPage">
+                <methods>
+                    <include name="verifyPostRequirementPageContent"/>
+                    <include name="verifyNavigationToProfileFromPostRequirement"/>
+                    <include name="verifyInvalidInputHandling"/>
+                    <include name="verifyVehicleTypeDropdown"/>
+                    <include name="verifyDatePickers"/>
+                    <include name="verifyNextButtonFunctionality"/>
+                    <include name="verifyButtonVisibilityAcrossSteps"/>
+                    <include name="verifyLastStepButtonsFunctionality"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Original User Registration Tests -->
+    <test verbose="2" preserve-order="true" name="User Registration Tests">
+        <classes>
+            <class name="TestCases.TC_001_UserRegistration">
+                <methods>
+                    <include name="verifyCustomerRegistration"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
