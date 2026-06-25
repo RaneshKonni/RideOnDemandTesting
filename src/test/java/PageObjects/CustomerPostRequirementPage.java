@@ -20,21 +20,25 @@ public class CustomerPostRequirementPage extends BasePage{
     @FindBy(xpath = "//h1[contains(text(), 'Post Requirement')]")
     WebElement pageHeading;
 
-    @FindBy(xpath = "//span[contains(text(), 'Post Requirement')]")
-    WebElement navText;
+//    @FindBy(xpath = "//span[contains(text(), 'Post Requirement')]")
+//    WebElement navText;
 
     @FindBy(xpath = "//h2[contains(text(), 'Create your rental requirement')]")
     WebElement createRequirementText;
 
-    @FindBy(xpath = "//div[@class='step-indicator']")
+    @FindBy(xpath = "//p[@class='step']")
     WebElement stepIndicator;
 
-    @FindBy(xpath = "//span[@class='step-number']")
-    List<WebElement> stepNumbers;
+//    @FindBy(xpath = "//p[@class='step']")
+//    List<WebElement> stepNumbers;
 
-    // Back to profile button
-    @FindBy(xpath = "//button[contains(text(), 'Profile')]")
-    WebElement btnBackToProfile;
+//    // Back to profile button
+//    @FindBy(xpath = "//button[contains(text(), 'Profile')]")
+//    WebElement btnBackToProfile;
+
+    // Profile Avatarbutton
+    @FindBy(xpath = "//button/span[contains(@class,'avatar')]")
+    WebElement btnCustomerProfile;
 
     @FindBy(xpath = "//a[contains(text(), 'Profile')]")
     WebElement lnkProfile;
@@ -116,19 +120,19 @@ public class CustomerPostRequirementPage extends BasePage{
         }
     }
 
-    public boolean isNavTextDisplayed(){
-        try{
-            wait.until(ExpectedConditions.visibilityOf(navText));
-            return navText.isDisplayed();
-        }catch(Exception e){
-            return false;
-        }
-    }
-
-    public String getNavText(){
-        wait.until(ExpectedConditions.visibilityOf(navText));
-        return navText.getText();
-    }
+//    public boolean isNavTextDisplayed(){
+//        try{
+//            wait.until(ExpectedConditions.visibilityOf(navText));
+//            return navText.isDisplayed();
+//        }catch(Exception e){
+//            return false;
+//        }
+//    }
+//
+//    public String getNavText(){
+//        wait.until(ExpectedConditions.visibilityOf(navText));
+//        return navText.getText();
+//    }
 
     public boolean isCreateRequirementTextDisplayed(){
         try{
@@ -152,9 +156,9 @@ public class CustomerPostRequirementPage extends BasePage{
         }
     }
 
-    public int getTotalSteps(){
-        return stepNumbers.size();
-    }
+//    public int getTotalSteps(){
+//        return stepNumbers.size();
+//    }
 
     //========================
     // STEP 1 METHODS
@@ -334,21 +338,18 @@ public class CustomerPostRequirementPage extends BasePage{
 
     public void clickBackToProfile(){
         try{
-            wait.until(ExpectedConditions.elementToBeClickable(btnBackToProfile));
-            btnBackToProfile.click();
+            wait.until(ExpectedConditions.elementToBeClickable(btnCustomerProfile));
+            btnCustomerProfile.click();
         }catch(Exception e){
-            try{
-                wait.until(ExpectedConditions.elementToBeClickable(lnkProfile));
-                lnkProfile.click();
-            }catch(Exception ex){
+
                 throw new RuntimeException("Could not find button to navigate back to profile");
-            }
+
         }
     }
 
     public boolean canNavigateToProfile(){
         try{
-            return btnBackToProfile.isDisplayed() || lnkProfile.isDisplayed();
+            return btnCustomerProfile.isDisplayed();
         }catch(Exception e){
             return false;
         }

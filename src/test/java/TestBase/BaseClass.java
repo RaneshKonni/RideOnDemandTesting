@@ -1,10 +1,11 @@
 package TestBase;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 
@@ -15,6 +16,8 @@ import java.util.Properties;
 
 public class BaseClass {
 
+    // Static shared driver: one browser for all tests
+    private static WebDriver sharedDriver;
     public WebDriver driver;
     public Properties p;
     WebDriverWait wait;
@@ -24,18 +27,29 @@ public class BaseClass {
     @Parameters({"browser"})
     public void setup(String browser) throws IOException {
 
+        // If shared driver exists, reuse it; otherwise create new one
+        if (sharedDriver != null) {
+            driver = sharedDriver;
+            wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            return;
+        }
+
         //loading config properties file
         FileReader file = new FileReader("C:\\Users\\2494470\\OneDrive - Cognizant\\Desktop\\Testing Project\\RideOnDemandTest\\src\\test\\resources\\config.properties");
         p = new Properties();
         p.load(file);
 
-        //selecting the browser
+        //selecting the browser and setup driver executables via WebDriverManager
         switch(browser.toLowerCase()){
-            case "chrome" : driver = new ChromeDriver();
-                            break;
+            case "chrome" : 
+                WebDriverManager.chromedriver().setup();
+                sharedDriver = new ChromeDriver();
+                break;
 
-            case "edge" : driver = new EdgeDriver();
-                            break;
+            case "edge" : 
+                WebDriverManager.edgedriver().setup();
+                sharedDriver = new EdgeDriver();
+                break;
 
             default :
                 System.out.println("Invalid Browser");
@@ -43,15 +57,18 @@ public class BaseClass {
 
         }
 
-        driver.get(p.getProperty("appUrl"));
-        driver.manage().window().maximize();
+        sharedDriver.get(p.getProperty("appUrl"));
+        sharedDriver.manage().window().maximize();
+        driver = sharedDriver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
 
-    @AfterClass
-    public void teadDown(){
-        driver.quit();
+    // Static method to close shared driver after entire suite
+    public static void closeSharedDriver() {
+        if (sharedDriver != null) {
+            sharedDriver.quit();
+            sharedDriver = null;
+        }
     }
-
 }

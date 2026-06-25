@@ -1,14 +1,58 @@
 package TestCases;
 
 import PageObjects.*;
+
 import TestBase.BaseClass;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class TC_CustomerProfilePage extends BaseClass {
 
     CustomerDashboardPage customerDashboard;
     CustomerProfilePage customerProfile;
+
+    @BeforeMethod
+    public void loginBeforeTest(){
+        try{
+            // Refresh page to ensure clean state
+            driver.navigate().refresh();
+            Thread.sleep(2000);
+            
+            AuthPage authPage = new AuthPage(driver);
+            String email = p.getProperty("testCustomerEmail");
+            String password = p.getProperty("testCustomerPassword");
+            
+            if(email != null && !email.trim().isEmpty() && password != null && !password.trim().isEmpty()){
+                // Ensure login form is visible and ready
+//                authPage.ensureLoginFormVisible();
+                
+                // Enter credentials and login
+                authPage.setTfEmail(email);
+                authPage.setTfPassword(password);
+                authPage.loginActivity();
+                
+                // Wait for dashboard to be loaded, then navigate to profile
+                Thread.sleep(3000);
+                customerDashboard = new CustomerDashboardPage(driver);
+                boolean dashboardLoaded = customerDashboard.isWelcomeMessageDisplayed();
+                
+                if(dashboardLoaded){
+                    // Navigate to profile for profile-specific tests
+                    customerDashboard.clickCustomerProfile();
+                    Thread.sleep(2000);
+                    System.out.println("Login successful. Navigated to profile page.");
+                }else{
+                    System.out.println("WARNING: Dashboard not visible after login. Test may fail.");
+                }
+            }else{
+                System.out.println("CRITICAL: No test credentials found in config.properties. Tests will fail.");
+            }
+        }catch(Exception e){
+            System.out.println("Login setup failed: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 
     /**
      * TC_024 - Verify the text "Profile & Notifications" and the logo is visible on the page
@@ -118,7 +162,7 @@ public class TC_CustomerProfilePage extends BaseClass {
 
     /**
      * TC_027 - Verify the customer has an option to go back to the dashboard page
-     * Prerequisites: User is logged in as a customer, on profile page
+     * Prerequisites: User is logged in as a customer
      * Expected: Customer should be able to navigate back to dashboard
      */
     @Test
@@ -133,7 +177,7 @@ public class TC_CustomerProfilePage extends BaseClass {
             customerDashboard = new CustomerDashboardPage(driver);
             
             // Verify we are back on dashboard
-            Assert.assertTrue(customerDashboard.isCustomerDashboardDisplayed(), 
+            Assert.assertTrue(customerDashboard.isWelcomeMessageDisplayed(),
                 "Should navigate back to customer dashboard");
             
             System.out.println("TC_027 PASSED: Can navigate back to dashboard from profile");
@@ -171,5 +215,3 @@ public class TC_CustomerProfilePage extends BaseClass {
         }
     }
 }
-
-

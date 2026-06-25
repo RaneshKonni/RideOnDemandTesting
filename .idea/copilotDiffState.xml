@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="/BaseClass (snapshot).java">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="/BaseClass (snapshot).java" />
+              <option name="originalContent" value="package TestBase;&#10;&#10;import org.openqa.selenium.WebDriver;&#10;import org.openqa.selenium.chrome.ChromeDriver;&#10;import org.openqa.selenium.edge.EdgeDriver;&#10;import org.openqa.selenium.support.ui.WebDriverWait;&#10;import org.testng.annotations.AfterClass;&#10;import org.testng.annotations.BeforeClass;&#10;import org.testng.annotations.Parameters;&#10;&#10;import java.io.FileReader;&#10;import java.io.IOException;&#10;import java.time.Duration;&#10;import java.util.Properties;&#10;&#10;public class BaseClass {&#10;&#10;    public WebDriver driver;&#10;    public Properties p;&#10;    WebDriverWait wait;&#10;&#10;&#10;    @BeforeClass&#10;    @Parameters({&quot;browser&quot;})&#10;    public void setup(String browser) throws IOException {&#10;&#10;        //loading config properties file&#10;        FileReader file = new FileReader(&quot;C:\\Users\\2494470\\OneDrive - Cognizant\\Desktop\\Testing Project\\RideOnDemandTest\\src\\test\\resources\\config.properties&quot;);&#10;        p = new Properties();&#10;        p.load(file);&#10;&#10;        //selecting the browser&#10;        switch(browser.toLowerCase()){&#10;            case &quot;chrome&quot; : driver = new ChromeDriver();&#10;                            break;&#10;&#10;            case &quot;edge&quot; : driver = new EdgeDriver();&#10;                            break;&#10;&#10;            default :&#10;                System.out.println(&quot;Invalid Browser&quot;);&#10;                return;&#10;&#10;        }&#10;&#10;        driver.get(p.getProperty(&quot;appUrl&quot;));&#10;        driver.manage().window().maximize();&#10;        wait = new WebDriverWait(driver, Duration.ofSeconds(10));&#10;    }&#10;&#10;&#10;    @AfterClass&#10;    public void teadDown(){&#10;        driver.quit();&#10;    }&#10;&#10;}&#10;" />
+              <option name="updatedContent" value="package TestBase;&#10;&#10;import io.github.bonigarcia.wdm.WebDriverManager;&#10;import org.openqa.selenium.WebDriver;&#10;import org.openqa.selenium.chrome.ChromeDriver;&#10;import org.openqa.selenium.edge.EdgeDriver;&#10;import org.openqa.selenium.support.ui.WebDriverWait;&#10;import org.testng.annotations.AfterClass;&#10;import org.testng.annotations.BeforeClass;&#10;import org.testng.annotations.Parameters;&#10;&#10;import java.io.FileReader;&#10;import java.io.IOException;&#10;import java.time.Duration;&#10;import java.util.Properties;&#10;&#10;public class BaseClass {&#10;&#10;    public WebDriver driver;&#10;    public Properties p;&#10;    WebDriverWait wait;&#10;&#10;&#10;    @BeforeClass&#10;    @Parameters({&quot;browser&quot;})&#10;    public void setup(String browser) throws IOException {&#10;&#10;        //loading config properties file&#10;        FileReader file = new FileReader(&quot;C:\\Users\\2494470\\OneDrive - Cognizant\\Desktop\\Testing Project\\RideOnDemandTest\\src\\test\\resources\\config.properties&quot;);&#10;        p = new Properties();&#10;        p.load(file);&#10;&#10;        //selecting the browser and setup driver executables via WebDriverManager&#10;        switch(browser.toLowerCase()){&#10;            case &quot;chrome&quot; : &#10;                WebDriverManager.chromedriver().setup();&#10;                driver = new ChromeDriver();&#10;                break;&#10;&#10;            case &quot;edge&quot; : &#10;                WebDriverManager.edgedriver().setup();&#10;                driver = new EdgeDriver();&#10;                break;&#10;&#10;            default :&#10;                System.out.println(&quot;Invalid Browser&quot;);&#10;                return;&#10;&#10;        }&#10;&#10;        driver.get(p.getProperty(&quot;appUrl&quot;));&#10;        driver.manage().window().maximize();&#10;        wait = new WebDriverWait(driver, Duration.ofSeconds(10));&#10;    }&#10;&#10;&#10;    @AfterClass&#10;    public void teadDown(){&#10;        if(driver != null){&#10;            driver.quit();&#10;        }&#10;    }&#10;&#10;}" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+        <entry key="/config (snapshot).properties">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="/config (snapshot).properties" />
+              <option name="originalContent" value="appUrl = https://frontend-johnprakashbalireddys-projects.vercel.app/auth&#10;" />
+              <option name="updatedContent" value="appUrl = https://frontend-johnprakashbalireddys-projects.vercel.app/auth&#10;&#10;# Test credentials used by customer tests (replace with real test account)&#10;testCustomerEmail = &#10;testCustomerPassword = &#10;&#10;# Optional: set to true to automatically login in tests if credentials provided&#10;autoLogin = false" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

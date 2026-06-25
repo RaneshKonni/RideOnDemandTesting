@@ -3,6 +3,7 @@ package TestCases;
 import PageObjects.*;
 import TestBase.BaseClass;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class TC_CustomerDashboardNavigation extends BaseClass {
@@ -11,6 +12,46 @@ public class TC_CustomerDashboardNavigation extends BaseClass {
     CustomerDashboardPage customerDashboard;
     CustomerProfilePage customerProfile;
     CustomerPostRequirementPage postRequirementPage;
+
+    @BeforeMethod
+    public void loginBeforeTest(){
+        try{
+            // Refresh page to ensure clean state
+//            driver.navigate().refresh();
+//            Thread.sleep(2000);
+            
+            authPage = new AuthPage(driver);
+            authPage.loginActivity();
+            String email = p.getProperty("testCustomerEmail");
+            String password = p.getProperty("testCustomerPassword");
+            
+            if(email != null && !email.trim().isEmpty() && password != null && !password.trim().isEmpty()){
+                // Ensure login form is visible and ready
+//                authPage.ensureLoginFormVisible();
+                
+                // Enter credentials and login
+                authPage.setTfEmail(email);
+                authPage.setTfPassword(password);
+                authPage.loginActivity();
+                
+                // Wait for dashboard to be loaded
+                Thread.sleep(3000);
+                customerDashboard = new CustomerDashboardPage(driver);
+                boolean dashboardLoaded = customerDashboard.isWelcomeMessageDisplayed();
+                
+                if(!dashboardLoaded){
+                    System.out.println("WARNING: Dashboard not visible after login. Test may fail.");
+                }else{
+                    System.out.println("Login successful. Dashboard is visible.");
+                }
+            }else{
+                System.out.println("CRITICAL: No test credentials found in config.properties. Tests will fail.");
+            }
+        }catch(Exception e){
+            System.out.println("Login setup failed: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 
     /**
      * TC_022 - Verify profile button is navigating to the expected page when clicked
@@ -76,4 +117,3 @@ public class TC_CustomerDashboardNavigation extends BaseClass {
         }
     }
 }
-
