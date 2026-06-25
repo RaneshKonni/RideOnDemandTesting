@@ -6,15 +6,15 @@
     <listener class-name="TestBase.SuiteListener"/>
     <listener class-name="TestBase.ScreenshotListener"/>
   </listeners>
-  <test thread-count="5" name="Customer Dashboard Tests(failed)">
+  <test thread-count="5" name="Customer Post Requirement Page Tests(failed)">
     <classes>
-      <class name="TestCases.TC_CustomerDashboard">
+      <class name="TestCases.TC_CustomerPostRequirementPage">
         <methods>
           <include name="loginBeforeTest"/>
           <include name="setup"/>
-          <include name="verifyDashboardForNewUser"/>
+          <include name="verifyLastStepButtonsFunctionality"/>
         </methods>
-      </class> <!-- TestCases.TC_CustomerDashboard -->
+      </class> <!-- TestCases.TC_CustomerPostRequirementPage -->
     </classes>
-  </test> <!-- Customer Dashboard Tests(failed) -->
+  </test> <!-- Customer Post Requirement Page Tests(failed) -->
 </suite> <!-- Failed suite [Ride On Demand - Customer Module Test Suite] -->

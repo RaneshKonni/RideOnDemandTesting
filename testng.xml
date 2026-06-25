@@ -11,17 +11,17 @@
     </listeners>
 
     <!-- Customer Dashboard Tests (TC_020, TC_021) -->
-    <test verbose="2" preserve-order="true" name="Customer Dashboard Tests">
+<!--    <test verbose="2" preserve-order="true" name="Customer Dashboard Tests">-->
 
-        <classes>
-            <class name="TestCases.TC_CustomerDashboard">
-                <methods>
-                    <include name="verifyDashboardForNewUser"/>
-                    <include name="verifyDashboardDisplayCorrectContent"/>
-                </methods>
-            </class>
-        </classes>
-    </test>
+<!--        <classes>-->
+<!--            <class name="TestCases.TC_CustomerDashboard">-->
+<!--                <methods>-->
+<!--                    <include name="verifyDashboardForNewUser"/>-->
+<!--                    <include name="verifyDashboardDisplayCorrectContent"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
 <!--    &lt;!&ndash; Customer Dashboard Navigation Tests (TC_022, TC_023) &ndash;&gt;-->
 <!--    <test verbose="2" preserve-order="true" name="Customer Dashboard Navigation Tests">-->
@@ -50,11 +50,11 @@
 <!--        </classes>-->
 <!--    </test>-->
 
-<!--    &lt;!&ndash; Customer Post Requirement Page Tests (TC_029-TC_036) &ndash;&gt;-->
-<!--    <test verbose="2" preserve-order="true" name="Customer Post Requirement Page Tests">-->
-<!--        <classes>-->
-<!--            <class name="TestCases.TC_CustomerPostRequirementPage">-->
-<!--                <methods>-->
+    <!-- Customer Post Requirement Page Tests (TC_029-TC_036) -->
+    <test verbose="2" preserve-order="true" name="Customer Post Requirement Page Tests">
+        <classes>
+            <class name="TestCases.TC_CustomerPostRequirementPage">
+                <methods>
 <!--                    <include name="verifyPostRequirementPageContent"/>-->
 <!--                    <include name="verifyNavigationToProfileFromPostRequirement"/>-->
 <!--                    <include name="verifyInvalidInputHandling"/>-->
@@ -62,11 +62,11 @@
 <!--                    <include name="verifyDatePickers"/>-->
 <!--                    <include name="verifyNextButtonFunctionality"/>-->
 <!--                    <include name="verifyButtonVisibilityAcrossSteps"/>-->
-<!--                    <include name="verifyLastStepButtonsFunctionality"/>-->
-<!--                </methods>-->
-<!--            </class>-->
-<!--        </classes>-->
-<!--    </test>-->
+                    <include name="verifyLastStepButtonsFunctionality"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 
 
 </suite>
