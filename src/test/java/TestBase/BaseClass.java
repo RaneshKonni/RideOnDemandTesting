@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
+import org.testng.annotations.Optional;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -22,10 +23,10 @@ public class BaseClass {
 
     @BeforeClass
     @Parameters({"browser"})
-    public void setup(String browser) throws IOException {
+    public void setup(@Optional("chrome") String browser) throws IOException {
 
         //loading config properties file
-        FileReader file = new FileReader("C:\\Users\\2494470\\OneDrive - Cognizant\\Desktop\\Testing Project\\RideOnDemandTest\\src\\test\\resources\\config.properties");
+        FileReader file = new FileReader("src/test/resources/config.properties");
         p = new Properties();
         p.load(file);
 
