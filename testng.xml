@@ -13,7 +13,7 @@
 <!--                    <include name="verifyDashboardForNewUser"/>-->
 <!--                </methods>-->
 <!--            </class>-->
-            <class name="TestCases.TS007">
+            <class name="TestCases.TS008">
 
             </class>
 
