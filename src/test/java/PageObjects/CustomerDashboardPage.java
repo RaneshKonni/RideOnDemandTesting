@@ -34,22 +34,18 @@ public class CustomerDashboardPage extends BasePage{
     @FindBy(xpath = "//button[contains(text(), 'Post')]")
     WebElement btnPostRequirement;
 
-//    // My Requirements section
-//    @FindBy(xpath = "//div[contains(text(), 'My Requirements')]")
-//    WebElement myRequirementsSection;
-
-//    // Requirements count/items
-//    @FindBy(xpath = "//div[@class='requirement-item']")
-//    List<WebElement> requirementItems;
-
     // Requirements count/items
     @FindBy(xpath = "//div[@class='item clickable']")
     List<WebElement> requirementItems;
 
-
     // Active requirements count
     @FindBy(xpath = "//div/p/following-sibling::strong")
     WebElement activeRequirementsCount;
+
+
+    //Accept button
+    @FindBy(xpath = "//span[contains(@class,'status-badge')]")
+    WebElement btnAcceptedRequirement;
 
     //========================
     // UTILITY METHODS
@@ -156,4 +152,14 @@ public class CustomerDashboardPage extends BasePage{
             return false;
         }
     }
+
+    public void clickAcceptedRequirement() {
+        wait.until(ExpectedConditions.elementToBeClickable(btnAcceptedRequirement));
+        btnAcceptedRequirement.click();
+    }
+
+    public boolean isAcceptedRequirementDisplayed() {
+        return btnAcceptedRequirement.isDisplayed();
+    }
+
 }

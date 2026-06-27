@@ -10,58 +10,59 @@
         <listener class-name="TestBase.ScreenshotListener"/>
     </listeners>
 
-    <!-- Customer Dashboard Tests (TC_020, TC_021) -->
-<!--    <test verbose="2" preserve-order="true" name="Customer Dashboard Tests">-->
+<!--&lt;!&ndash;     Customer Dashboard Tests (TC_020, TC_021)&ndash;&gt;-->
+    <test verbose="2" preserve-order="true" name="Customer Dashboard Tests">
 
-<!--        <classes>-->
-<!--            <class name="TestCases.TC_CustomerDashboard">-->
-<!--                <methods>-->
-<!--                    <include name="verifyDashboardForNewUser"/>-->
-<!--                    <include name="verifyDashboardDisplayCorrectContent"/>-->
-<!--                </methods>-->
-<!--            </class>-->
-<!--        </classes>-->
-<!--    </test>-->
+        <classes>
+            <class name="TestCases.TS003_CustomerDashboard">
+                <methods>
+                    <include name="verifyDashboardForNewUser"/>
+                    <include name="verifyDashboardDisplayCorrectContent"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 
 <!--    &lt;!&ndash; Customer Dashboard Navigation Tests (TC_022, TC_023) &ndash;&gt;-->
-<!--    <test verbose="2" preserve-order="true" name="Customer Dashboard Navigation Tests">-->
-<!--        <classes>-->
-<!--            <class name="TestCases.TC_CustomerDashboardNavigation">-->
-<!--                <methods>-->
-<!--                    <include name="verifyProfileButtonNavigationFromDashboard"/>-->
-<!--                    <include name="verifyPostRequirementButtonNavigation"/>-->
-<!--                </methods>-->
-<!--            </class>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test verbose="2" preserve-order="true" name="Customer Dashboard Navigation Tests">
+        <classes>
+            <class name="TestCases.TS004_CustomerDashboardNavigationAndOffersPage">
+                <methods>
+                    <include name="verifyProfileButtonNavigationFromDashboard"/>
+                    <include name="verifyPostRequirementButtonNavigation"/>
+                    <include name="verifyAcceptedRequirementNavigation"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 
-<!--    &lt;!&ndash; Customer Profile Page Tests (TC_024, TC_025, TC_026, TC_027, TC_028) &ndash;&gt;-->
-<!--    <test verbose="2" preserve-order="true" name="Customer Profile Page Tests">-->
-<!--        <classes>-->
-<!--            <class name="TestCases.TC_CustomerProfilePage">-->
-<!--                <methods>-->
-<!--                    <include name="verifyProfileHeaderAndLogo"/>-->
-<!--                    <include name="verifyAccountDetailsSection"/>-->
-<!--                    <include name="verifyNotificationsSection"/>-->
-<!--                    <include name="verifyBackToDashboardNavigation"/>-->
-<!--                    <include name="verifySignOutFunctionality"/>-->
-<!--                </methods>-->
-<!--            </class>-->
-<!--        </classes>-->
-<!--    </test>-->
+<!--&lt;!&ndash;     Customer Profile Page Tests (TC_024, TC_025, TC_026, TC_027, TC_028) &ndash;&gt;-->
+    <test verbose="2" preserve-order="true" name="Customer Profile Page Tests">
+        <classes>
+            <class name="TestCases.TS005_CustomerProfilePage">
+                <methods>
+                    <include name="verifyProfileHeaderAndLogo"/>
+                    <include name="verifyAccountDetailsSection"/>
+                    <include name="verifyNotificationsSection"/>
+                    <include name="verifyBackToDashboardNavigation"/>
+                    <include name="verifySignOutFunctionality"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 
-    <!-- Customer Post Requirement Page Tests (TC_029-TC_036) -->
+<!--     Customer Post Requirement Page Tests (TC_029-TC_036) -->
     <test verbose="2" preserve-order="true" name="Customer Post Requirement Page Tests">
         <classes>
-            <class name="TestCases.TC_CustomerPostRequirementPage">
+            <class name="TestCases.TS006_CustomerPostRequirementPage">
                 <methods>
-<!--                    <include name="verifyPostRequirementPageContent"/>-->
-<!--                    <include name="verifyNavigationToProfileFromPostRequirement"/>-->
-<!--                    <include name="verifyInvalidInputHandling"/>-->
-<!--                    <include name="verifyVehicleTypeDropdown"/>-->
-<!--                    <include name="verifyDatePickers"/>-->
-<!--                    <include name="verifyNextButtonFunctionality"/>-->
-<!--                    <include name="verifyButtonVisibilityAcrossSteps"/>-->
+                    <include name="verifyPostRequirementPageContent"/>
+                    <include name="verifyNavigationToProfileFromPostRequirement"/>
+                    <include name="verifyInvalidInputHandling"/>
+                    <include name="verifyVehicleTypeDropdown"/>
+                    <include name="verifyDatePickers"/>
+                    <include name="verifyNextButtonFunctionality"/>
+                    <include name="verifyButtonVisibilityAcrossSteps"/>
                     <include name="verifyLastStepButtonsFunctionality"/>
                 </methods>
             </class>

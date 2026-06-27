@@ -2,13 +2,17 @@ package TestCases;
 
 import PageObjects.*;
 import TestBase.BaseClass;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import java.util.List;
 import org.openqa.selenium.WebElement;
 
-public class TC_CustomerPostRequirementPage extends BaseClass {
+public class TS006_CustomerPostRequirementPage extends BaseClass {
+
+    private static final Logger logger = LogManager.getLogger(TS006_CustomerPostRequirementPage.class);
 
     CustomerDashboardPage customerDashboard;
     CustomerProfilePage customerProfile;
@@ -17,8 +21,6 @@ public class TC_CustomerPostRequirementPage extends BaseClass {
     @BeforeMethod
     public void loginBeforeTest(){
         try{
-            // Refresh page to ensure clean state
-
 
 
             AuthPage authPage = new AuthPage(driver);
@@ -42,14 +44,18 @@ public class TC_CustomerPostRequirementPage extends BaseClass {
                 boolean dashboardLoaded = customerDashboard.isWelcomeMessageDisplayed();
 
                 if(!dashboardLoaded){
+                    logger.warn("Dashboard not visible after login. Test may fail.");
                     System.out.println("WARNING: Dashboard not visible after login. Test may fail.");
                 }else{
+                    logger.info("Login successful. Dashboard is visible.");
                     System.out.println("Login successful. Dashboard is visible.");
                 }
             }else{
+                logger.error("No test credentials found in config.properties. Tests will fail.");
                 System.out.println("CRITICAL: No test credentials found in config.properties. Tests will fail.");
             }
         }catch(Exception e){
+            logger.error("Login setup failed: {}", e.getMessage());
             System.out.println("Login setup failed: " + e.getMessage());
             e.printStackTrace();
         }
@@ -63,12 +69,13 @@ public class TC_CustomerPostRequirementPage extends BaseClass {
     @Test
     public void verifyPostRequirementPageContent(){
         try{
+            Thread.sleep(3000);
             customerDashboard = new CustomerDashboardPage(driver);
             customerDashboard.clickPostRequirement();
 
 
             postRequirementPage = new CustomerPostRequirementPage(driver);
-
+            Thread.sleep(3000);
             // Verify post requirement page is displayed
             Assert.assertTrue(postRequirementPage.isPostRequirementPageDisplayed());
 
@@ -77,9 +84,11 @@ public class TC_CustomerPostRequirementPage extends BaseClass {
             Assert.assertTrue(postRequirementPage.isCreateRequirementTextDisplayed());
 
 
+            logger.info("TC_029 PASSED: Post requirement page content verified");
             System.out.println("TC_029 PASSED: Post requirement page content verified");
 
         }catch(Exception e){
+            logger.error("TC_029 FAILED: {}", e.getMessage());
             Assert.fail("TC_029 FAILED: " + e.getMessage());
         }
     }
@@ -97,9 +106,11 @@ public class TC_CustomerPostRequirementPage extends BaseClass {
             // Verify we can navigate to profile
             Assert.assertTrue(postRequirementPage.canNavigateToProfile());
 
+            logger.info("TC_030 PASSED: Can navigate to profile from post requirement page");
             System.out.println("TC_030 PASSED: Can navigate to profile from post requirement page");
 
         }catch(Exception e){
+            logger.error("TC_030 FAILED: {}", e.getMessage());
             Assert.fail("TC_030 FAILED: " + e.getMessage());
         }
     }
@@ -124,6 +135,7 @@ public class TC_CustomerPostRequirementPage extends BaseClass {
             }
 
             System.out.println("---------- Empty Field Test ----------");
+            logger.info("---------- Empty Field Test ----------");
 
             Thread.sleep(2000);
             postRequirementPage.clearStartDate();
@@ -133,6 +145,7 @@ public class TC_CustomerPostRequirementPage extends BaseClass {
             postRequirementPage.clickNext();
 
             if (postRequirementPage.isPickupLocationFieldDisplayed()) {
+                logger.warn("Observation: Empty fields accepted.");
                 System.out.println("Observation: Empty fields accepted.");
                 //Assert.assertTrue(false);
             }
@@ -141,6 +154,7 @@ public class TC_CustomerPostRequirementPage extends BaseClass {
             // -----------------------------
 
             System.out.println("---------- Invalid Date Test ----------");
+            logger.info("---------- Invalid Date Test ----------");
 
             postRequirementPage.clickBack();
             Thread.sleep(5000);
@@ -150,6 +164,7 @@ public class TC_CustomerPostRequirementPage extends BaseClass {
             postRequirementPage.clickNext();
             Thread.sleep(3000);
             if (postRequirementPage.isPickupLocationFieldDisplayed()) {
+                logger.warn("Observation: Past dates accepted.");
                 System.out.println("Observation: Past dates accepted.");
                 //Assert.assertTrue(false);
             }
@@ -157,6 +172,7 @@ public class TC_CustomerPostRequirementPage extends BaseClass {
             // -----------------------------
 
             System.out.println("---------- Invalid Budget Test ----------");
+            logger.info("---------- Invalid Budget Test ----------");
             Thread.sleep(3000);
             postRequirementPage.clearPickupLocation();
             postRequirementPage.clearBudget();
@@ -166,15 +182,24 @@ public class TC_CustomerPostRequirementPage extends BaseClass {
             postRequirementPage.clickNext();
 
             if (postRequirementPage.isPostRequirementButtonDisplayed()) {
+                logger.warn("Observation: Negative budget accepted.");
                 System.out.println("Observation: Negative budget accepted.");
                 //Assert.assertTrue(false);
             }
             postRequirementPage.clickPostRequirement();
             Thread.sleep(3000);
 
+            logger.info("TC_031 PASSED: Empty field validation verified");
             System.out.println("TC_031 PASSED: Empty field validation verified");
+
+            postRequirementPage.clickBackToProfile();
+            customerProfile = new CustomerProfilePage(driver);
+            Thread.sleep(3000);
+            customerProfile.clickSignout();
+
             Assert.fail("Observation: Application allows empty or invalid inputs. Validation may not be enforced.");
         }catch(Exception e){
+            logger.error("TC_031 FAILED: {}", e.getMessage());
             Assert.fail("TC_031 FAILED: " + e.getMessage());
         }
     }
@@ -209,17 +234,23 @@ public class TC_CustomerPostRequirementPage extends BaseClass {
             for(WebElement option : options){
                 String optionText = option.getText().toLowerCase();
                 if(optionText.contains("bike")) hasBike = true;
-                if(optionText.contains("scoot")) hasScooter = true;
+                if(optionText.contains("scooty")) hasScooter = true;
                 if(optionText.contains("car")) hasCar = true;
                 if(optionText.contains("suv")) hasSUV = true;
             }
 
             Assert.assertTrue(hasBike || hasScooter || hasCar || hasSUV,
                 "Dropdown should contain vehicle options");
+            postRequirementPage.clickBackToProfile();
 
+            customerProfile = new CustomerProfilePage(driver);
+            Thread.sleep(3000);
+            customerProfile.clickSignout();
+            logger.info("TC_032 PASSED: Vehicle type dropdown verified with {} options", options.size());
             System.out.println("TC_032 PASSED: Vehicle type dropdown verified with " + options.size() + " options");
 
         }catch(Exception e){
+            logger.error("TC_032 FAILED: {}", e.getMessage());
             Assert.fail("TC_032 FAILED: " + e.getMessage());
         }
     }
@@ -265,16 +296,24 @@ public class TC_CustomerPostRequirementPage extends BaseClass {
             Thread.sleep(2000);
             // Current application behaviour
             if(postRequirementPage.isPickupLocationFieldDisplayed()) {
-                System.out.println("Observation: Application allows End Date before Start Date.");
+                postRequirementPage.clickBackToProfile();
+                customerProfile = new CustomerProfilePage(driver);
                 Thread.sleep(3000);
+                customerProfile.clickSignout();
+                logger.warn("Observation: Application allows End Date before Start Date.");
+                System.out.println("Observation: Application allows End Date before Start Date.");
                 Assert.assertTrue(false, "Application should not allow End Date before Start Date.");
             } else {
+                logger.info("Application correctly rejected invalid date range.");
                 System.out.println("Application correctly rejected invalid date range.");
             }
 
+
+            logger.info("TC_033 PASSED: Date picker functionality verified.");
             System.out.println("TC_033 PASSED: Date picker functionality verified.");
 
         } catch (Exception e) {
+            logger.error("TC_033 FAILED: {}", e.getMessage());
             Assert.fail("TC_033 FAILED: " + e.getMessage());
         }
     }
@@ -299,18 +338,25 @@ public class TC_CustomerPostRequirementPage extends BaseClass {
                 "Next button should be displayed");
 
             // Fill in step 1 fields (assuming required fields)
-            postRequirementPage.setStartDate("10102024");
-            postRequirementPage.setEndDate("15102024");
+            postRequirementPage.setStartDate("10072027");
+            postRequirementPage.setEndDate("15072027");
             postRequirementPage.selectVehicleType("Car");
-
+            Thread.sleep(3000);
             // Click next
             postRequirementPage.clickNext();
             Thread.sleep(2000);
 
             Assert.assertTrue(postRequirementPage.isPickupLocationFieldDisplayed());
+
+            postRequirementPage.clickBackToProfile();
+            customerProfile = new CustomerProfilePage(driver);
+            Thread.sleep(3000);
+            customerProfile.clickSignout();
+            logger.info("TC_034 PASSED: Next button functionality verified");
             System.out.println("TC_034 PASSED: Next button functionality verified");
 
         }catch(Exception e){
+            logger.error("TC_034 FAILED: {}", e.getMessage());
             Assert.fail("TC_034 FAILED: " + e.getMessage());
         }
     }
@@ -337,8 +383,8 @@ public class TC_CustomerPostRequirementPage extends BaseClass {
                 "Next button should be visible on step 1");
 
             // Fill and go to next steps
-            postRequirementPage.setStartDate("10102024");
-            postRequirementPage.setEndDate("15102024");
+            postRequirementPage.setStartDate("27062027");
+            postRequirementPage.setEndDate("01072027");
             postRequirementPage.selectVehicleType("Car");
             Thread.sleep(2000);
             postRequirementPage.clickNext();
@@ -363,9 +409,15 @@ public class TC_CustomerPostRequirementPage extends BaseClass {
             Assert.assertFalse(postRequirementPage.isNextButtonVisible(),
                 "Next button should not be visible on last step");
 
+            postRequirementPage.clickBackToProfile();
+            customerProfile = new CustomerProfilePage(driver);
+            Thread.sleep(3000);
+            customerProfile.clickSignout();
+            logger.info("TC_035 PASSED: Button visibility verified across steps");
             System.out.println("TC_035 PASSED: Button visibility verified across steps");
 
         }catch(Exception e){
+            logger.error("TC_035 FAILED: {}", e.getMessage());
             Assert.fail("TC_035 FAILED: " + e.getMessage());
         }
     }
@@ -384,12 +436,12 @@ public class TC_CustomerPostRequirementPage extends BaseClass {
 
             postRequirementPage = new CustomerPostRequirementPage(driver);
 
-            // Assuming we're already on last step from previous test
+
             // Fill all steps to reach last step if needed
 
                 // Step 1
-                postRequirementPage.setStartDate("10102024");
-                postRequirementPage.setEndDate("15102024");
+                postRequirementPage.setStartDate("10102027");
+                postRequirementPage.setEndDate("15102027");
                 postRequirementPage.selectVehicleType("Car");
                 postRequirementPage.clickNext();
                 Thread.sleep(2000);
@@ -400,7 +452,7 @@ public class TC_CustomerPostRequirementPage extends BaseClass {
                 postRequirementPage.setPickupLocation("Park Street");
                 postRequirementPage.setBudgetPerDay("600");
                 postRequirementPage.clickNext();
-                Thread.sleep(2000);
+                Thread.sleep(4000);
 
 
             // Verify Post Requirement button
@@ -413,7 +465,7 @@ public class TC_CustomerPostRequirementPage extends BaseClass {
 
             // Test back button functionality
             postRequirementPage.clickBack();
-            Thread.sleep(2000);
+            Thread.sleep(4000);
 
             // Should go back to step 2
             Assert.assertTrue(postRequirementPage.isPickupLocationFieldDisplayed(),
@@ -421,15 +473,21 @@ public class TC_CustomerPostRequirementPage extends BaseClass {
 
             // Go forward again
             postRequirementPage.clickNext();
-            Thread.sleep(2000);
+            Thread.sleep(4000);
 
             // Should be on step 3 again
             Assert.assertTrue(postRequirementPage.isPostRequirementButtonDisplayed(),
                 "Should be back on step 3");
 
+            postRequirementPage.clickBackToProfile();
+            customerProfile = new CustomerProfilePage(driver);
+            Thread.sleep(3000);
+            customerProfile.clickSignout();
+            logger.info("TC_036 PASSED: Back and Post Requirement buttons working correctly");
             System.out.println("TC_036 PASSED: Back and Post Requirement buttons working correctly");
 
         }catch(Exception e){
+            logger.error("TC_036 FAILED: {}", e.getMessage());
             Assert.fail("TC_036 FAILED: " + e.getMessage());
         }
     }

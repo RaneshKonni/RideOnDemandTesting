@@ -2,13 +2,17 @@ package TestCases;
 
 import PageObjects.*;
 import TestBase.BaseClass;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.lang.reflect.Method;
 
-public class TC_CustomerDashboard extends BaseClass {
+public class TS003_CustomerDashboard extends BaseClass {
+
+    private static final Logger logger = LogManager.getLogger(TS003_CustomerDashboard.class);
 
     AuthPage authPage;
     CustomerDashboardPage customerDashboard;
@@ -47,15 +51,19 @@ public class TC_CustomerDashboard extends BaseClass {
                     boolean dashboardLoaded = customerDashboard.isWelcomeMessageDisplayed();
 
                     if (!dashboardLoaded) {
+                        logger.warn("Dashboard not visible after login. Test may fail.");
                         System.out.println("WARNING: Dashboard not visible after login. Test may fail.");
                     } else {
+                        logger.info("Login successful. Dashboard is visible.");
                         System.out.println("Login successful. Dashboard is visible.");
                     }
                 } else {
+                    logger.error("No test credentials found in config.properties. Tests will fail.");
                     System.out.println("CRITICAL: No test credentials found in config.properties. Tests will fail.");
                 }
 
         }catch(Exception e){
+            logger.error("Login setup failed: {}", e.getMessage());
             System.out.println("Login setup failed: " + e.getMessage());
             e.printStackTrace();
         }
@@ -98,9 +106,11 @@ public class TC_CustomerDashboard extends BaseClass {
             Assert.assertTrue(vehicleText.contains("Need a vehicle"), 
                 "Should display vehicle requirement message");
             
+            logger.info("TC_020 PASSED: Dashboard displays correct content");
             System.out.println("TC_020 PASSED: Dashboard displays correct content");
             
         }catch(Exception e){
+            logger.error("TC_020 FAILED: {}", e.getMessage());
             Assert.fail("TC_020 FAILED: " + e.getMessage());
         }
     }
@@ -127,6 +137,7 @@ public class TC_CustomerDashboard extends BaseClass {
             // Verify My Requirements section is empty
             Assert.assertTrue(customerDashboard.isMyRequirementsSectionEmpty());
 
+            logger.info("TC_021 PASSED: Dashboard for new user verified");
             System.out.println("TC_021 PASSED: Dashboard for new user verified");
             Thread.sleep(3000);
             customerDashboard.clickCustomerProfile();
@@ -137,6 +148,7 @@ public class TC_CustomerDashboard extends BaseClass {
 
             Thread.sleep(3000);
         }catch(Exception e){
+            logger.error("TC_021 FAILED: {}", e.getMessage());
             Assert.fail("TC_021 FAILED: " + e.getMessage());
         }
     }
