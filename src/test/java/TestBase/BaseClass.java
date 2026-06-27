@@ -11,6 +11,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
+import org.testng.annotations.Optional;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -30,7 +31,7 @@ public class BaseClass {
 
     @BeforeClass
     @Parameters({"browser"})
-    public void setup(String browser) throws IOException {
+    public void setup(@Optional("chrome") String browser) throws IOException {
         logger.info("Setting up browser: {}", browser);
 
         // If shared driver exists, reuse it; otherwise create new one

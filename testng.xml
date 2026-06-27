@@ -20,6 +20,7 @@
                     <include name="verifyDashboardDisplayCorrectContent"/>
                 </methods>
             </class>
+
         </classes>
     </test>
 
