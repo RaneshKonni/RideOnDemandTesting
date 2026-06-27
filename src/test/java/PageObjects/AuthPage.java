@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AuthPage extends BasePage{
 
@@ -15,15 +16,11 @@ public class AuthPage extends BasePage{
     //LOCATORS
     //=============
 
+
+
     // For both customer and admin Register
     @FindBy(xpath = "//button[normalize-space() = 'Customer']")
     WebElement btnRoleCustomer;
-
-    @FindBy(xpath = "//button[normalize-space() = 'Vendor']")
-    WebElement btnRoleVendor;
-
-    @FindBy(xpath = "//button[normalize-space() = 'Admin']")
-    WebElement btnRoleAdmin;
 
     @FindBy(xpath = "//button[normalize-space() = 'Register']")
     WebElement btnRegister;
@@ -50,12 +47,6 @@ public class AuthPage extends BasePage{
     WebElement btnSubmit;
 
 
-    // for vendor this is the extra field
-    @FindBy(xpath = "//input[@formcontrolname = 'shopName']")
-    WebElement tfShopName;
-
-
-
     //===========
     //ACTIONS
     //===========
@@ -65,10 +56,14 @@ public class AuthPage extends BasePage{
     }
 
     public void setTfEmail(String email){
+        wait.until(ExpectedConditions.visibilityOf(tfEmail));
+        tfEmail.clear();  // Clear existing data first
         tfEmail.sendKeys(email);
     }
 
     public void setTfPassword(String password){
+        wait.until(ExpectedConditions.visibilityOf(tfPassword));
+        tfPassword.clear();  // Clear existing data first
         tfPassword.sendKeys(password);
     }
 
@@ -80,16 +75,13 @@ public class AuthPage extends BasePage{
         tfCity.sendKeys(city);
     }
 
-    public void setTfShopName(String shopName){
-        tfShopName.sendKeys(shopName);
-    }
-
     public void registerActivity(){
         wait.until(ExpectedConditions.elementToBeClickable(btnRegister));
         btnRegister.click();
     }
 
     public void loginActivity(){
+        wait.until(ExpectedConditions.elementToBeClickable(btnLogin));
         wait.until(ExpectedConditions.elementToBeClickable(btnLogin));
         btnLogin.click();
     }

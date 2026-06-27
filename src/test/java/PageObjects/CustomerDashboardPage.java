@@ -19,12 +19,12 @@ public class CustomerDashboardPage extends BasePage{
     WebElement customerWelcomeMsg;
 
     // Active Requirements heading
-    @FindBy(xpath = "//h2[contains(text(), 'Active Requirements')]")
+    @FindBy(xpath = "//p[contains(text(), 'Active Requirements')]")
     WebElement activeRequirementsHeading;
 
     // Dashboard information text
-    @FindBy(xpath = "//p[contains(text(), 'Need a vehicle')]")
-    WebElement vehicleRequirementText;
+    @FindBy(xpath = "//h2[contains(text(), 'Need a vehicle')]")
+    WebElement txtNeedVehicle;
 
     // Profile button
     @FindBy(xpath = "//button/span[contains(@class,'avatar')]")
@@ -34,43 +34,40 @@ public class CustomerDashboardPage extends BasePage{
     @FindBy(xpath = "//button[contains(text(), 'Post')]")
     WebElement btnPostRequirement;
 
-    // My Requirements section
-    @FindBy(xpath = "//div[contains(text(), 'My Requirements')]")
-    WebElement myRequirementsSection;
-
     // Requirements count/items
-    @FindBy(xpath = "//div[@class='requirement-item']")
+    @FindBy(xpath = "//div[@class='item clickable']")
     List<WebElement> requirementItems;
 
     // Active requirements count
-    @FindBy(xpath = "//span[contains(text(), 'Active Requirements')]//following::span[1]")
+    @FindBy(xpath = "//div/p/following-sibling::strong")
     WebElement activeRequirementsCount;
+
+
+    //Accept button
+    @FindBy(xpath = "//span[contains(@class,'status-badge')]")
+    WebElement btnAcceptedRequirement;
 
     //========================
     // UTILITY METHODS
     //========================
 
-    public WebDriver getDriver(){
-        return driver;
-    }
-
-    public WebDriverWait getWait(){
-        return wait;
-    }
+//    public WebDriver getDriver(){
+//        return driver;
+//    }
+//
+//    public WebDriverWait getWait(){
+//        return wait;
+//    }
 
     //========================
     // PAGE VERIFICATION METHODS
     //========================
 
-    public boolean isCustomerDashboardDisplayed(){
-        wait.until(ExpectedConditions.visibilityOf(customerWelcomeMsg));
-        return customerWelcomeMsg.isDisplayed();
-    }
-
-    public boolean customerDashboardMessage(){
-        wait.until(ExpectedConditions.visibilityOf(customerWelcomeMsg));
-        return customerWelcomeMsg.isDisplayed();
-    }
+//    public boolean isCustomerDashboardDisplayed(){
+//        wait.until(ExpectedConditions.visibilityOf(customerWelcomeMsg));
+//        return customerWelcomeMsg.isDisplayed();
+//    }
+//
 
     public boolean isWelcomeMessageDisplayed(){
         try{
@@ -97,16 +94,16 @@ public class CustomerDashboardPage extends BasePage{
 
     public boolean isVehicleRequirementTextDisplayed(){
         try{
-            wait.until(ExpectedConditions.visibilityOf(vehicleRequirementText));
-            return vehicleRequirementText.isDisplayed();
+            wait.until(ExpectedConditions.visibilityOf(txtNeedVehicle));
+            return txtNeedVehicle.isDisplayed();
         }catch(Exception e){
             return false;
         }
     }
 
     public String getVehicleRequirementText(){
-        wait.until(ExpectedConditions.visibilityOf(vehicleRequirementText));
-        return vehicleRequirementText.getText();
+        wait.until(ExpectedConditions.visibilityOf(txtNeedVehicle));
+        return txtNeedVehicle.getText();
     }
 
     public int getActiveRequirementsCount(){
@@ -155,4 +152,14 @@ public class CustomerDashboardPage extends BasePage{
             return false;
         }
     }
+
+    public void clickAcceptedRequirement() {
+        wait.until(ExpectedConditions.elementToBeClickable(btnAcceptedRequirement));
+        btnAcceptedRequirement.click();
+    }
+
+    public boolean isAcceptedRequirementDisplayed() {
+        return btnAcceptedRequirement.isDisplayed();
+    }
+
 }

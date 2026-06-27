@@ -15,48 +15,54 @@ public class CustomerProfilePage extends BasePage{
     @FindBy(xpath = "//h1[contains(text(), 'Profile')]")
     WebElement profileHeading;
 
-    @FindBy(xpath = "//span[contains(text(), 'Profile & Notifications')]")
-    WebElement profileAndNotificationsText;
-
-    @FindBy(xpath = "//img[@alt='logo']")
+    @FindBy(xpath = "//img[@alt='RideOnDemand logo']")
     WebElement logoImage;
 
-    // Account Details Section
-    @FindBy(xpath = "//h2[contains(text(), 'Account Details')]")
-    WebElement accountDetailsHeading;
+    @FindBy(xpath = "//div[@class = 'profile-meta']//h3[1]")
+    WebElement txtUserName;
 
-    @FindBy(xpath = "//div[contains(text(), 'Email')]//following::span[1]")
-    WebElement customerEmail;
-
-    @FindBy(xpath = "//div[contains(text(), 'Mobile')]//following::span[1]")
-    WebElement customerMobile;
-
-    @FindBy(xpath = "//div[contains(text(), 'City')]//following::span[1]")
-    WebElement customerCity;
+    @FindBy(xpath = "//div[@class = 'profile-meta']//p[1]")
+    WebElement txtUserDetails;
 
     // Sign Out Button
     @FindBy(xpath = "//button[text() = 'Sign out']")
     WebElement btnSignOut;
 
+    // Account Details Section
+    @FindBy(xpath = "//h3[normalize-space() = 'Account details']")
+    WebElement accountDetailsHeading;
+
+    @FindBy(xpath = "//div[@class='details-grid']//div[1]//strong[1]")
+    WebElement customerName;
+
+    @FindBy(xpath = "//div[@class='details-grid']//div[2]//strong[1]")
+    WebElement customerEmail;
+
+    @FindBy(xpath = "//div[@class='details-grid']//div[3]//strong[1]")
+    WebElement customerMobile;
+
+    @FindBy(xpath = "//div[@class='details-grid']//div[4]//strong[1]")
+    WebElement customerCity;
+
     // Requirements, Offers and OTP Updates Section
-    @FindBy(xpath = "//h2[contains(text(), 'Requirements')]")
+    @FindBy(xpath = "//h3[contains(text(), 'Requirements')]")
     WebElement notificationsHeading;
 
-    @FindBy(xpath = "//span[contains(text(), 'items')]")
+    @FindBy(xpath = "//app-mail-inbox[@title='Requirements, offers and OTP updates']//div[1]//strong[1]")
     WebElement itemsCount;
 
-    @FindBy(xpath = "//span[contains(text(), 'unread')]")
+    @FindBy(xpath = "//div[@aria-label='Mail summary']//div[2]//strong[1]")
     WebElement unreadCount;
 
-    @FindBy(xpath = "//p[contains(text(), 'No customer notifications')]")
+    @FindBy(xpath = "//h4[contains(text(), 'No customer notifications')]")
     WebElement noNotificationsMsg;
 
-    // Back/Navigation button to dashboard
-    @FindBy(xpath = "//button[contains(@class, 'back')]")
-    WebElement btnBackToDashboard;
-
-    @FindBy(xpath = "//a[contains(text(), 'Dashboard')]")
-    WebElement lnkDashboard;
+//    // Back/Navigation button to dashboard
+//    @FindBy(xpath = "//button[contains(@class, 'back')]")
+//    WebElement btnBackToDashboard;
+//
+//    @FindBy(xpath = "//a[contains(text(), 'Dashboard')]")
+//    WebElement lnkDashboard;
 
     //========================
     // PAGE VERIFICATION METHODS
@@ -71,14 +77,6 @@ public class CustomerProfilePage extends BasePage{
         }
     }
 
-    public boolean isProfileAndNotificationsTextDisplayed(){
-        try{
-            wait.until(ExpectedConditions.visibilityOf(profileAndNotificationsText));
-            return profileAndNotificationsText.isDisplayed();
-        }catch(Exception e){
-            return false;
-        }
-    }
 
     public boolean isLogoDisplayed(){
         try{
@@ -195,22 +193,22 @@ public class CustomerProfilePage extends BasePage{
         btnSignOut.click();
     }
 
-    public void clickBackToDashboard(){
-        try{
-            wait.until(ExpectedConditions.elementToBeClickable(btnBackToDashboard));
-            btnBackToDashboard.click();
-        }catch(Exception e){
-            try{
-                wait.until(ExpectedConditions.elementToBeClickable(lnkDashboard));
-                lnkDashboard.click();
-            }catch(Exception ex){
-                // Try clicking browser back button or navigation
-                throw new RuntimeException("Could not find back button to dashboard");
-            }
-        }
-    }
+//    public void clickBackToDashboard(){
+//        try{
+//            wait.until(ExpectedConditions.elementToBeClickable(btnBackToDashboard));
+//            btnBackToDashboard.click();
+//        }catch(Exception e){
+//            try{
+//                wait.until(ExpectedConditions.elementToBeClickable(lnkDashboard));
+//                lnkDashboard.click();
+//            }catch(Exception ex){
+//                // Try clicking browser back button or navigation
+//                throw new RuntimeException("Could not find back button to dashboard");
+//            }
+//        }
+//    }
 
-    public WebDriver getDriver(){
-        return driver;
-    }
+//    public WebDriver getDriver(){
+//        return driver;
+//    }
 }
