@@ -1,18 +1,46 @@
 package PageObjects;
 
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
 public class BasePage {
-    protected WebDriver driver;
-    protected WebDriverWait wait;
+    WebDriver driver;
+    WebDriverWait wait;
+    JavascriptExecutor js;
 
-    public BasePage(WebDriver driver){
+    public BasePage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         PageFactory.initElements(driver, this);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        js = (JavascriptExecutor) driver;
     }
+
+    public void refreshPage() {
+        driver.navigate().refresh();
+    }
+
+    public boolean waitForUrlToContain(String partialUrl){
+        try {
+            return wait.until(ExpectedConditions.urlContains(partialUrl));
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
+
+    public WebElement waitForElementToBeClickable(WebElement element){
+        return wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public void waitForElementToBeVisible(WebElement element){
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public boolean waitForElementInvisibility(By locator){
+        return wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
+
 }

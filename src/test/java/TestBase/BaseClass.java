@@ -1,98 +1,196 @@
 package TestBase;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import Mapper.User;
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterSuite;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
-import org.testng.annotations.Optional;
+import PageObjects.AuthPage;
+import PageObjects.Navbar;
+import PageObjects.ProfilePage;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Properties;
 
 public class BaseClass {
-
-    private static final Logger logger = LogManager.getLogger(BaseClass.class);
-
-    // Static shared driver: one browser for all tests
-    //private static WebDriver sharedDriver;
     public WebDriver driver;
-    public Properties p;
-    WebDriverWait wait;
-
+    public Properties properties;
+    public Logger logger;
 
     @BeforeClass
+    public void setupTest() throws IOException {
+        FileReader file = new FileReader("./src/test/resources/config.properties");
+        properties = new Properties();
+        properties.load(file);
+
+        logger = LogManager.getLogger(this.getClass());
+    }
+
+    @BeforeMethod
     @Parameters({"browser"})
-    public void setup(@Optional("chrome") String browser) throws IOException {
-        logger.info("Setting up browser: {}", browser);
+    public void setUp(String browser) {
 
-        // If shared driver exists, reuse it; otherwise create new one
-//        if (sharedDriver != null) {
-//            driver = sharedDriver;
-//            wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-//            return;
-//        }
+        switch (browser.toLowerCase()){
+            case "chrome":
+                ChromeOptions options = new ChromeOptions();
+//                options.addArguments("--headless");
+                options.addArguments("--disable-notifications");
+                options.addArguments("--disable-infobars");
 
-        //loading config properties file
-        p = new Properties();
-        p.load(getClass().getClassLoader().getResourceAsStream("config.properties"));
+                HashMap<String, Object> chromePrefs = new HashMap<>();
+                chromePrefs.put("credentials_enable_service", false);
+                chromePrefs.put("profile.password_manager_enabled", false);
+                chromePrefs.put("profile.password_manager_leak_detection", false);
 
-        //selecting the browser and setup driver executables via WebDriverManager
-        switch(browser.toLowerCase()){
-            case "chrome" : 
-                //WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver();
+                options.setExperimentalOption("prefs", chromePrefs);
+
+                driver = new ChromeDriver(options);
                 break;
-
-            case "edge" : 
-                //WebDriverManager.edgedriver().setup();
-                //sharedDriver = new EdgeDriver();
+            case "firefox":
+                driver = new FirefoxDriver();
+                break;
+            case "safari":
+                driver = new SafariDriver();
+                break;
+            case "edge":
                 driver = new EdgeDriver();
                 break;
-
-            default :
-                logger.error("Invalid browser specified: {}", browser);
-                System.out.println("Invalid Browser");
-                return;
-
+            default:
+                throw new IllegalArgumentException("Invalid browser name:  " + browser);
         }
 
-//        sharedDriver.get(p.getProperty("appUrl"));
-//        sharedDriver.manage().window().maximize();
-//        driver = sharedDriver;
-
-        driver.get(p.getProperty("appUrl"));
+        driver.manage().deleteAllCookies();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
-//        driver = driver;
-
-
-        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        logger.info("Browser setup complete. Navigated to: {}", p.getProperty("appUrl"));
+        driver.get(properties.getProperty("url"));
     }
 
+    public String getCurrentUrl(){
+        return driver.getCurrentUrl();
+    }
 
-    // Static method to close shared driver after entire suite
-//    public static void closeSharedDriver() {
-//        if (sharedDriver != null) {
-//            sharedDriver.quit();
-//            sharedDriver = null;
-//        }
-//    }
+    public String getTitle(){
+        return driver.getTitle();
+    }
 
-    @AfterClass
-    public void tearDown() {
-        if (driver != null) {
-            logger.info("Tearing down browser session");
-            driver.quit();
+    public String captureScreen(String tname) throws IOException {
+        File directory = new File(System.getProperty("user.dir")+"/screenshots/");
+        if(!directory.exists()){
+            directory.mkdir();
         }
+
+        String timeStamp = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+
+        TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+        File sourceFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
+
+        String targetFilePath = System.getProperty("user.dir")+"/screenshots/"+tname+"_"+timeStamp+".png";
+        File targetFile = new File(targetFilePath);
+        FileUtils.copyFile(sourceFile, targetFile);
+
+        return targetFilePath;
     }
 
+
+    public boolean loginUser(String role, String email, String password){
+//        logger.info("Switching to login page...");
+        AuthPage authPage = new AuthPage(driver);
+        switch (role){
+            case "Customer":
+                authPage.clickCustomerButton();
+                break;
+            case "Vendor":
+                authPage.clickVendorButton();
+                break;
+            case "Admin":
+                authPage.clickAdminButton();
+        }
+        authPage.clickLoginButton();
+        logger.info("Providing user credentials...");
+        authPage.setEmail(email);
+        authPage.setPassword(password);
+        logger.info("Trying to logging in...");
+        authPage.clickActualLoginButton();
+        if(role.isEmpty()) return false;
+        return authPage.waitForUrlToContain("/"+role.toLowerCase());
+    }
+
+    public boolean registerUser(User user){
+        AuthPage authPage = new AuthPage(driver);
+        logger.info("Navigating to Registration page from Home page...");
+        authPage.clickRegisterButton();
+
+        switch (user.getRole()){
+            case "Customer":
+                logger.info("Clicking Customer button");
+                authPage.clickCustomerButton();
+                break;
+            case "Vendor":
+                logger.info("Clicking Vendor button");
+                authPage.clickVendorButton();
+                authPage.setShopName(user.getShopName());
+                break;
+            case "Admin":
+                authPage.clickAdminButton();
+                break;
+        }
+
+        authPage.setFullName(user.getFullName());
+        authPage.setEmail(user.getEmail());
+        authPage.setPassword(user.getPassword());
+        authPage.setMobile(user.getMobile());
+        authPage.setCity(user.getCity());
+        authPage.clickRegisterAndContinueButton();
+
+        if(user.getRole().isEmpty()){
+            return false;
+        }
+
+        return authPage.waitForUrlToContain("/"+user.getRole().toLowerCase());
+    }
+
+    public boolean logoutUser() throws InterruptedException {
+        Navbar navbar = new Navbar(driver);
+        navbar.clickProfileButton();
+        ProfilePage profilePage = new ProfilePage(driver);
+        profilePage.clickSignOutButton();
+        return profilePage.waitForUrlToContain("/auth");
+    }
+
+    public void verifyErrorMessagesWhileRegisteringUser(User user, String errorMsg){
+        if(registerUser(user)) Assert.fail("User should not be able to register");
+        AuthPage authPage = new AuthPage(driver);
+        authPage.clickRegisterAndContinueButton();
+        Assert.assertEquals(authPage.getErrorMessage(), errorMsg);
+    }
+
+    public void verifyErrorMsgWhileUserLogin(String role, String email, String password, String errorMsg){
+        if(loginUser(role, email, password)) Assert.fail("User should not be able to login");
+        AuthPage authPage = new AuthPage(driver);
+        authPage.clickActualLoginButton();
+        Assert.assertEquals(authPage.getErrorMessage(), errorMsg);
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
+    }
 }

@@ -10,6 +10,25 @@
         <listener class-name="TestBase.ScreenshotListener"/>
     </listeners>
 
+    <listeners>
+        <listener class-name="utilities.ExtentReportManager"/>
+    </listeners>
+    <test name="TS001_REGISTRATION">
+        <classes>
+            <class name="TestCases.TS001_Registration" />
+        </classes>
+    </test>
+    <test name="TS002_LOGIN">
+        <classes>
+            <class name="TestCases.TS002_Login" />
+        </classes>
+    </test>
+    <test name="TS002_LOGOUT">
+        <classes>
+            <class name="TestCases.TS003_Logout" />
+        </classes>
+    </test>
+
 <!--&lt;!&ndash;     Customer Dashboard Tests (TC_020, TC_021)&ndash;&gt;-->
     <test verbose="2" preserve-order="true" name="Customer Dashboard Tests">
 
