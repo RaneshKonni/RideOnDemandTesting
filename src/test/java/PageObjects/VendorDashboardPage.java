@@ -48,6 +48,13 @@ public class VendorDashboardPage extends BasePage {
     @FindBy(xpath = "//article[@class='card panel']")
     WebElement demandFeedContainer;
 
+    @FindBy(xpath = "//h3[normalize-space()='My offers']")
+    WebElement myOffersHeading;
+
+    private By withdrawButton = By.xpath("//section[contains(@class,'offers-panel')]//button[contains(., 'Withdraw')]");
+    private By firstOfferStatus = By.xpath("//section[contains(@class,'offers-panel')]//div[contains(@class, 'offer-item')][1]//span[contains(@class, 'status-pill')]");
+
+
     public boolean vendorDashboardMessage() {
         try {
             wait.until(ExpectedConditions.visibilityOf(vendorWelcomeMessage));
@@ -216,5 +223,40 @@ public class VendorDashboardPage extends BasePage {
 
     public String getNotesFieldValue() {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[formcontrolname='notes']"))).getAttribute("value");
+    }
+
+    public void scrollToMyOffers() {
+        try {
+            wait.until(ExpectedConditions.visibilityOf(myOffersHeading));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", myOffersHeading);
+            Thread.sleep(1000);
+        } catch (Exception e) {
+            System.out.println("⚠️ Error scrolling to My Offers: " + e.getMessage());
+        }
+    }
+
+    public boolean isWithdrawButtonAvailable() {
+        // Looks for a button containing the text "Withdraw" (case-insensitive) inside the offer items
+        return !driver.findElements(By.xpath("//div[contains(@class, 'offer-item')]//button[contains(translate(., 'WITHDRAW', 'withdraw'), 'withdraw')]")).isEmpty();
+    }
+
+    public void clickWithdrawAndAcceptAlert() {
+        // 1. Wait for the button to be clickable, then click it
+        wait.until(ExpectedConditions.elementToBeClickable(withdrawButton)).click();
+
+        // 2. Wait for the Javascript alert to appear and accept it
+        wait.until(ExpectedConditions.alertIsPresent()).accept();
+    }
+
+    public String waitForAndGetOfferStatus(String expectedStatus) {
+        // 3. Wait explicitly for the status text to match the expected value
+        wait.until(ExpectedConditions.textToBe(firstOfferStatus, expectedStatus));
+
+        // 4. Return the new text directly from the DOM
+        return driver.findElement(firstOfferStatus).getText();
+    }
+
+    public void navigateToProfile() {
+        wait.until(ExpectedConditions.elementToBeClickable(btnVendorProfile)).click();
     }
 }
