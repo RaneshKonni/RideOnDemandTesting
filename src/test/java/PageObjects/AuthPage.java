@@ -166,4 +166,45 @@ public class AuthPage extends BasePage{
             throw new RuntimeException("Failed to login as vendor: " + e.getMessage());
         }
     }
+
+    //admin login method
+    public void loginAsAdmin(String email, String password) {
+
+        try {
+            // Wait for role selection buttons to be visible
+            wait.until(ExpectedConditions.visibilityOf(btnRoleAdmin));
+
+            // Select Admin role
+            this.setRole("admin");
+
+            Thread.sleep(1000); // Wait for page to update after role selection
+
+            // Wait for Login button to be visible
+            wait.until(ExpectedConditions.visibilityOf(btnLogin));
+
+            // Click on Login button
+            this.loginActivity();
+
+            Thread.sleep(1000); // Wait for login form to load
+
+            // Wait for email field to be visible
+            wait.until(ExpectedConditions.visibilityOf(tfEmail));
+
+            // Enter credentials
+            this.setTfEmail(email);
+            this.setTfPassword(password);
+
+            // Submit
+            this.clickBtnSubmit();
+
+            // Wait for admin dashboard to load (adjust URL part as per your actual path)
+            wait.until(ExpectedConditions.urlContains("admin"));
+
+        } catch (Exception e) {
+            System.out.println("Error during admin login: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException("Failed to login as admin: " + e.getMessage());
+        }
+    }
+
 }
