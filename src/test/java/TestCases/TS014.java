@@ -38,14 +38,13 @@ public class TS014 extends BaseClass {
     }
 
     @Test
-    public void TC_048_VerifyProfileButtonFunctionality() {
-        adminDashboardPage.clickAdminProfile();
-        AdminProfilePage profilePage = new AdminProfilePage(driver);
-        Assert.assertTrue(profilePage.isProfilePageDisplayed(), "Failed to navigate to Admin Profile Page.");
+    public void TC_048_VerifyDefaultActiveTimeFilter() {
+        Assert.assertTrue(adminDashboardPage.areAllFiltersVisible(), "All filters (Day, Month, Year) should be visible.");
+        Assert.assertTrue(adminDashboardPage.isDayFilterActive(), "'Day' filter should be active by default.");
     }
 
     @Test
-    public void TC_050_VerifyMonthYearFilterInteraction() {
+    public void TC_049_VerifyMonthYearFilterInteraction() {
         // Test Month Filter
         adminDashboardPage.clickMonthFilter();
         Assert.assertTrue(adminDashboardPage.isMonthFilterActive(), "Month filter failed to activate.");
@@ -53,5 +52,12 @@ public class TS014 extends BaseClass {
         // Test Year Filter
         adminDashboardPage.clickYearFilter();
         Assert.assertTrue(adminDashboardPage.isYearFilterActive(), "Year filter failed to activate.");
+    }
+
+    @Test
+    public void TC_050_VerifyProfileButtonFunctionality() {
+        adminDashboardPage.clickAdminProfile();
+        AdminProfilePage profilePage = new AdminProfilePage(driver);
+        Assert.assertTrue(profilePage.isProfilePageDisplayed(), "Failed to navigate to Admin Profile Page.");
     }
 }
