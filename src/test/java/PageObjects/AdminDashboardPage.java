@@ -42,7 +42,7 @@ public class AdminDashboardPage extends BasePage {
     @FindBy(xpath = "//h1[normalize-space() = 'Admin Dashboard']")
     WebElement adminWelcomeMsg;
 
-    @FindBy(xpath = "//button/span[contains(@class,'avatar')]")
+    @FindBy(className = "avatar-btn")
     WebElement btnAdminProfile;
 
     @FindBy(className = "app-logo")
@@ -72,16 +72,36 @@ public class AdminDashboardPage extends BasePage {
     public boolean isProfileButtonVisible() { return btnAdminProfile.isDisplayed(); }
     public boolean isPerformanceOverviewTitleDisplayed() { return performanceOverviewTitle.isDisplayed(); }
     public boolean isOperationalMetricsTextDisplayed() { return operationalMetricsSubtitle.isDisplayed(); }
-    public void clickAdminProfile() { btnAdminProfile.click(); }
+    public void clickAdminProfile() {
+        // Wait for the button to be clickable
+        WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(btnAdminProfile));
+
+        // Execute JS Click
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView({behavior: 'instant', block: 'center'});", btn);
+        js.executeScript("arguments[0].click();", btn);
+    }
 
     public boolean areAllFiltersVisible() { return filterButtons.size() >= 3; }
 
     public void clickMonthFilter() {
-        wait.until(ExpectedConditions.elementToBeClickable(btnMonth)).click();
+        // 1. Wait for it to be present in DOM
+        WebElement btn = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[normalize-space()='Month']")));
+
+        // 2. Use your reliable JS click routine
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView({behavior: 'instant', block: 'center'});", btn);
+        js.executeScript("arguments[0].click();", btn);
     }
 
     public void clickYearFilter() {
-        wait.until(ExpectedConditions.elementToBeClickable(btnYear)).click();
+        // 1. Wait for it to be present in DOM
+        WebElement btn = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[normalize-space()='Year']")));
+
+        // 2. Use your reliable JS click routine
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView({behavior: 'instant', block: 'center'});", btn);
+        js.executeScript("arguments[0].click();", btn);
     }
 
     public boolean isDayFilterActive() { return isFilterActive("Day"); }
@@ -91,7 +111,8 @@ public class AdminDashboardPage extends BasePage {
     private boolean isFilterActive(String filterName) {
         try {
             String xpath = String.format("//button[contains(@class,'active') and normalize-space()='%s']", filterName);
-            return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath))).isDisplayed();
+            // Changed to visibilityOfElementLocated for accurate rendering checks
+            return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).isDisplayed();
         } catch (Exception e) {
             return false;
         }
