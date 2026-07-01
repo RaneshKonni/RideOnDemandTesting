@@ -18,7 +18,7 @@ public class BaseClass {
 
     public WebDriver driver;
     public Properties p;
-    WebDriverWait wait;
+    public WebDriverWait wait;
 
 
     @BeforeClass
@@ -48,7 +48,6 @@ public class BaseClass {
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
-
 
     @AfterClass
     public void teadDown(){
