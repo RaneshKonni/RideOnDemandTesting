@@ -2,6 +2,7 @@ package TestBase;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
@@ -12,6 +13,8 @@ import org.testng.annotations.Optional;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 public class BaseClass {
@@ -32,7 +35,14 @@ public class BaseClass {
 
         //selecting the browser
         switch(browser.toLowerCase()){
-            case "chrome" : driver = new ChromeDriver();
+            case "chrome" :
+                        ChromeOptions options = new ChromeOptions();
+                        Map<String, Object> prefs = new HashMap<>();
+                        prefs.put("credentials_enable_service", false);
+                        prefs.put("profile.password_manager_enabled", false);
+                        prefs.put("profile.password_manager_leak_detection", false);
+                        options.setExperimentalOption("prefs", prefs);
+                            driver = new ChromeDriver(options);
                             break;
 
             case "edge" : driver = new EdgeDriver();
