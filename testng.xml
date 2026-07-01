@@ -1,19 +1,64 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-
-<suite name="Ride On Demand - Customer Module">
+<suite name="Ride On Demand - Test Suite">
 
     <parameter name="browser" value="chrome"/>
 
-    <test name="Customer Module">
-
+    <!-- Customer Module -->
+    <test name="Customer Module Tests" preserve-order="true" verbose="2">
         <classes>
             <class name="TestCases.TS003"/>
             <class name="TestCases.TS004"/>
             <class name="TestCases.TS005"/>
             <class name="TestCases.TS006"/>
         </classes>
+    </test>
 
+    <!-- Vendor Module -->
+    <test name="Vendor Module Tests" preserve-order="true" verbose="2">
+        <classes>
+            <class name="TestCases.TS007">
+                <methods>
+                    <include name="TC_037_verifyDashboardMetrics"/>
+                </methods>
+            </class>
+
+            <class name="TestCases.TS008">
+                <methods>
+                    <include name="TC_038_verifyDemandFeedList"/>
+                    <include name="TC_039_verifySendOfferButton"/>
+                </methods>
+            </class>
+
+            <class name="TestCases.TS009">
+                <methods>
+                    <include name="TC_040_verifySubmittingValidOffer"/>
+                    <include name="TC_041_verifyClearingOfferForm"/>
+                </methods>
+            </class>
+
+            <class name="TestCases.TS010">
+                <methods>
+                    <include name="TC_042_verifyWithdrawOffer"/>
+                </methods>
+            </class>
+
+            <class name="TestCases.TS011">
+                <methods>
+                    <include name="TC_043_verifyProfileDetails"/>
+                </methods>
+            </class>
+
+            <class name="TestCases.TS012">
+                <methods>
+                    <include name="TC_044_verifyMailMetrics"/>
+                </methods>
+            </class>
+
+            <class name="TestCases.TS013">
+                <methods>
+                    <include name="TC_045_verifySignOut"/>
+                </methods>
+            </class>
+        </classes>
     </test>
 
 </suite>
