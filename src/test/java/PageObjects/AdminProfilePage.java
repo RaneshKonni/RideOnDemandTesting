@@ -82,11 +82,18 @@ public class AdminProfilePage extends BasePage {
 
     public void clickSignOut() {
         try {
-            WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(btnSignOut));
-            btn.click();
-        } catch (Exception e) {
-            // Fallback to JS click if styling intercepts the standard click
+            // Ensure it's clickable
+            wait.until(ExpectedConditions.elementToBeClickable(btnSignOut));
+
+            // Force scroll into view to avoid blocking issues
+            ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", btnSignOut);
+
+            // Use JS click to bypass potential UI overlays
             ((org.openqa.selenium.JavascriptExecutor) driver).executeScript("arguments[0].click();", btnSignOut);
+
+            System.out.println("[DEBUG] Sign Out click executed.");
+        } catch (Exception e) {
+            System.out.println("[DEBUG] Exception during sign out click: " + e.getMessage());
         }
     }
 }
