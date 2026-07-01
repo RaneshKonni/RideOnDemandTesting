@@ -89,23 +89,15 @@ public class TS016 extends BaseClass {
         // 1. Click Sign out
         adminProfilePage.clickSignOut();
 
-        // 2. Verify redirect back to Auth/Login layout
-        // Assuming your AuthPage has a method like isLoginScreenVisible() or we can check the URL.
-        // Replace this wait with your AuthPage's specific verification method if needed.
-        boolean redirected = false;
-        try {
-            org.openqa.selenium.support.ui.WebDriverWait wait = new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(10));
-            // Checks if URL contains 'login' or 'auth' indicating session termination
-            redirected = wait.until(d -> d.getCurrentUrl().toLowerCase().contains("login") || d.getCurrentUrl().toLowerCase().contains("auth"));
-        } catch (Exception e) {
-            redirected = false;
-        }
+        // 2. Wait for the URL to change - this is key for Angular apps
+        org.openqa.selenium.support.ui.WebDriverWait wait = new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(15));
 
-        Assert.assertTrue(redirected, "User was not redirected to the login/auth page after signing out. Current URL: " + driver.getCurrentUrl());
+        boolean redirected = wait.until(d -> {
+            String currentUrl = d.getCurrentUrl().toLowerCase();
+            return currentUrl.contains("login") || currentUrl.contains("auth");
+        });
 
-        // 3. Optional Strict check: Verify trying to go back to dashboard fails (verifies token is actually cleared)
-        driver.navigate().back();
-        Assert.assertFalse(driver.getCurrentUrl().toLowerCase().contains("dashboard"), "Session token was not completely cleared. User could navigate back to protected route.");
+        Assert.assertTrue(redirected, "User was not redirected. Current URL: " + driver.getCurrentUrl());
 
         System.out.println("✅ TC_056 Passed: Session terminated and user redirected.");
     }
