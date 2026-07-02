@@ -63,9 +63,9 @@
 
     <test name="Admin Module Tests">
         <classes>
-            <class name="TestCases.TS014"/>
+<!--            <class name="TestCases.TS014"/>-->
 <!--            <class name="TestCases.TS015"/>-->
-<!--            <class name="TestCases.TS016"/>-->
+            <class name="TestCases.TS016"/>
         </classes>
     </test>
 

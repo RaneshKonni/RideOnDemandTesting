@@ -1,126 +1,94 @@
 package TestCases;
 
 import PageObjects.AdminDashboardPage;
-import PageObjects.AuthPage;
 import TestBase.BaseClass;
 import mapper.Role;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class TS015 extends BaseClass {
 
-    AuthPage auth;
-    AdminDashboardPage adminDashboardPage;
+    private AdminDashboardPage adminDashboardPage;
 
     private static final String ADMIN_EMAIL = "t1@gmail.com";
     private static final String ADMIN_PASSWORD = "11111111";
 
-    @BeforeClass
-    public void classSetup() throws InterruptedException {
-     loginUser(Role.ADMIN, ADMIN_EMAIL, ADMIN_PASSWORD);
+    @BeforeMethod
+    public void classSetup() {
+        logger.info("Initializing TS015: Admin Dashboard - Shop Approvals Management");
+
+        boolean isLoggedIn = loginUser(Role.ADMIN, ADMIN_EMAIL, ADMIN_PASSWORD);
+        Assert.assertTrue(isLoggedIn, "Precondition Failed: Admin user could not log in.");
+
         adminDashboardPage = new AdminDashboardPage(driver);
-
-        // Initial dashboard verification
-        if (!adminDashboardPage.adminDashboardMessage()) {
-            loginUser(Role.ADMIN, ADMIN_EMAIL, ADMIN_PASSWORD);
-        }
     }
 
-    @Test
+    @Test(priority = 1)
     public void TC_051_VerifyPendingShopMetadataRenderingAccuracy() {
-        // Ensure at least one pending shop exists and capture its title
+        logger.info("Starting TC_051: Verifying pending shop metadata rendering");
+
         Assert.assertTrue(adminDashboardPage.hasPendingShops(), "No pending shop items found in the dashboard.");
+
         String firstShop = adminDashboardPage.getFirstShopName();
-        Assert.assertFalse(firstShop.isEmpty(), "The first pending shop item did not contain a shop title.");
-        System.out.println("✅ Successfully verified pending shop metadata rendering. First shop: " + firstShop);
+        Assert.assertFalse(firstShop.isEmpty(), "The first pending shop item did not contain a valid shop title.");
+        logger.info("Successfully verified pending shop metadata rendering. Target first shop: " + firstShop);
     }
 
-    @Test(dependsOnMethods = {"TC_051_VerifyPendingShopMetadataRenderingAccuracy"})
+    @Test(priority = 2, dependsOnMethods = {"TC_051_VerifyPendingShopMetadataRenderingAccuracy"})
     public void TC_052_VerifyApproveActionExecution() {
+        logger.info("Starting TC_052: Verifying 'Approve' action execution");
+
         int initialCount = adminDashboardPage.getVerifiedShopsCount();
-        // Operate on the first pending shop (no hardcoded target)
         String targetShop = adminDashboardPage.getFirstShopName();
-        System.out.println("[TEST] Approving first shop: " + targetShop + ", initial verified count: " + initialCount);
+
+        logger.info("Approving shop: " + targetShop + " | Initial verified count: " + initialCount);
         adminDashboardPage.approveFirstShop();
 
-        // Wait for the shop to disappear from pending list and assert (allow more time for backend)
-        System.out.println("[TEST] Waiting for approved shop '" + targetShop + "' to disappear from pending list (timeout: 20s)");
+        // 1. Verify UI State (Queue)
         boolean disappeared = adminDashboardPage.waitForShopToDisappear(targetShop, 20);
-        if (!disappeared) {
-            // Diagnostic: log how many matching elements remain and try a refresh + re-check
-            int remaining = adminDashboardPage.countPendingShopItemsByName(targetShop);
-            System.out.println("[TEST] WARNING: After wait, matching pending items remaining for '" + targetShop + "': " + remaining);
-            System.out.println("[TEST] Attempting page refresh and re-checking...");
-            adminDashboardPage.refreshPage();
-            boolean disappearedAfterRefresh = adminDashboardPage.waitForShopToDisappear(targetShop, 10);
-            System.out.println("[TEST] Disappeared after refresh: " + disappearedAfterRefresh);
-            Assert.assertTrue(disappearedAfterRefresh, "Target shop card was not cleared from the pending list after clicking Approve (even after refresh).");
-        } else {
-            Assert.assertTrue(disappeared, "Target shop card was not cleared from the pending list after clicking Approve.");
-        }
+        Assert.assertTrue(disappeared, "Target shop '" + targetShop + "' was not cleared from the pending list after clicking Approve.");
 
-        // Assert dynamic count verification by waiting for the metric to update
-        System.out.println("[TEST] Waiting for Verified shops metric to update from " + initialCount + " to " + (initialCount + 1) + " (timeout: 20s)");
+        // Explicitly refresh the page to force the Angular frontend to fetch the latest metrics
+        logger.info("Refreshing page to fetch updated dashboard metrics.");
+        adminDashboardPage.refreshPage();
+
+        // 2. Verify Metrics State (Graph/Counters)
         boolean matched = adminDashboardPage.waitForVerifiedShopsCountToBe(initialCount + 1, 20);
         int updatedCount = adminDashboardPage.getVerifiedShopsCount();
-        if (!matched) {
-            System.out.println("[TEST] Metric did not update within 20s (current: " + updatedCount + "). Attempting page refresh and re-waiting (15s)");
-            adminDashboardPage.refreshPage();
-            // quick read after refresh
-            int postRefresh = adminDashboardPage.getVerifiedShopsCount();
-            System.out.println("[TEST] Verified shops after refresh: " + postRefresh);
-            matched = adminDashboardPage.waitForVerifiedShopsCountToBe(initialCount + 1, 15);
-            updatedCount = adminDashboardPage.getVerifiedShopsCount();
-        }
-        Assert.assertTrue(matched,
-                "Dashboard 'Verified shops' count did not reach expected value within timeout. Current: " + updatedCount + " Expected: " + (initialCount + 1));
-        Assert.assertEquals(updatedCount, initialCount + 1,
-                "Dashboard 'Verified shops' count metrics did not increment by 1.");
-        System.out.println("✅ Successfully executed and verified Shop Approval.");
+
+        Assert.assertTrue(matched, "Dashboard 'Verified shops' count did not reach expected value within timeout.");
+        Assert.assertEquals(updatedCount, initialCount + 1, "Dashboard 'Verified shops' count metric did not increment by 1.");
     }
 
-    @Test(dependsOnMethods = {"TC_052_VerifyApproveActionExecution"})
+    @Test(priority = 3, dependsOnMethods = {"TC_052_VerifyApproveActionExecution"})
     public void TC_053_VerifyRejectActionExecution() {
+        logger.info("Starting TC_053: Verifying 'Reject' action execution");
+
+        Assert.assertTrue(adminDashboardPage.hasPendingShops(), "No pending shops remaining to test rejection.");
+
         int initialCount = adminDashboardPage.getVerifiedShopsCount();
-        // Operate on the (new) first pending shop (no hardcoded target)
         String targetShop = adminDashboardPage.getFirstShopName();
-        System.out.println("[TEST] Rejecting first shop: " + targetShop + ", initial verified count: " + initialCount);
+
+        logger.info("Rejecting shop: " + targetShop + " | Initial verified count: " + initialCount);
         adminDashboardPage.rejectFirstShop();
 
-        // Wait for the shop to disappear from pending list - reject may take longer than approve
-        System.out.println("[TEST] Waiting for rejected shop '" + targetShop + "' to disappear from pending list (timeout: 20s)");
+        // 1. Verify UI State (Queue)
         boolean disappearedReject = adminDashboardPage.waitForShopToDisappear(targetShop, 20);
         if (!disappearedReject) {
-            System.out.println("[TEST] WARNING: Shop did not disappear after 20s wait. Checking if item still visible...");
-            // Check if item was processed in-place (actions removed) which is acceptable
             boolean actionsEmpty = adminDashboardPage.isItemActionsEmpty(targetShop);
-            System.out.println("[TEST] Item actions empty for '" + targetShop + "': " + actionsEmpty);
-            if (!actionsEmpty) {
-                // Try a refresh and re-check disappearance
-                adminDashboardPage.refreshPage();
-                boolean disappearedAfterRefresh = adminDashboardPage.waitForShopToDisappear(targetShop, 10);
-                if (!disappearedAfterRefresh) {
-                    // final diagnostic count
-                    int remaining = adminDashboardPage.countPendingShopItemsByName(targetShop);
-                    System.out.println("[TEST] After refresh, remaining items for '" + targetShop + "': " + remaining);
-                }
-                Assert.assertTrue(disappearedAfterRefresh, "Target shop card was not cleared from the pending list after clicking Reject.");
-            } else {
-                // Actions removed => treat as processed
-                Assert.assertTrue(actionsEmpty, "Target shop appears processed in-place (actions removed).");
-            }
-        } else {
-            Assert.assertTrue(disappearedReject, "Target shop card was not cleared from the pending list after clicking Reject.");
+            Assert.assertTrue(actionsEmpty, "Target shop was not cleared and actions are still present after clicking Reject.");
         }
 
-        // Assert count metric isolation by waiting for the metric to remain same
+        // Explicitly refresh the page to ensure metrics sync
+        logger.info("Refreshing page to confirm dashboard metrics remain stable.");
+        adminDashboardPage.refreshPage();
+
+        // 2. Verify Metrics State (Graph/Counters)
         boolean matchedReject = adminDashboardPage.waitForVerifiedShopsCountToBe(initialCount, 15);
         int updatedCount = adminDashboardPage.getVerifiedShopsCount();
-        Assert.assertTrue(matchedReject,
-                "Dashboard 'Verified shops' count did not stabilize to expected value within timeout. Current: " + updatedCount + " Expected: " + initialCount);
-        Assert.assertEquals(updatedCount, initialCount,
-                "Dashboard 'Verified shops' count changed unexpectedly after a rejection action.");
-        System.out.println("✅ Successfully executed and verified Shop Rejection.");
+
+        Assert.assertTrue(matchedReject, "Dashboard 'Verified shops' count did not stabilize within timeout.");
+        Assert.assertEquals(updatedCount, initialCount, "Dashboard 'Verified shops' count changed unexpectedly after a rejection.");
     }
 }
