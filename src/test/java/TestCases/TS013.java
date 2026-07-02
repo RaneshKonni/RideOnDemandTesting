@@ -4,6 +4,7 @@ import PageObjects.AuthPage;
 import PageObjects.VendorDashboardPage;
 import PageObjects.VendorProfilePage;
 import TestBase.BaseClass;
+import mapper.Role;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -22,12 +23,12 @@ public class TS013 extends BaseClass {
     @BeforeMethod
     public void classSetup() throws InterruptedException {
         auth = new AuthPage(driver);
-        loginUser("Vendor", VENDOR_EMAIL, VENDOR_PASSWORD);
+        loginUser(Role.VENDOR, VENDOR_EMAIL, VENDOR_PASSWORD);
         vendorDashboardPage = new VendorDashboardPage(driver);
 
         // Initial dashboard verification
         if (!vendorDashboardPage.vendorDashboardMessage()) {
-            loginUser("Vendor", VENDOR_EMAIL, VENDOR_PASSWORD);
+            loginUser(Role.VENDOR, VENDOR_EMAIL, VENDOR_PASSWORD);
         }
     }
 

@@ -3,6 +3,7 @@ package TestCases;
 import PageObjects.AuthPage;
 import PageObjects.VendorDashboardPage;
 import TestBase.BaseClass;
+import mapper.Role;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -13,7 +14,7 @@ public class TS007 extends BaseClass {
 
     @BeforeMethod
     public void setup() {
-        loginUser("Vendor", "vm@gmail.com", "12345678");
+        loginUser(Role.VENDOR, "vm@gmail.com", "12345678");
     }
 
     @Test

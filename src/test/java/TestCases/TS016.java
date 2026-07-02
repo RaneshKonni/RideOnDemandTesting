@@ -4,6 +4,7 @@ import PageObjects.AdminDashboardPage;
 import PageObjects.AdminProfilePage;
 import PageObjects.AuthPage;
 import TestBase.BaseClass;
+import mapper.Role;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -24,7 +25,7 @@ public class TS016 extends BaseClass {
         adminProfilePage = new AdminProfilePage(driver);
 
         // 1. Log in as admin
-       loginUser("admin", ADMIN_EMAIL, ADMIN_PASSWORD);
+       loginUser(Role.ADMIN, ADMIN_EMAIL, ADMIN_PASSWORD);
         Assert.assertTrue(adminDashboardPage.adminDashboardMessage(), "Admin failed to log in.");
 
         // 2. Navigate to Admin Profile Page
