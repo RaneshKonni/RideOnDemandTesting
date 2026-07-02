@@ -3,6 +3,7 @@ package TestCases;
 import PageObjects.AuthPage;
 import PageObjects.VendorDashboardPage;
 import TestBase.BaseClass;
+import mapper.Role;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -24,12 +25,12 @@ public class TS009 extends BaseClass {
     @BeforeMethod
     public void classSetup() throws InterruptedException {
         auth = new AuthPage(driver);
-        loginUser("Vendor", VENDOR_EMAIL, VENDOR_PASSWORD);
+        loginUser(Role.VENDOR, VENDOR_EMAIL, VENDOR_PASSWORD);
         Thread.sleep(3000);
         vendor = new VendorDashboardPage(driver);
         if (!vendor.vendorDashboardMessage()) {
             logger.warn("Initial login check failed. Attempting re-login...");
-            loginUser("Vendor", VENDOR_EMAIL, VENDOR_PASSWORD);
+            loginUser(Role.VENDOR, VENDOR_EMAIL, VENDOR_PASSWORD);
             Thread.sleep(3000);
             vendor = new VendorDashboardPage(driver);
         }

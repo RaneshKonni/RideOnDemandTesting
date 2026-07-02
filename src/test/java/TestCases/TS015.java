@@ -3,6 +3,7 @@ package TestCases;
 import PageObjects.AdminDashboardPage;
 import PageObjects.AuthPage;
 import TestBase.BaseClass;
+import mapper.Role;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -17,12 +18,12 @@ public class TS015 extends BaseClass {
 
     @BeforeClass
     public void classSetup() throws InterruptedException {
-     loginUser("admin", ADMIN_EMAIL, ADMIN_PASSWORD);
+     loginUser(Role.ADMIN, ADMIN_EMAIL, ADMIN_PASSWORD);
         adminDashboardPage = new AdminDashboardPage(driver);
 
         // Initial dashboard verification
         if (!adminDashboardPage.adminDashboardMessage()) {
-            loginUser("admin", ADMIN_EMAIL, ADMIN_PASSWORD);
+            loginUser(Role.ADMIN, ADMIN_EMAIL, ADMIN_PASSWORD);
         }
     }
 

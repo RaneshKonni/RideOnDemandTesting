@@ -3,6 +3,7 @@ package TestCases;
 import PageObjects.AuthPage;
 import PageObjects.VendorDashboardPage;
 import TestBase.BaseClass;
+import mapper.Role;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -26,13 +27,13 @@ public class TS010 extends BaseClass {
     @BeforeMethod
     public void classSetup() throws InterruptedException {
         auth = new AuthPage(driver);
-        loginUser("Vendor", VENDOR_EMAIL, VENDOR_PASSWORD);
+        loginUser(Role.VENDOR, VENDOR_EMAIL, VENDOR_PASSWORD);
         Thread.sleep(3000);
 
         vendor = new VendorDashboardPage(driver);
         if (!vendor.vendorDashboardMessage()) {
             logger.warn("Initial login check failed. Attempting re-login...");
-            loginUser("Vendor", VENDOR_EMAIL, VENDOR_PASSWORD);
+            loginUser(Role.VENDOR, VENDOR_EMAIL, VENDOR_PASSWORD);
             Thread.sleep(3000);
             vendor = new VendorDashboardPage(driver);
         }
