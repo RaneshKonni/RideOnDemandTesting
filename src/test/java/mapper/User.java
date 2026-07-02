@@ -7,11 +7,11 @@ public class User {
     private String mobile;
     private String city;
     private String shopName;
-    private String role;
+    private Role role;
 
     public User(){}
 
-    public User(String fullName, String email, String password, String mobile, String city, String role) {
+    public User(String fullName, String email, String password, String mobile, String city, Role role) {
         this.fullName = fullName;
         this.email = email;
         this.password = password;
@@ -20,7 +20,7 @@ public class User {
         this.role = role;
     }
 
-    public User(String fullName, String email, String password, String mobile, String city, String role, String shopName) {
+    public User(String fullName, String email, String password, String mobile, String city, Role role, String shopName) {
         this(fullName, email, password, mobile, city, role);
         this.shopName = shopName;
     }
@@ -73,11 +73,11 @@ public class User {
         this.shopName = shopName;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 }

@@ -1,5 +1,6 @@
 package DataProviders;
 
+import mapper.Role;
 import org.testng.annotations.DataProvider;
 
 public class LogoutDataProvider {
@@ -7,9 +8,9 @@ public class LogoutDataProvider {
     public Object[][] LogoutData(){
         return new Object[][]{
 //                role, email, password, expectedResult
-                {"Customer", "customer2@pss.com", "12345678", "valid"},
-                {"Vendor", "vendor1@pss.com", "12345678", "valid"},
-                {"Admin", "admin1@pss.com", "12345678", "valid"}
+                {Role.CUSTOMER, "customer2@pss.com", "12345678", "valid"},
+                {Role.VENDOR, "vendor1@pss.com", "12345678", "valid"},
+                {Role.ADMIN, "admin1@pss.com", "12345678", "valid"}
         };
     }
 }

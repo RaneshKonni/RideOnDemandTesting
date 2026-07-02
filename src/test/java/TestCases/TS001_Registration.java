@@ -1,10 +1,11 @@
 package TestCases;
 
-import dataProviders.RegisterDataProvider;
+import DataProviders.RegisterDataProvider;
+import mapper.Role;
 import mapper.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import testBase.BaseClass;
+import TestBase.BaseClass;
 import utilities.RandomDataGeneratorUtil;
 
 public class TS001_Registration extends BaseClass {
@@ -17,7 +18,7 @@ public class TS001_Registration extends BaseClass {
         logger.info("=========================================================");
 
         try {
-            Assert.assertTrue(registerUser(RandomDataGeneratorUtil.getRandomUser("Customer")));
+            Assert.assertTrue(registerUser(RandomDataGeneratorUtil.getRandomUser(Role.CUSTOMER)));
 
             logger.info("SUCCESS: TC001_verifyUserRegistrationAsCustomer passed successfully!");
         } catch (AssertionError ae) {
@@ -37,7 +38,7 @@ public class TS001_Registration extends BaseClass {
         logger.info("=========================================================");
 
         try {
-            Assert.assertTrue(registerUser(RandomDataGeneratorUtil.getRandomUser("Vendor")));
+            Assert.assertTrue(registerUser(RandomDataGeneratorUtil.getRandomUser(Role.VENDOR)));
             logger.info("SUCCESS: TC002_verifyUserRegistrationAsVendor passed successfully!");
         } catch (AssertionError ae) {
             logger.error("ASSERTION FAILED: " + ae.getMessage());
@@ -56,7 +57,7 @@ public class TS001_Registration extends BaseClass {
         logger.info("=========================================================");
 
         try {
-            Assert.assertTrue(registerUser(RandomDataGeneratorUtil.getRandomUser("Admin")));
+            Assert.assertTrue(registerUser(RandomDataGeneratorUtil.getRandomUser(Role.ADMIN)));
             logger.info("SUCCESS: TC003_verifyUserRegistrationAsAdmin passed successfully!");
         } catch (AssertionError ae) {
             logger.error("ASSERTION FAILED: " + ae.getMessage());
@@ -75,10 +76,10 @@ public class TS001_Registration extends BaseClass {
         logger.info("=========================================================");
 
         try {
-            User user1 = RandomDataGeneratorUtil.getRandomUser("Customer");
+            User user1 = RandomDataGeneratorUtil.getRandomUser(Role.CUSTOMER);
             Assert.assertTrue(registerUser(user1));
             logoutUser();
-            User user2 = RandomDataGeneratorUtil.getRandomUser("Customer");
+            User user2 = RandomDataGeneratorUtil.getRandomUser(Role.CUSTOMER);
             user2.setEmail(user1.getEmail());
             Assert.assertFalse(registerUser(user2));
             logger.info("SUCCESS: TC004_verifyUserRegistrationWithDuplicateEmail passed successfully!");
@@ -99,10 +100,10 @@ public class TS001_Registration extends BaseClass {
         logger.info("=========================================================");
 
         try {
-            User user1 = RandomDataGeneratorUtil.getRandomUser("Customer");
+            User user1 = RandomDataGeneratorUtil.getRandomUser(Role.CUSTOMER);
             Assert.assertTrue(registerUser(user1));
             logoutUser();
-            User user2 = RandomDataGeneratorUtil.getRandomUser("Customer");
+            User user2 = RandomDataGeneratorUtil.getRandomUser(Role.CUSTOMER);
             user2.setMobile(user1.getMobile());
             Assert.assertFalse(registerUser(user2));
             logger.info("SUCCESS: TC005_verifyUserRegistrationWithDuplicateMobile passed successfully!");
@@ -118,7 +119,7 @@ public class TS001_Registration extends BaseClass {
 
 
     @Test(priority = 6, dataProvider = "RegisterData", dataProviderClass = RegisterDataProvider.class)
-    public void TC006_verifyErrorMessagesWhileRegisteringUser(String role, String fullName, String email, String password, String mobile, String city, String shopName, String errorMsg, String expectedResult){
+    public void TC006_verifyErrorMessagesWhileRegisteringUser(Role role, String fullName, String email, String password, String mobile, String city, String shopName, String errorMsg, String expectedResult){
         logger.info("=========================================================");
         logger.info("STARTING TEST CASE: TC006_verifyErrorMessagesWhileRegisteringUser");
         logger.info("=========================================================");

@@ -1,5 +1,6 @@
 package TestBase;
 
+import mapper.Role;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -107,17 +108,17 @@ public class BaseClass {
     }
 
 
-    public boolean loginUser(String role, String email, String password){
+    public boolean loginUser(Role role, String email, String password){
 //        logger.info("Switching to login page...");
         AuthPage authPage = new AuthPage(driver);
         switch (role){
-            case "Customer":
+            case Role.CUSTOMER:
                 authPage.clickCustomerButton();
                 break;
-            case "Vendor":
+            case Role.VENDOR:
                 authPage.clickVendorButton();
                 break;
-            case "Admin":
+            case Role.ADMIN:
                 authPage.clickAdminButton();
         }
         authPage.clickLoginButton();
@@ -126,8 +127,8 @@ public class BaseClass {
         authPage.setPassword(password);
         logger.info("Trying to logging in...");
         authPage.clickActualLoginButton();
-        if(role.isEmpty()) return false;
-        return authPage.waitForUrlToContain("/"+role.toLowerCase());
+        if(role == null) return false;
+        return authPage.waitForUrlToContain("/"+role.toString().toLowerCase());
     }
 
     public boolean registerUser(User user){
@@ -136,16 +137,16 @@ public class BaseClass {
         authPage.clickRegisterButton();
 
         switch (user.getRole()){
-            case "Customer":
+            case Role.CUSTOMER:
                 logger.info("Clicking Customer button");
                 authPage.clickCustomerButton();
                 break;
-            case "Vendor":
+            case Role.VENDOR:
                 logger.info("Clicking Vendor button");
                 authPage.clickVendorButton();
                 authPage.setShopName(user.getShopName());
                 break;
-            case "Admin":
+            case Role.ADMIN:
                 authPage.clickAdminButton();
                 break;
         }
@@ -157,11 +158,11 @@ public class BaseClass {
         authPage.setCity(user.getCity());
         authPage.clickRegisterAndContinueButton();
 
-        if(user.getRole().isEmpty()){
+        if(user.getRole() == null){
             return false;
         }
 
-        return authPage.waitForUrlToContain("/"+user.getRole().toLowerCase());
+        return authPage.waitForUrlToContain("/"+user.getRole().toString().toLowerCase());
     }
 
     public boolean logoutUser() throws InterruptedException {
@@ -179,7 +180,7 @@ public class BaseClass {
         Assert.assertEquals(authPage.getErrorMessage(), errorMsg);
     }
 
-    public void verifyErrorMsgWhileUserLogin(String role, String email, String password, String errorMsg){
+    public void verifyErrorMsgWhileUserLogin(Role role, String email, String password, String errorMsg){
         if(loginUser(role, email, password)) Assert.fail("User should not be able to login");
         AuthPage authPage = new AuthPage(driver);
         authPage.clickActualLoginButton();

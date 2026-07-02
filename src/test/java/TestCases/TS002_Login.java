@@ -1,14 +1,15 @@
 package TestCases;
 
-import dataProviders.LoginDataProvider;
+import DataProviders.LoginDataProvider;
+import mapper.Role;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import testBase.BaseClass;
+import TestBase.BaseClass;
 
 public class TS002_Login extends BaseClass {
 
     @Test(priority = 7, dataProvider = "LoginData",dataProviderClass = LoginDataProvider.class)
-    public void TC007_verifyLogin(String role,String email,String password,String expectedResult) {
+    public void TC007_verifyLogin(Role role, String email, String password, String expectedResult) {
         logger.info("=========================================================");
         logger.info("STARTING TEST CASE: TC007_verifyLogin");
         logger.info("=========================================================");
@@ -33,7 +34,7 @@ public class TS002_Login extends BaseClass {
 
 
     @Test(priority = 8, dataProvider = "LoginDataNeg", dataProviderClass = LoginDataProvider.class)
-    public void TC008_verifyErrorMsgWhileUserLogin(String role,String email,String password,String expectedError) {
+    public void TC008_verifyErrorMsgWhileUserLogin(Role role,String email,String password,String expectedError) {
 //        logger.info("=========================================================");
 //        logger.info("STARTING TEST CASE: TC008_verifyErrorMsgWhileUserLogin");
 //        logger.info("=========================================================");
