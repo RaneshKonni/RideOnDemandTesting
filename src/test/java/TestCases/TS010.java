@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
@@ -20,16 +21,16 @@ public class TS010 extends BaseClass {
     private static final String VENDOR_EMAIL = "vm@gmail.com";
     private static final String VENDOR_PASSWORD = "12345678";
 
-    @BeforeClass
+    @BeforeMethod
     public void classSetup() throws InterruptedException {
         auth = new AuthPage(driver);
-        auth.loginAsVendor(VENDOR_EMAIL, VENDOR_PASSWORD);
+        loginUser("Vendor", VENDOR_EMAIL, VENDOR_PASSWORD);
         Thread.sleep(3000);
 
         vendor = new VendorDashboardPage(driver);
         if (!vendor.vendorDashboardMessage()) {
             System.out.println("⚠️ Initial login check failed. Attempting re-login...");
-            auth.loginAsVendor(VENDOR_EMAIL, VENDOR_PASSWORD);
+            loginUser("Vendor", VENDOR_EMAIL, VENDOR_PASSWORD);
             Thread.sleep(3000);
             vendor = new VendorDashboardPage(driver);
         }

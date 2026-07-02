@@ -21,37 +21,37 @@ public class TS004 extends BaseClass {
     CustomerOffersReceivedPage offersReceivedPage;
 
     @BeforeMethod
-    public void loginBeforeTest() {
-
-        try {
-
-            driver.get(p.getProperty("appUrl"));
-            Thread.sleep(2000);
-
-            logger.info("Logging in as customer.");
-
-            authPage = new AuthPage(driver);
-            authPage.loginActivity();
-
-            authPage.setTfEmail(p.getProperty("testCustomerEmail"));
-            authPage.setTfPassword(p.getProperty("testCustomerPassword"));
-            authPage.clickBtnSubmit();
-
-            Thread.sleep(3000);
-
-            customerDashboard = new CustomerDashboardPage(driver);
-
-            Assert.assertTrue(customerDashboard.isWelcomeMessageDisplayed(),
-                    "Login failed.");
-
-            logger.info("Customer login successful.");
-
-        } catch (Exception e) {
-
-            logger.error("Login setup failed.", e);
-            Assert.fail("Login setup failed : " + e.getMessage());
-        }
-    }
+//    public void loginBeforeTest() {
+//
+//        try {
+//
+//            driver.get(properties.getProperty("appUrl"));
+//            Thread.sleep(2000);
+//
+//            logger.info("Logging in as customer.");
+//
+//            authPage = new AuthPage(driver);
+//            authPage.loginActivity();
+//
+//            authPage.setTfEmail(p.getProperty("testCustomerEmail"));
+//            authPage.setTfPassword(p.getProperty("testCustomerPassword"));
+//            authPage.clickBtnSubmit();
+//
+//            Thread.sleep(3000);
+//
+//            customerDashboard = new CustomerDashboardPage(driver);
+//
+//            Assert.assertTrue(customerDashboard.isWelcomeMessageDisplayed(),
+//                    "Login failed.");
+//
+//            logger.info("Customer login successful.");
+//
+//        } catch (Exception e) {
+//
+//            logger.error("Login setup failed.", e);
+//            Assert.fail("Login setup failed : " + e.getMessage());
+//        }
+//    }
 
     /**
      * TC_022 - Verify profile button is navigating to the expected page when clicked

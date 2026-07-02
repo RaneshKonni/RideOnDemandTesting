@@ -1,9 +1,12 @@
 package TestCases;
 
 import DataProviders.LoginDataProvider;
+import TestBase.BaseClass;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import TestBase.BaseClass;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 public class TS002_Login extends BaseClass {
 
