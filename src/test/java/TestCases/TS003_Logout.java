@@ -1,9 +1,10 @@
 package TestCases;
 
-import dataProviders.LogoutDataProvider;
+import DataProviders.LogoutDataProvider;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import testBase.BaseClass;
+
+import TestBase.BaseClass;
 
 public class TS003_Logout extends BaseClass {
     @Test(priority = 1, dataProvider = "LogoutData", dataProviderClass = LogoutDataProvider.class)

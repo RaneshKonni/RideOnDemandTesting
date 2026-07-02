@@ -17,13 +17,12 @@ public class TS015 extends BaseClass {
 
     @BeforeClass
     public void classSetup() throws InterruptedException {
-        auth = new AuthPage(driver);
-        auth.loginAsAdmin(ADMIN_EMAIL, ADMIN_PASSWORD);
+     loginUser("admin", ADMIN_EMAIL, ADMIN_PASSWORD);
         adminDashboardPage = new AdminDashboardPage(driver);
 
         // Initial dashboard verification
         if (!adminDashboardPage.adminDashboardMessage()) {
-            auth.loginAsAdmin(ADMIN_EMAIL, ADMIN_PASSWORD);
+            loginUser("admin", ADMIN_EMAIL, ADMIN_PASSWORD);
         }
     }
 

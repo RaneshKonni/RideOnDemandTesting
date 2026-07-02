@@ -11,13 +11,11 @@ import org.testng.annotations.Test;
 
 public class TS008 extends BaseClass  {
 
-    AuthPage authPage;
     VendorDashboardPage vendorDashboard;
 
-    @BeforeClass
+    @BeforeMethod
     public void setup() {
-        authPage = new AuthPage(driver);
-        authPage.loginAsVendor("vm@gmail.com", "12345678");
+        loginUser("Vendor", "vm@gmail.com", "12345678");
         vendorDashboard = new VendorDashboardPage(driver);
     }
 

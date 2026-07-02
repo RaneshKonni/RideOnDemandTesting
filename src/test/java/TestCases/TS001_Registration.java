@@ -1,10 +1,10 @@
 package TestCases;
 
-import dataProviders.RegisterDataProvider;
+import DataProviders.RegisterDataProvider;
 import mapper.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import testBase.BaseClass;
+import TestBase.BaseClass;
 import utilities.RandomDataGeneratorUtil;
 
 public class TS001_Registration extends BaseClass {
