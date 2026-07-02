@@ -161,7 +161,6 @@ public class BaseClass {
         if(user.getRole() == null){
             return false;
         }
-
         return authPage.waitForUrlToContain("/"+user.getRole().toString().toLowerCase());
     }
 

@@ -2,56 +2,43 @@ package TestCases;
 
 import PageObjects.*;
 import TestBase.BaseClass;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import mapper.Role;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class TS004 extends BaseClass {
 
-    private static final Logger logger = LogManager.getLogger(TS004.class);
-
-    AuthPage authPage;
     CustomerDashboardPage customerDashboard;
     CustomerProfilePage customerProfile;
     CustomerPostRequirementPage postRequirementPage;
     CustomerOffersReceivedPage offersReceivedPage;
 
     @BeforeMethod
-//    public void loginBeforeTest() {
-//
-//        try {
-//
-//            driver.get(properties.getProperty("appUrl"));
-//            Thread.sleep(2000);
-//
-//            logger.info("Logging in as customer.");
-//
-//            authPage = new AuthPage(driver);
-//            authPage.loginActivity();
-//
-//            authPage.setTfEmail(p.getProperty("testCustomerEmail"));
-//            authPage.setTfPassword(p.getProperty("testCustomerPassword"));
-//            authPage.clickBtnSubmit();
-//
-//            Thread.sleep(3000);
-//
-//            customerDashboard = new CustomerDashboardPage(driver);
-//
-//            Assert.assertTrue(customerDashboard.isWelcomeMessageDisplayed(),
-//                    "Login failed.");
-//
-//            logger.info("Customer login successful.");
-//
-//        } catch (Exception e) {
-//
-//            logger.error("Login setup failed.", e);
-//            Assert.fail("Login setup failed : " + e.getMessage());
-//        }
-//    }
+    public void loginBeforeTest() {
+
+        try {
+            logger.info("Logging in as customer.");
+            Assert.assertTrue(
+                    loginUser(
+                            Role.CUSTOMER,
+                            properties.getProperty("testCustomerEmail"),
+                            properties.getProperty("testCustomerPassword")
+                    ),
+                    "Customer login failed."
+            );
+
+            customerDashboard = new CustomerDashboardPage(driver);
+
+            logger.info("Customer login successful.");
+
+        } catch (Exception e) {
+
+            logger.error("Login setup failed.", e);
+            Assert.fail("Login setup failed : " + e.getMessage());
+        }
+    }
 
     /**
      * TC_022 - Verify profile button is navigating to the expected page when clicked
@@ -63,20 +50,20 @@ public class TS004 extends BaseClass {
         try{
 
             logger.info("Executing TC_022");
-            customerDashboard = new CustomerDashboardPage(driver);
 
-            // Verify profile button is displayed
+
+
             Assert.assertTrue(customerDashboard.isProfileButtonDisplayed(),
                     "Profile button should be displayed on dashboard");
 
-            // Click profile button
+
             customerDashboard.clickCustomerProfile();
 
-            // Wait for profile page to load
+
 
             customerProfile = new CustomerProfilePage(driver);
 
-            // Verify we are on profile page
+
             Assert.assertTrue(customerProfile.isProfilePageDisplayed(),
                     "Should navigate to profile page");
 
@@ -99,19 +86,18 @@ public class TS004 extends BaseClass {
         try{
 
             logger.info("Executing TC_023");
-            Thread.sleep(3000);
-            customerDashboard = new CustomerDashboardPage(driver);
+
 
             // Verify post requirement button is displayed
             Assert.assertTrue(customerDashboard.isPostRequirementButtonDisplayed(),
                     "Post Requirement button should be displayed on dashboard");
 
-            Thread.sleep(2000);
+
             // Click post requirement button
             customerDashboard.clickPostRequirement();
 
-            // Wait for post requirement page to load
-            Thread.sleep(2000);
+
+
             postRequirementPage = new CustomerPostRequirementPage(driver);
 
             // Verify we are on post requirement page
@@ -119,13 +105,12 @@ public class TS004 extends BaseClass {
                     "Should navigate to post requirement page");
 
             postRequirementPage.clickBackToProfile();
-
-
-            Thread.sleep(2000);
             customerProfile = new CustomerProfilePage(driver);
-            Thread.sleep(3000);
-            customerProfile.clickSignout();
 
+            Assert.assertTrue(
+                    customerProfile.isProfilePageDisplayed(),
+                    "Should navigate back to profile page."
+            );
 
             logger.info("TC_023 completed successfully.");
 
@@ -148,28 +133,26 @@ public class TS004 extends BaseClass {
 
         try {
             logger.info("Executing TC_024");
-            customerDashboard = new CustomerDashboardPage(driver);
-            Thread.sleep(5000);
+
+
             // Verify Accepted requirement is displayed
             Assert.assertTrue(
                     customerDashboard.isAcceptedRequirementDisplayed(),
                     "Accepted requirement should be displayed on dashboard"
             );
 
-            Thread.sleep(2000);
+
 
             // Click Accepted requirement
             customerDashboard.clickAcceptedRequirement();
-
-            Thread.sleep(3000);
-
-            offersReceivedPage = new CustomerOffersReceivedPage(driver);
 
             // Verify navigation
             Assert.assertTrue(
                     driver.getCurrentUrl().contains("/customer/offers/"),
                     "Should navigate to Offers Received page"
             );
+
+            offersReceivedPage = new CustomerOffersReceivedPage(driver);
 
             // Verify page heading
             Assert.assertTrue(
@@ -245,15 +228,9 @@ public class TS004 extends BaseClass {
     public void logout() {
 
         try {
-
-            customerProfile = new CustomerProfilePage(driver);
-
-            if(customerProfile.isSignOutButtonDisplayed()) {
-                customerProfile.clickSignout();
-            }
-
-        } catch (Exception ignored) {
-
+            logoutUser();
+        } catch (Exception e) {
+            logger.warn("Logout skipped",e);
         }
 
     }
