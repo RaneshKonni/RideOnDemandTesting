@@ -1,8 +1,31 @@
-<suite name="Ride On Demand - Test Suite">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Ride On Demand - Global Test Suite">
+
+    <listeners>
+        <listener class-name="utilities.ExtentReportManager"/>
+    </listeners>
 
     <parameter name="browser" value="chrome"/>
 
-    <!-- Customer Module -->
+    <test name="TS001_REGISTRATION" preserve-order="true" verbose="2">
+        <classes>
+            <class name="TestCases.TS001_Registration" />
+        </classes>
+    </test>
+
+    <test name="TS002_LOGIN" preserve-order="true" verbose="2">
+        <classes>
+            <class name="TestCases.TS002_Login" />
+        </classes>
+    </test>
+
+    <test name="TS002_LOGOUT" preserve-order="true" verbose="2">
+        <classes>
+            <class name="TestCases.TS003_Logout" />
+        </classes>
+    </test>
+
     <test name="Customer Module Tests" preserve-order="true" verbose="2">
         <classes>
             <class name="TestCases.TS003"/>
@@ -12,7 +35,6 @@
         </classes>
     </test>
 
-    <!-- Vendor Module -->
     <test name="Vendor Module Tests" preserve-order="true" verbose="2">
         <classes>
             <class name="TestCases.TS007">
@@ -61,8 +83,7 @@
         </classes>
     </test>
 
-    <!-- Admin Module -->
-    <test name="Customer Module Tests" preserve-order="true" verbose="2">
+    <test name="Admin Module Tests" preserve-order="true" verbose="2">
         <classes>
             <class name="TestCases.TS014"/>
             <class name="TestCases.TS015"/>
