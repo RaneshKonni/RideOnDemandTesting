@@ -8,6 +8,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class TS013 extends BaseClass {
 
@@ -31,23 +33,35 @@ public class TS013 extends BaseClass {
 
     @Test
     public void TC_045_verifySignOut() {
-        VendorDashboardPage dashboard = new VendorDashboardPage(driver);
-        dashboard.navigateToProfile();
+        logger.info("=========================================================");
+        logger.info("STARTING TEST CASE: TC_045_verifySignOut");
+        logger.info("=========================================================");
 
-        VendorProfilePage profilePage = new VendorProfilePage(driver);
-        profilePage.waitForProfileLoad();
+        try {
+            VendorDashboardPage dashboard = new VendorDashboardPage(driver);
+            dashboard.navigateToProfile();
 
-        // 1. Perform Sign Out
-        profilePage.clickSignOut();
+            VendorProfilePage profilePage = new VendorProfilePage(driver);
+            profilePage.waitForProfileLoad();
 
-        // 2. Verification
-        // Use a wait to ensure the URL has changed or the login form has appeared
-        // Replace "login" with the actual keyword in your URL or page title
-        boolean isRedirected = new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(5))
-                .until(org.openqa.selenium.support.ui.ExpectedConditions.urlContains("auth"));
+            // 1. Perform Sign Out
+            profilePage.clickSignOut();
 
-        Assert.assertTrue(isRedirected, "Sign out failed: User was not redirected to the login page.");
+            // 2. Verification
+            boolean isRedirected = new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(5))
+                    .until(org.openqa.selenium.support.ui.ExpectedConditions.urlContains("auth"));
 
-        System.out.println("✅ Successfully signed out and redirected to login page.");
+            Assert.assertTrue(isRedirected, "Sign out failed: User was not redirected to the login page.");
+
+            logger.info("SUCCESS: TC_045_verifySignOut passed successfully!");
+
+        } catch (AssertionError ae) {
+            logger.error("ASSERTION FAILED: " + ae.getMessage());
+            throw ae;
+        } catch (Exception e) {
+            logger.error("FAILURE: Exception encountered during TC_045 execution!");
+            logger.error("Exception Message: " + e.getMessage());
+            Assert.fail("Test failed due to an exception: " + e.getMessage());
+        }
     }
 }

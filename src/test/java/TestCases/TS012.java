@@ -8,6 +8,8 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class TS012 extends BaseClass {
 
@@ -19,7 +21,7 @@ public class TS012 extends BaseClass {
 
     @BeforeMethod
     public void classSetup() throws InterruptedException {
-       loginUser("Vendor", VENDOR_EMAIL, VENDOR_PASSWORD);
+        loginUser("Vendor", VENDOR_EMAIL, VENDOR_PASSWORD);
         vendorDashboardPage = new VendorDashboardPage(driver);
 
         // Initial dashboard verification
@@ -28,24 +30,37 @@ public class TS012 extends BaseClass {
         }
     }
 
-
     @Test
     public void TC_044_verifyMailMetrics() {
-        VendorDashboardPage dashboard = new VendorDashboardPage(driver);
-        dashboard.navigateToProfile();
+        logger.info("=========================================================");
+        logger.info("STARTING TEST CASE: TC_044_verifyMailMetrics");
+        logger.info("=========================================================");
 
-        VendorProfilePage profilePage = new VendorProfilePage(driver);
-        // Ensure the mail card is visible before reading metrics
-        profilePage.waitForMailSection();
+        try {
+            VendorDashboardPage dashboard = new VendorDashboardPage(driver);
+            dashboard.navigateToProfile();
 
-        // Expected values (Adjust these based on your test environment data)
-        String expectedTotal = "0";
-        String expectedUnread = "0";
+            VendorProfilePage profilePage = new VendorProfilePage(driver);
+            // Ensure the mail card is visible before reading metrics
+            profilePage.waitForMailSection();
 
-        // Assertions
-        Assert.assertEquals(profilePage.getTotalItemsCount(), expectedTotal, "Total items count mismatch!");
-        Assert.assertEquals(profilePage.getUnreadCount(), expectedUnread, "Unread items count mismatch!");
+            // Expected values (Adjust these based on your test environment data)
+            String expectedTotal = "0";
+            String expectedUnread = "0";
 
-        System.out.println("✅ Mail metrics verified: " + expectedTotal + " items, " + expectedUnread + " unread.");
+            // Assertions
+            Assert.assertEquals(profilePage.getTotalItemsCount(), expectedTotal, "Total items count mismatch!");
+            Assert.assertEquals(profilePage.getUnreadCount(), expectedUnread, "Unread items count mismatch!");
+
+            logger.info("SUCCESS: TC_044_verifyMailMetrics passed successfully!");
+
+        } catch (AssertionError ae) {
+            logger.error("ASSERTION FAILED: " + ae.getMessage());
+            throw ae;
+        } catch (Exception e) {
+            logger.error("FAILURE: Exception encountered during TC_044 execution!");
+            logger.error("Exception Message: " + e.getMessage());
+            Assert.fail("Test failed due to an exception: " + e.getMessage());
+        }
     }
 }
