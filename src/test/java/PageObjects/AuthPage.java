@@ -3,208 +3,107 @@ package PageObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class AuthPage extends BasePage{
-
-    public AuthPage(WebDriver driver){
+public class AuthPage extends BasePage {
+    public AuthPage(WebDriver driver) {
         super(driver);
     }
 
-    //=============
-    //LOCATORS
-    //=============
+    @FindBy(xpath = "//div[@aria-label='Select role']/button[text()=' Customer ']")
+    WebElement customerButton;
+    @FindBy(xpath = "//div[@aria-label='Select role']/button[text()=' Vendor ']")
+    WebElement vendorButton;
+    @FindBy(xpath = "//div[@aria-label='Select role']/button[text()=' Admin ']")
+    WebElement adminButton;
+    @FindBy(xpath = "//div[@aria-label='Select mode']/button[text()='Register']")
+    WebElement registerButton;
+    @FindBy(xpath = "//div[@aria-label='Select mode']/button[text()='Login']")
+    WebElement loginButton;
+    @FindBy(xpath = "//form//input[@formcontrolname='fullName']")
+    WebElement fullNameInput;
+    @FindBy(xpath = "//form//input[@formcontrolname='email']")
+    WebElement emailInput;
+    @FindBy(xpath = "//form//input[@formcontrolname='password']")
+    WebElement passwordInput;
+    @FindBy(xpath = "//form//input[@formcontrolname='mobile']")
+    WebElement mobileInput;
+    @FindBy(xpath = "//form//input[@formcontrolname='city']")
+    WebElement cityInput;
+    @FindBy(xpath = "//form//input[@formcontrolname='shopName']")
+    WebElement shopNameInput;
+    @FindBy(xpath = "//form/button[text()=' Register & Continue ']")
+    WebElement registerAndContinueButton;
+    @FindBy(xpath = "//form/button[text()=' Login ']")
+    WebElement actualLoginButton;
+    @FindBy(xpath = "//p[@role='alert' and @class='toastmsg']")
+    WebElement errorMessage;
 
-    // For both customer and admin Register
-    @FindBy(xpath = "//button[normalize-space() = 'Customer']")
-    WebElement btnRoleCustomer;
-
-    @FindBy(xpath = "//button[normalize-space() = 'Vendor']")
-    WebElement btnRoleVendor;
-
-    @FindBy(xpath = "//button[normalize-space() = 'Admin']")
-    WebElement btnRoleAdmin;
-
-    @FindBy(xpath = "//button[normalize-space() = 'Register']")
-    WebElement btnRegister;
-
-    @FindBy(xpath = "//button[normalize-space() = 'Login']")
-    WebElement btnLogin;
-
-    @FindBy(xpath = "//input[@formcontrolname = 'fullName']")
-    WebElement tfFullName;
-
-    @FindBy(xpath = "//input[@formcontrolname = 'email']")
-    WebElement tfEmail;
-
-    @FindBy(xpath = "//input[@formcontrolname = 'password']")
-    WebElement tfPassword;
-
-    @FindBy(xpath = "//input[@formcontrolname = 'mobile']")
-    WebElement tfMobile;
-
-    @FindBy(xpath = "//input[@formcontrolname = 'city']")
-    WebElement tfCity;
-
-    @FindBy(className = "primary-btn")
-    WebElement btnSubmit;
-
-
-    // for vendor this is the extra field
-    @FindBy(xpath = "//input[@formcontrolname = 'shopName']")
-    WebElement tfShopName;
-
-
-
-    //===========
-    //ACTIONS
-    //===========
-
-    public void setTfFullName(String fullName){
-        tfFullName.sendKeys(fullName);
+    public void clickCustomerButton(){
+        waitForElementToBeClickable(customerButton).click();
     }
 
-    public void setTfEmail(String email){
-        tfEmail.sendKeys(email);
+    public void clickVendorButton(){
+        waitForElementToBeClickable(vendorButton).click();
     }
 
-    public void setTfPassword(String password){
-        tfPassword.sendKeys(password);
+    public void clickAdminButton(){
+        waitForElementToBeClickable(adminButton).click();
     }
 
-    public void setTfMobile(String mobile){
-        tfMobile.sendKeys(mobile);
+    public void clickRegisterButton(){
+        waitForElementToBeClickable(registerButton).click();
     }
 
-    public void setTfCity(String city){
-        tfCity.sendKeys(city);
+    public void clickLoginButton(){
+        waitForElementToBeClickable(loginButton).click();
     }
 
-    public void setTfShopName(String shopName){
-        tfShopName.sendKeys(shopName);
+    public void clickActualLoginButton(){
+        waitForElementToBeClickable(actualLoginButton).click();
     }
 
-    public void registerActivity(){
-        wait.until(ExpectedConditions.elementToBeClickable(btnRegister));
-        btnRegister.click();
+    public void clickRegisterAndContinueButton(){
+        waitForElementToBeClickable(registerAndContinueButton).click();
     }
 
-    public void loginActivity(){
-        wait.until(ExpectedConditions.elementToBeClickable(btnLogin));
-        btnLogin.click();
+    public void setFullName(String fullName){
+        fullNameInput.clear();
+        fullNameInput.sendKeys(fullName);
     }
 
-    public void setRole(String role){
-        try {
-            if(role.equalsIgnoreCase("admin")){
-                wait.until(ExpectedConditions.elementToBeClickable(btnRoleAdmin));
-                btnRoleAdmin.click();
-            }else if(role.equalsIgnoreCase("vendor")){
-                wait.until(ExpectedConditions.elementToBeClickable(btnRoleVendor));
-                btnRoleVendor.click();
-            }else{
-                wait.until(ExpectedConditions.elementToBeClickable(btnRoleCustomer));
-                btnRoleCustomer.click();
-            }
-        } catch (Exception e) {
-            System.out.println("Error selecting role: " + e.getMessage());
-            throw new RuntimeException("Failed to select role '" + role + "': " + e.getMessage());
-        }
+    public void setEmail(String email){
+        emailInput.clear();
+        emailInput.sendKeys(email);
     }
 
-    public void clickBtnSubmit(){
-        wait.until(ExpectedConditions.elementToBeClickable(btnSubmit));
-        btnSubmit.click();
+    public void setPassword(String password){
+        passwordInput.clear();
+        passwordInput.sendKeys(password);
     }
 
-    public void clearAll(){
-        tfFullName.clear();
-        tfEmail.clear();
-        tfPassword.clear();
-        tfMobile.clear();
-        tfCity.clear();
+    public void setMobile(String mobile){
+        mobileInput.clear();
+        mobileInput.sendKeys(mobile);
     }
 
-    //vendor login method
-    public  void loginAsVendor(String email, String password) {
-
-        try {
-            // Wait for role selection buttons to be visible
-            wait.until(ExpectedConditions.visibilityOf(btnRoleVendor));
-            
-            // Select Vendor role
-            this.setRole("vendor");
-            
-            Thread.sleep(1000); // Wait for page to update after role selection
-            
-            // Wait for Login button to be visible
-            wait.until(ExpectedConditions.visibilityOf(btnLogin));
-            
-            // Click on Login button
-            this.loginActivity();
-            
-            Thread.sleep(1000); // Wait for login form to load
-            
-            // Wait for email field to be visible
-            wait.until(ExpectedConditions.visibilityOf(tfEmail));
-
-            // Enter credentials
-            this.setTfEmail(email);
-            this.setTfPassword(password);
-
-         //   System.out.println("Entered email: " + email + " and password: " + password);
-
-            // Submit
-            this.clickBtnSubmit();
-
-            // Wait for dashboard to load
-            wait.until(ExpectedConditions.urlContains("vendor"));
-            
-        } catch (Exception e) {
-            System.out.println("Error during vendor login: " + e.getMessage());
-            e.printStackTrace();
-            throw new RuntimeException("Failed to login as vendor: " + e.getMessage());
-        }
+    public void setCity(String city){
+        cityInput.clear();
+        cityInput.sendKeys(city);
     }
 
-    //admin login method
-    public void loginAsAdmin(String email, String password) {
+    public void setShopName(String shopName){
+        shopNameInput.clear();
+        shopNameInput.sendKeys(shopName);
+    }
 
-        try {
-            // Wait for role selection buttons to be visible
-            wait.until(ExpectedConditions.visibilityOf(btnRoleAdmin));
+    public boolean errorIsDisplayed(){
+        waitForElementToBeVisible(errorMessage);
+        return errorMessage.isDisplayed();
+    }
 
-            // Select Admin role
-            this.setRole("admin");
-
-            Thread.sleep(1000); // Wait for page to update after role selection
-
-            // Wait for Login button to be visible
-            wait.until(ExpectedConditions.visibilityOf(btnLogin));
-
-            // Click on Login button
-            this.loginActivity();
-
-            Thread.sleep(1000); // Wait for login form to load
-
-            // Wait for email field to be visible
-            wait.until(ExpectedConditions.visibilityOf(tfEmail));
-
-            // Enter credentials
-            this.setTfEmail(email);
-            this.setTfPassword(password);
-
-            // Submit
-            this.clickBtnSubmit();
-
-            // Wait for admin dashboard to load (adjust URL part as per your actual path)
-            wait.until(ExpectedConditions.urlContains("admin"));
-
-        } catch (Exception e) {
-            System.out.println("Error during admin login: " + e.getMessage());
-            e.printStackTrace();
-            throw new RuntimeException("Failed to login as admin: " + e.getMessage());
-        }
+    public String getErrorMessage(){
+        waitForElementToBeVisible(errorMessage);
+        return errorMessage.getText();
     }
 
 }
