@@ -37,27 +37,27 @@
 
     <test name="Vendor Module Tests">
         <classes>
-<!--            <class name="TestCases.TS007">-->
-<!--            </class>-->
+            <class name="TestCases.TS007">
+            </class>
 
-<!--            <class name="TestCases.TS008">-->
-<!--            </class>-->
+            <class name="TestCases.TS008">
+            </class>
 
             <class name="TestCases.TS009">
             </class>
 
-<!--            <class name="TestCases.TS010">-->
+            <class name="TestCases.TS010">
 
-<!--            </class>-->
+            </class>
 
-<!--            <class name="TestCases.TS011">-->
-<!--            </class>-->
+            <class name="TestCases.TS011">
+            </class>
 
-<!--            <class name="TestCases.TS012">-->
-<!--            </class>-->
+            <class name="TestCases.TS012">
+            </class>
 
-<!--            <class name="TestCases.TS013">-->
-<!--            </class>-->
+            <class name="TestCases.TS013">
+            </class>
         </classes>
     </test>
 

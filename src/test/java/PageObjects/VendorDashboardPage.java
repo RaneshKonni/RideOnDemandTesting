@@ -205,6 +205,18 @@ public class VendorDashboardPage extends BasePage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", clearBtn);
     }
 
+
+    public int waitForOfferCountToIncrement(int initialCount) {
+        wait.until(d -> {
+            try {
+                return Integer.parseInt(offerCount.getText().trim()) > initialCount;
+            } catch (Exception e) {
+                return false; // Safely handles StaleElementReferenceException if the DOM re-renders
+            }
+        });
+        return Integer.parseInt(offerCount.getText().trim());
+    }
+
     public void clickSubmitOfferButton() {
         wait.until(ExpectedConditions.elementToBeClickable(btnSubmitOffer));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnSubmitOffer);
