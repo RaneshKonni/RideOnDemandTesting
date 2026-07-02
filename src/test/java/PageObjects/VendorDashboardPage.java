@@ -206,7 +206,8 @@ public class VendorDashboardPage extends BasePage {
     }
 
     public void clickSubmitOfferButton() {
-        wait.until(ExpectedConditions.elementToBeClickable(btnSubmitOffer)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(btnSubmitOffer));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnSubmitOffer);
     }
 
     public String getPriceFieldValue() {

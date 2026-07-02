@@ -6,6 +6,7 @@ import PageObjects.VendorProfilePage;
 import TestBase.BaseClass;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class TS013 extends BaseClass {
@@ -16,15 +17,15 @@ public class TS013 extends BaseClass {
     private static final String VENDOR_EMAIL = "vm@gmail.com";
     private static final String VENDOR_PASSWORD = "12345678";
 
-    @BeforeClass
+    @BeforeMethod
     public void classSetup() throws InterruptedException {
         auth = new AuthPage(driver);
-        auth.loginAsVendor(VENDOR_EMAIL, VENDOR_PASSWORD);
+        loginUser("Vendor", VENDOR_EMAIL, VENDOR_PASSWORD);
         vendorDashboardPage = new VendorDashboardPage(driver);
 
         // Initial dashboard verification
         if (!vendorDashboardPage.vendorDashboardMessage()) {
-            auth.loginAsVendor(VENDOR_EMAIL, VENDOR_PASSWORD);
+            loginUser("Vendor", VENDOR_EMAIL, VENDOR_PASSWORD);
         }
     }
 
@@ -49,6 +50,4 @@ public class TS013 extends BaseClass {
 
         System.out.println("✅ Successfully signed out and redirected to login page.");
     }
-
-
 }

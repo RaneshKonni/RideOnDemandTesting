@@ -1,10 +1,11 @@
 package TestCases;
 
 import DataProviders.LoginDataProvider;
+import TestBase.BaseClass;
 import mapper.Role;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import TestBase.BaseClass;
+
 
 public class TS002_Login extends BaseClass {
 

@@ -24,7 +24,7 @@ public class TS016 extends BaseClass {
         adminProfilePage = new AdminProfilePage(driver);
 
         // 1. Log in as admin
-        auth.loginAsAdmin(ADMIN_EMAIL, ADMIN_PASSWORD);
+       loginUser("admin", ADMIN_EMAIL, ADMIN_PASSWORD);
         Assert.assertTrue(adminDashboardPage.adminDashboardMessage(), "Admin failed to log in.");
 
         // 2. Navigate to Admin Profile Page

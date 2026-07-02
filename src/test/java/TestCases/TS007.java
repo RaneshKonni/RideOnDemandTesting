@@ -7,21 +7,19 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TS007 extends BaseClass {
 
-    AuthPage authPage;
+public class TS007 extends BaseClass {
 
     @BeforeMethod
     public void setup() {
-        authPage = new AuthPage(driver);
-        authPage.loginAsVendor("vm@gmail.com", "12345678");
+        loginUser("Vendor", "vm@gmail.com", "12345678");
     }
 
     @Test
     public void verifyDashboardMetricsDisplay() {
 
         try{
-            // Initialize page object
+           //  Initialize page object
 
             VendorDashboardPage vendorDashboard = new VendorDashboardPage(driver);
 
