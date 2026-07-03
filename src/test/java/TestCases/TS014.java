@@ -52,7 +52,7 @@ public class TS014 extends BaseClass {
         Assert.assertTrue(adminDashboardPage.isDayFilterActive(), "'Day' filter should be active by default.");
     }
 
-    @Test(priority = 4, dependsOnMethods = "TC_048_VerifyDefaultActiveTimeFilter")
+    @Test(priority = 4)
     public void TC_049_VerifyMonthYearFilterInteraction() {
         logger.info("Starting TC_049: Verifying month and year filter interactions");
 

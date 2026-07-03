@@ -60,7 +60,7 @@ public class TS016 extends BaseClass {
         Assert.assertEquals(email, ADMIN_EMAIL, "Profile email does not match the logged-in admin email.");
     }
 
-    @Test(priority = 2, dependsOnMethods = {"TC_054_VerifyProfileInformationDisplayDetails"})
+    @Test(priority = 2)
     public void TC_055_VerifyProfileViewBrowserRefreshBehavior() {
         logger.info("Starting TC_055: Verifying browser refresh behavior on Profile Page");
 
@@ -79,7 +79,7 @@ public class TS016 extends BaseClass {
         Assert.assertEquals(postRefreshEmail, preRefreshEmail, "Profile data was lost or corrupted after browser refresh.");
     }
 
-    @Test(priority = 3, dependsOnMethods = {"TC_055_VerifyProfileViewBrowserRefreshBehavior"})
+    @Test(priority = 3)
     public void TC_056_VerifyAccountSignOutFunctionTermination() {
         logger.info("Starting TC_056: Verifying account sign out functionality");
 
