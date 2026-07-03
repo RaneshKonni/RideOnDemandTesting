@@ -41,6 +41,4 @@ build/
 .env
 .mvn/
 
-/logs
-/reports
-/screenshots
+.idea/
