@@ -786,3 +786,799 @@
 2026-07-03 01:40:12 INFO  TS016:128 - Trying to logging in...
 2026-07-03 01:40:15 INFO  TS016:31 - Navigating to Admin Profile Page
 2026-07-03 01:40:15 INFO  TS016:84 - Starting TC_056: Verifying account sign out functionality
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 4 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 8 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 24 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 5 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 4 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 2 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 2 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 11 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:11 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 2 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 2 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 2 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 2 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 1 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 6 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:52:12 INFO  Utils:112 - [TestNG] Running:
+  C:\Users\2494470\OneDrive - Cognizant\Desktop\RideOnDemandTesting_New\RideOnDemandTesting_New\testng.xml
+
+2026-07-03 08:52:23 INFO  TS001_Registration:16 - =========================================================
+2026-07-03 08:52:23 INFO  TS001_Registration:17 - STARTING TEST CASE: TC001_verifyUserRegistrationAsCustomer
+2026-07-03 08:52:23 INFO  TS001_Registration:18 - =========================================================
+2026-07-03 08:52:23 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:52:24 INFO  TS001_Registration:141 - Clicking Customer button
+2026-07-03 08:52:35 ERROR TS001_Registration:25 - ASSERTION FAILED: expected [true] but found [false]
+2026-07-03 08:52:52 INFO  TS001_Registration:36 - =========================================================
+2026-07-03 08:52:52 INFO  TS001_Registration:37 - STARTING TEST CASE: TC002_verifyUserRegistrationAsVendor
+2026-07-03 08:52:52 INFO  TS001_Registration:38 - =========================================================
+2026-07-03 08:52:52 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:52:53 INFO  TS001_Registration:145 - Clicking Vendor button
+2026-07-03 08:52:53 ERROR TS001_Registration:47 - FAILURE: Exception encountered during TC002 execution!
+2026-07-03 08:52:53 ERROR TS001_Registration:48 - Exception Message: Keys to send must be set
+2026-07-03 08:52:59 INFO  TS001_Registration:55 - =========================================================
+2026-07-03 08:52:59 INFO  TS001_Registration:56 - STARTING TEST CASE: TC003_verifyUserRegistrationAsAdmin
+2026-07-03 08:52:59 INFO  TS001_Registration:57 - =========================================================
+2026-07-03 08:52:59 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:53:07 INFO  TS001_Registration:61 - SUCCESS: TC003_verifyUserRegistrationAsAdmin passed successfully!
+2026-07-03 08:53:12 INFO  TS001_Registration:74 - =========================================================
+2026-07-03 08:53:12 INFO  TS001_Registration:75 - STARTING TEST CASE: TC004_verifyUserRegistrationWithDuplicateEmail
+2026-07-03 08:53:12 INFO  TS001_Registration:76 - =========================================================
+2026-07-03 08:53:12 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:53:12 INFO  TS001_Registration:141 - Clicking Customer button
+2026-07-03 08:53:15 ERROR TS001_Registration:90 - FAILURE: Exception encountered during TC004 execution!
+2026-07-03 08:53:15 ERROR TS001_Registration:91 - Exception Message: Remote browser did not respond to getCurrentUrl
+Build info: version: '4.45.0', revision: 'cd6a3cd cd6a3cdfca6970f62e5bc8344109d0fe0e2af05e'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: driver.version: RemoteWebDriver
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 2 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 8 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 26 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 15 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 2 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 2 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 11 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 1 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 1 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 1 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 3 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 2 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 2 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 2 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 2 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 5 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.collectMethodsByGroup() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [Utils] MethodGroupsHelper.sortMethods() took 0 ms.
+2026-07-03 08:53:31 INFO  Utils:112 - [TestNG] Running:
+  C:\Users\2494470\OneDrive - Cognizant\Desktop\RideOnDemandTesting_New\RideOnDemandTesting_New\testng.xml
+
+2026-07-03 08:53:35 INFO  TS001_Registration:16 - =========================================================
+2026-07-03 08:53:35 INFO  TS001_Registration:17 - STARTING TEST CASE: TC001_verifyUserRegistrationAsCustomer
+2026-07-03 08:53:35 INFO  TS001_Registration:18 - =========================================================
+2026-07-03 08:53:35 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:53:36 INFO  TS001_Registration:141 - Clicking Customer button
+2026-07-03 08:53:43 INFO  TS001_Registration:23 - SUCCESS: TC001_verifyUserRegistrationAsCustomer passed successfully!
+2026-07-03 08:53:49 INFO  TS001_Registration:36 - =========================================================
+2026-07-03 08:53:49 INFO  TS001_Registration:37 - STARTING TEST CASE: TC002_verifyUserRegistrationAsVendor
+2026-07-03 08:53:49 INFO  TS001_Registration:38 - =========================================================
+2026-07-03 08:53:49 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:53:49 INFO  TS001_Registration:145 - Clicking Vendor button
+2026-07-03 08:53:49 ERROR TS001_Registration:47 - FAILURE: Exception encountered during TC002 execution!
+2026-07-03 08:53:49 ERROR TS001_Registration:48 - Exception Message: Keys to send must be set
+2026-07-03 08:53:55 INFO  TS001_Registration:55 - =========================================================
+2026-07-03 08:53:55 INFO  TS001_Registration:56 - STARTING TEST CASE: TC003_verifyUserRegistrationAsAdmin
+2026-07-03 08:53:55 INFO  TS001_Registration:57 - =========================================================
+2026-07-03 08:53:55 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:54:03 INFO  TS001_Registration:61 - SUCCESS: TC003_verifyUserRegistrationAsAdmin passed successfully!
+2026-07-03 08:54:09 INFO  TS001_Registration:74 - =========================================================
+2026-07-03 08:54:09 INFO  TS001_Registration:75 - STARTING TEST CASE: TC004_verifyUserRegistrationWithDuplicateEmail
+2026-07-03 08:54:09 INFO  TS001_Registration:76 - =========================================================
+2026-07-03 08:54:09 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:54:09 INFO  TS001_Registration:141 - Clicking Customer button
+2026-07-03 08:54:17 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:54:17 INFO  TS001_Registration:141 - Clicking Customer button
+2026-07-03 08:54:28 INFO  TS001_Registration:85 - SUCCESS: TC004_verifyUserRegistrationWithDuplicateEmail passed successfully!
+2026-07-03 08:54:40 INFO  TS001_Registration:98 - =========================================================
+2026-07-03 08:54:40 INFO  TS001_Registration:99 - STARTING TEST CASE: TC005_verifyUserRegistrationWithDuplicateMobile
+2026-07-03 08:54:40 INFO  TS001_Registration:100 - =========================================================
+2026-07-03 08:54:40 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:54:41 INFO  TS001_Registration:141 - Clicking Customer button
+2026-07-03 08:54:49 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:54:49 INFO  TS001_Registration:141 - Clicking Customer button
+2026-07-03 08:55:00 INFO  TS001_Registration:109 - SUCCESS: TC005_verifyUserRegistrationWithDuplicateMobile passed successfully!
+2026-07-03 08:55:12 INFO  TS001_Registration:123 - =========================================================
+2026-07-03 08:55:12 INFO  TS001_Registration:124 - STARTING TEST CASE: TC006_verifyErrorMessagesWhileRegisteringUser
+2026-07-03 08:55:12 INFO  TS001_Registration:125 - =========================================================
+2026-07-03 08:55:12 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:55:12 INFO  TS001_Registration:141 - Clicking Customer button
+2026-07-03 08:55:24 INFO  TS001_Registration:130 - SUCCESS: TC006_verifyErrorMessagesWhileRegisteringUser passed successfully!
+2026-07-03 08:55:33 INFO  TS001_Registration:123 - =========================================================
+2026-07-03 08:55:33 INFO  TS001_Registration:124 - STARTING TEST CASE: TC006_verifyErrorMessagesWhileRegisteringUser
+2026-07-03 08:55:33 INFO  TS001_Registration:125 - =========================================================
+2026-07-03 08:55:33 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:55:33 INFO  TS001_Registration:141 - Clicking Customer button
+2026-07-03 08:55:45 INFO  TS001_Registration:130 - SUCCESS: TC006_verifyErrorMessagesWhileRegisteringUser passed successfully!
+2026-07-03 08:55:53 INFO  TS001_Registration:123 - =========================================================
+2026-07-03 08:55:53 INFO  TS001_Registration:124 - STARTING TEST CASE: TC006_verifyErrorMessagesWhileRegisteringUser
+2026-07-03 08:55:53 INFO  TS001_Registration:125 - =========================================================
+2026-07-03 08:55:53 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:55:53 INFO  TS001_Registration:141 - Clicking Customer button
+2026-07-03 08:56:04 INFO  TS001_Registration:130 - SUCCESS: TC006_verifyErrorMessagesWhileRegisteringUser passed successfully!
+2026-07-03 08:56:14 INFO  TS001_Registration:123 - =========================================================
+2026-07-03 08:56:14 INFO  TS001_Registration:124 - STARTING TEST CASE: TC006_verifyErrorMessagesWhileRegisteringUser
+2026-07-03 08:56:14 INFO  TS001_Registration:125 - =========================================================
+2026-07-03 08:56:14 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:56:14 INFO  TS001_Registration:141 - Clicking Customer button
+2026-07-03 08:56:25 INFO  TS001_Registration:130 - SUCCESS: TC006_verifyErrorMessagesWhileRegisteringUser passed successfully!
+2026-07-03 08:56:30 INFO  TS001_Registration:123 - =========================================================
+2026-07-03 08:56:30 INFO  TS001_Registration:124 - STARTING TEST CASE: TC006_verifyErrorMessagesWhileRegisteringUser
+2026-07-03 08:56:30 INFO  TS001_Registration:125 - =========================================================
+2026-07-03 08:56:30 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:56:30 INFO  TS001_Registration:141 - Clicking Customer button
+2026-07-03 08:56:41 ERROR TS001_Registration:132 - ASSERTION FAILED: expected [Enter a valid email address to continue.] but found [Password must be at least 8 characters.]
+2026-07-03 08:56:46 INFO  TS001_Registration:123 - =========================================================
+2026-07-03 08:56:46 INFO  TS001_Registration:124 - STARTING TEST CASE: TC006_verifyErrorMessagesWhileRegisteringUser
+2026-07-03 08:56:46 INFO  TS001_Registration:125 - =========================================================
+2026-07-03 08:56:46 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:56:46 INFO  TS001_Registration:141 - Clicking Customer button
+2026-07-03 08:56:57 INFO  TS001_Registration:130 - SUCCESS: TC006_verifyErrorMessagesWhileRegisteringUser passed successfully!
+2026-07-03 08:57:02 INFO  TS001_Registration:123 - =========================================================
+2026-07-03 08:57:02 INFO  TS001_Registration:124 - STARTING TEST CASE: TC006_verifyErrorMessagesWhileRegisteringUser
+2026-07-03 08:57:02 INFO  TS001_Registration:125 - =========================================================
+2026-07-03 08:57:02 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:57:02 INFO  TS001_Registration:141 - Clicking Customer button
+2026-07-03 08:57:13 INFO  TS001_Registration:130 - SUCCESS: TC006_verifyErrorMessagesWhileRegisteringUser passed successfully!
+2026-07-03 08:57:19 INFO  TS001_Registration:123 - =========================================================
+2026-07-03 08:57:19 INFO  TS001_Registration:124 - STARTING TEST CASE: TC006_verifyErrorMessagesWhileRegisteringUser
+2026-07-03 08:57:19 INFO  TS001_Registration:125 - =========================================================
+2026-07-03 08:57:19 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:57:19 INFO  TS001_Registration:141 - Clicking Customer button
+2026-07-03 08:57:30 INFO  TS001_Registration:130 - SUCCESS: TC006_verifyErrorMessagesWhileRegisteringUser passed successfully!
+2026-07-03 08:57:36 INFO  TS001_Registration:123 - =========================================================
+2026-07-03 08:57:36 INFO  TS001_Registration:124 - STARTING TEST CASE: TC006_verifyErrorMessagesWhileRegisteringUser
+2026-07-03 08:57:36 INFO  TS001_Registration:125 - =========================================================
+2026-07-03 08:57:36 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:57:37 INFO  TS001_Registration:141 - Clicking Customer button
+2026-07-03 08:57:48 INFO  TS001_Registration:130 - SUCCESS: TC006_verifyErrorMessagesWhileRegisteringUser passed successfully!
+2026-07-03 08:57:54 INFO  TS001_Registration:123 - =========================================================
+2026-07-03 08:57:54 INFO  TS001_Registration:124 - STARTING TEST CASE: TC006_verifyErrorMessagesWhileRegisteringUser
+2026-07-03 08:57:54 INFO  TS001_Registration:125 - =========================================================
+2026-07-03 08:57:54 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:57:54 INFO  TS001_Registration:141 - Clicking Customer button
+2026-07-03 08:58:06 INFO  TS001_Registration:130 - SUCCESS: TC006_verifyErrorMessagesWhileRegisteringUser passed successfully!
+2026-07-03 08:58:11 INFO  TS001_Registration:123 - =========================================================
+2026-07-03 08:58:11 INFO  TS001_Registration:124 - STARTING TEST CASE: TC006_verifyErrorMessagesWhileRegisteringUser
+2026-07-03 08:58:11 INFO  TS001_Registration:125 - =========================================================
+2026-07-03 08:58:11 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:58:12 INFO  TS001_Registration:141 - Clicking Customer button
+2026-07-03 08:58:23 INFO  TS001_Registration:130 - SUCCESS: TC006_verifyErrorMessagesWhileRegisteringUser passed successfully!
+2026-07-03 08:58:30 INFO  TS001_Registration:123 - =========================================================
+2026-07-03 08:58:30 INFO  TS001_Registration:124 - STARTING TEST CASE: TC006_verifyErrorMessagesWhileRegisteringUser
+2026-07-03 08:58:30 INFO  TS001_Registration:125 - =========================================================
+2026-07-03 08:58:30 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:58:31 INFO  TS001_Registration:141 - Clicking Customer button
+2026-07-03 08:58:42 INFO  TS001_Registration:130 - SUCCESS: TC006_verifyErrorMessagesWhileRegisteringUser passed successfully!
+2026-07-03 08:58:49 INFO  TS001_Registration:123 - =========================================================
+2026-07-03 08:58:49 INFO  TS001_Registration:124 - STARTING TEST CASE: TC006_verifyErrorMessagesWhileRegisteringUser
+2026-07-03 08:58:49 INFO  TS001_Registration:125 - =========================================================
+2026-07-03 08:58:49 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:58:50 INFO  TS001_Registration:141 - Clicking Customer button
+2026-07-03 08:59:03 INFO  TS001_Registration:130 - SUCCESS: TC006_verifyErrorMessagesWhileRegisteringUser passed successfully!
+2026-07-03 08:59:08 INFO  TS001_Registration:123 - =========================================================
+2026-07-03 08:59:08 INFO  TS001_Registration:124 - STARTING TEST CASE: TC006_verifyErrorMessagesWhileRegisteringUser
+2026-07-03 08:59:08 INFO  TS001_Registration:125 - =========================================================
+2026-07-03 08:59:08 INFO  TS001_Registration:136 - Navigating to Registration page from Home page...
+2026-07-03 08:59:08 INFO  TS001_Registration:145 - Clicking Vendor button
+2026-07-03 08:59:21 ERROR TS001_Registration:132 - ASSERTION FAILED: expected [Enter your shop name to continue.] but found [Email customer1@pss.com is already registered as CUSTOMER.]
+2026-07-03 08:59:28 INFO  TS002_Login:14 - =========================================================
+2026-07-03 08:59:28 INFO  TS002_Login:15 - STARTING TEST CASE: TC007_verifyLogin
+2026-07-03 08:59:28 INFO  TS002_Login:16 - =========================================================
+2026-07-03 08:59:28 INFO  TS002_Login:125 - Providing user credentials...
+2026-07-03 08:59:28 INFO  TS002_Login:128 - Trying to logging in...
+2026-07-03 08:59:32 INFO  TS002_Login:25 - SUCCESS: TC007_verifyLogin passed successfully!
+2026-07-03 08:59:36 INFO  TS002_Login:14 - =========================================================
+2026-07-03 08:59:36 INFO  TS002_Login:15 - STARTING TEST CASE: TC007_verifyLogin
+2026-07-03 08:59:36 INFO  TS002_Login:16 - =========================================================
+2026-07-03 08:59:37 INFO  TS002_Login:125 - Providing user credentials...
+2026-07-03 08:59:37 INFO  TS002_Login:128 - Trying to logging in...
+2026-07-03 08:59:41 INFO  TS002_Login:25 - SUCCESS: TC007_verifyLogin passed successfully!
+2026-07-03 08:59:48 INFO  TS002_Login:14 - =========================================================
+2026-07-03 08:59:48 INFO  TS002_Login:15 - STARTING TEST CASE: TC007_verifyLogin
+2026-07-03 08:59:48 INFO  TS002_Login:16 - =========================================================
+2026-07-03 08:59:48 INFO  TS002_Login:125 - Providing user credentials...
+2026-07-03 08:59:48 INFO  TS002_Login:128 - Trying to logging in...
+2026-07-03 08:59:52 INFO  TS002_Login:25 - SUCCESS: TC007_verifyLogin passed successfully!
+2026-07-03 09:00:00 INFO  TS002_Login:125 - Providing user credentials...
+2026-07-03 09:00:00 INFO  TS002_Login:128 - Trying to logging in...
+2026-07-03 09:00:11 INFO  TS002_Login:46 - SUCCESS: TC008_verifyErrorMsgWhileUserLogin passed successfully!
+2026-07-03 09:00:19 INFO  TS002_Login:125 - Providing user credentials...
+2026-07-03 09:00:19 INFO  TS002_Login:128 - Trying to logging in...
+2026-07-03 09:00:29 INFO  TS002_Login:46 - SUCCESS: TC008_verifyErrorMsgWhileUserLogin passed successfully!
+2026-07-03 09:00:36 INFO  TS002_Login:125 - Providing user credentials...
+2026-07-03 09:00:37 INFO  TS002_Login:128 - Trying to logging in...
+2026-07-03 09:00:50 INFO  TS002_Login:46 - SUCCESS: TC008_verifyErrorMsgWhileUserLogin passed successfully!
+2026-07-03 09:00:55 INFO  TS002_Login:125 - Providing user credentials...
+2026-07-03 09:00:56 INFO  TS002_Login:128 - Trying to logging in...
+2026-07-03 09:01:09 INFO  TS002_Login:46 - SUCCESS: TC008_verifyErrorMsgWhileUserLogin passed successfully!
+2026-07-03 09:01:14 INFO  TS002_Login:125 - Providing user credentials...
+2026-07-03 09:01:14 INFO  TS002_Login:128 - Trying to logging in...
+2026-07-03 09:01:27 INFO  TS002_Login:46 - SUCCESS: TC008_verifyErrorMsgWhileUserLogin passed successfully!
+2026-07-03 09:01:33 INFO  TS002_Login:125 - Providing user credentials...
+2026-07-03 09:01:33 INFO  TS002_Login:128 - Trying to logging in...
+2026-07-03 09:01:46 INFO  TS002_Login:46 - SUCCESS: TC008_verifyErrorMsgWhileUserLogin passed successfully!
+2026-07-03 09:01:53 INFO  TS002_Login:125 - Providing user credentials...
+2026-07-03 09:01:53 INFO  TS002_Login:128 - Trying to logging in...
+2026-07-03 09:02:06 INFO  TS002_Login:46 - SUCCESS: TC008_verifyErrorMsgWhileUserLogin passed successfully!
+2026-07-03 09:02:11 INFO  TS002_Login:125 - Providing user credentials...
+2026-07-03 09:02:11 INFO  TS002_Login:128 - Trying to logging in...
+2026-07-03 09:02:24 INFO  TS002_Login:46 - SUCCESS: TC008_verifyErrorMsgWhileUserLogin passed successfully!
+2026-07-03 09:02:29 INFO  TS002_Login:125 - Providing user credentials...
+2026-07-03 09:02:30 INFO  TS002_Login:128 - Trying to logging in...
+2026-07-03 09:02:43 INFO  TS002_Login:46 - SUCCESS: TC008_verifyErrorMsgWhileUserLogin passed successfully!
+2026-07-03 09:02:50 INFO  TS002_Login:125 - Providing user credentials...
+2026-07-03 09:02:50 INFO  TS002_Login:128 - Trying to logging in...
+2026-07-03 09:03:03 INFO  TS002_Login:46 - SUCCESS: TC008_verifyErrorMsgWhileUserLogin passed successfully!
+2026-07-03 09:03:09 INFO  TS003_Logout:125 - Providing user credentials...
+2026-07-03 09:03:09 INFO  TS003_Logout:128 - Trying to logging in...
+2026-07-03 09:03:18 INFO  TS003_Logout:125 - Providing user credentials...
+2026-07-03 09:03:18 INFO  TS003_Logout:128 - Trying to logging in...
+2026-07-03 09:03:27 INFO  TS003_Logout:125 - Providing user credentials...
+2026-07-03 09:03:27 INFO  TS003_Logout:128 - Trying to logging in...
+2026-07-03 09:03:36 INFO  TS003:25 - Logging in as customer.
+2026-07-03 09:03:36 INFO  TS003:32 - Logging in as new customer.
+2026-07-03 09:03:37 INFO  TS003:125 - Providing user credentials...
+2026-07-03 09:03:37 INFO  TS003:128 - Trying to logging in...
+2026-07-03 09:03:40 INFO  TS003:52 - Customer login successful.
+2026-07-03 09:03:40 INFO  TS003:101 - Executing TC_021 - Verify Dashboard For New User
+2026-07-03 09:03:58 INFO  TS003:130 - TC_021 completed successfully.
+2026-07-03 09:04:04 INFO  TS003:25 - Logging in as customer.
+2026-07-03 09:04:04 INFO  TS003:39 - Logging in as existing customer.
+2026-07-03 09:04:04 INFO  TS003:125 - Providing user credentials...
+2026-07-03 09:04:04 INFO  TS003:128 - Trying to logging in...
+2026-07-03 09:04:07 INFO  TS003:52 - Customer login successful.
+2026-07-03 09:04:07 INFO  TS003:67 - Executing TC_020 - Verify Customer Dashboard
+2026-07-03 09:04:12 INFO  TS003:86 - TC_020 completed successfully.
+2026-07-03 09:04:17 INFO  TS004:22 - Logging in as customer.
+2026-07-03 09:04:17 INFO  TS004:125 - Providing user credentials...
+2026-07-03 09:04:17 INFO  TS004:128 - Trying to logging in...
+2026-07-03 09:04:21 INFO  TS004:34 - Customer login successful.
+2026-07-03 09:04:21 INFO  TS004:52 - Executing TC_022
+2026-07-03 09:04:21 INFO  TS004:71 - TC_022 completed successfully.
+2026-07-03 09:04:26 INFO  TS004:22 - Logging in as customer.
+2026-07-03 09:04:27 INFO  TS004:125 - Providing user credentials...
+2026-07-03 09:04:27 INFO  TS004:128 - Trying to logging in...
+2026-07-03 09:04:30 INFO  TS004:34 - Customer login successful.
+2026-07-03 09:04:30 INFO  TS004:88 - Executing TC_023
+2026-07-03 09:04:35 INFO  TS004:115 - TC_023 completed successfully.
+2026-07-03 09:04:40 INFO  TS004:22 - Logging in as customer.
+2026-07-03 09:04:40 INFO  TS004:125 - Providing user credentials...
+2026-07-03 09:04:40 INFO  TS004:128 - Trying to logging in...
+2026-07-03 09:04:43 INFO  TS004:34 - Customer login successful.
+2026-07-03 09:04:43 INFO  TS004:135 - Executing TC_024
+2026-07-03 09:04:54 INFO  TS004:216 - TC_024 completed successfully.
+2026-07-03 09:04:59 INFO  TS005:22 - Logging in as customer.
+2026-07-03 09:05:00 INFO  TS005:125 - Providing user credentials...
+2026-07-03 09:05:00 INFO  TS005:128 - Trying to logging in...
+2026-07-03 09:05:03 INFO  TS005:49 - Customer login successful.
+2026-07-03 09:05:03 INFO  TS005:67 - Executing TC_024
+2026-07-03 09:05:03 INFO  TS005:77 - TC_024 completed successfully.
+2026-07-03 09:05:08 INFO  TS005:22 - Logging in as customer.
+2026-07-03 09:05:08 INFO  TS005:125 - Providing user credentials...
+2026-07-03 09:05:08 INFO  TS005:128 - Trying to logging in...
+2026-07-03 09:05:12 INFO  TS005:49 - Customer login successful.
+2026-07-03 09:05:12 INFO  TS005:94 - Executing TC_025
+2026-07-03 09:05:13 INFO  TS005:127 - TC_025 completed successfully.
+2026-07-03 09:05:17 INFO  TS005:22 - Logging in as customer.
+2026-07-03 09:05:18 INFO  TS005:125 - Providing user credentials...
+2026-07-03 09:05:18 INFO  TS005:128 - Trying to logging in...
+2026-07-03 09:05:22 INFO  TS005:49 - Customer login successful.
+2026-07-03 09:05:22 INFO  TS005:143 - Executing TC_026
+2026-07-03 09:05:22 INFO  TS005:155 - TC_026 PASSED: Notifications section shows empty state
+2026-07-03 09:05:27 INFO  TS005:22 - Logging in as customer.
+2026-07-03 09:05:27 INFO  TS005:125 - Providing user credentials...
+2026-07-03 09:05:27 INFO  TS005:128 - Trying to logging in...
+2026-07-03 09:05:31 INFO  TS005:49 - Customer login successful.
+2026-07-03 09:05:31 INFO  TS005:207 - Executing TC_028
+2026-07-03 09:05:31 INFO  TS005:215 - TC_028 completed successfully.
+2026-07-03 09:05:36 INFO  TS006:24 - Logging in as customer.
+2026-07-03 09:05:36 INFO  TS006:125 - Providing user credentials...
+2026-07-03 09:05:37 INFO  TS006:128 - Trying to logging in...
+2026-07-03 09:05:45 INFO  TS006:51 - Customer login successful.
+2026-07-03 09:05:45 INFO  TS006:71 - Executing TC_029
+2026-07-03 09:05:45 INFO  TS006:73 - TC_029 completed successfully.
+2026-07-03 09:05:49 INFO  TS006:24 - Logging in as customer.
+2026-07-03 09:05:50 INFO  TS006:125 - Providing user credentials...
+2026-07-03 09:05:50 INFO  TS006:128 - Trying to logging in...
+2026-07-03 09:05:58 INFO  TS006:51 - Customer login successful.
+2026-07-03 09:05:58 INFO  TS006:88 - Executing TC_030
+2026-07-03 09:05:58 INFO  TS006:98 - TC_030 completed successfully.
+2026-07-03 09:06:03 INFO  TS006:24 - Logging in as customer.
+2026-07-03 09:06:03 INFO  TS006:125 - Providing user credentials...
+2026-07-03 09:06:03 INFO  TS006:128 - Trying to logging in...
+2026-07-03 09:06:11 INFO  TS006:51 - Customer login successful.
+2026-07-03 09:06:11 INFO  TS006:114 - Executing TC_031
+2026-07-03 09:06:11 INFO  TS006:116 - ---------- Empty Field Test ----------
+2026-07-03 09:06:12 WARN  TS006:126 - Observation: Empty fields accepted.
+2026-07-03 09:06:12 INFO  TS006:131 - ---------- Invalid Date Test ----------
+2026-07-03 09:06:12 WARN  TS006:141 - Observation: Past dates accepted.
+2026-07-03 09:06:12 INFO  TS006:145 - ---------- Invalid Budget Test ----------
+2026-07-03 09:06:12 WARN  TS006:155 - Observation: Negative budget accepted.
+2026-07-03 09:06:17 INFO  TS006:24 - Logging in as customer.
+2026-07-03 09:06:18 INFO  TS006:125 - Providing user credentials...
+2026-07-03 09:06:18 INFO  TS006:128 - Trying to logging in...
+2026-07-03 09:06:26 INFO  TS006:51 - Customer login successful.
+2026-07-03 09:06:26 INFO  TS006:179 - Executing TC_032
+2026-07-03 09:06:26 INFO  TS006:204 - TC_032 completed successfully.
+2026-07-03 09:06:30 INFO  TS006:24 - Logging in as customer.
+2026-07-03 09:06:31 INFO  TS006:125 - Providing user credentials...
+2026-07-03 09:06:31 INFO  TS006:128 - Trying to logging in...
+2026-07-03 09:06:39 INFO  TS006:51 - Customer login successful.
+2026-07-03 09:06:39 INFO  TS006:221 - Executing TC_033
+2026-07-03 09:06:40 WARN  TS006:249 - Observation: Application allows End Date before Start Date.
+2026-07-03 09:06:44 INFO  TS006:24 - Logging in as customer.
+2026-07-03 09:06:45 INFO  TS006:125 - Providing user credentials...
+2026-07-03 09:06:45 INFO  TS006:128 - Trying to logging in...
+2026-07-03 09:06:53 INFO  TS006:51 - Customer login successful.
+2026-07-03 09:06:53 INFO  TS006:272 - Executing TC_034
+2026-07-03 09:06:53 INFO  TS006:288 - TC_034 completed successfully.
+2026-07-03 09:06:58 INFO  TS006:24 - Logging in as customer.
+2026-07-03 09:06:59 INFO  TS006:125 - Providing user credentials...
+2026-07-03 09:06:59 INFO  TS006:128 - Trying to logging in...
+2026-07-03 09:07:07 INFO  TS006:51 - Customer login successful.
+2026-07-03 09:07:07 INFO  TS006:305 - Executing TC_035
+2026-07-03 09:07:48 INFO  TS006:340 - TC_035 completed successfully.
+2026-07-03 09:07:56 INFO  TS006:24 - Logging in as customer.
+2026-07-03 09:07:56 INFO  TS006:125 - Providing user credentials...
+2026-07-03 09:07:57 INFO  TS006:128 - Trying to logging in...
+2026-07-03 09:08:05 INFO  TS006:51 - Customer login successful.
+2026-07-03 09:08:06 INFO  TS006:398 - TC_036 completed successfully.
+2026-07-03 09:08:13 INFO  TS007:125 - Providing user credentials...
+2026-07-03 09:08:13 INFO  TS007:128 - Trying to logging in...
+2026-07-03 09:08:17 INFO  TS007:22 - =========================================================
+2026-07-03 09:08:17 INFO  TS007:23 - STARTING TEST CASE: verifyDashboardMetricsDisplay
+2026-07-03 09:08:17 INFO  TS007:24 - =========================================================
+2026-07-03 09:08:17 INFO  TS007:42 - SUCCESS: verifyDashboardMetricsDisplay passed successfully! All dashboard metrics are displayed correctly.
+2026-07-03 09:08:22 INFO  TS008:125 - Providing user credentials...
+2026-07-03 09:08:22 INFO  TS008:128 - Trying to logging in...
+2026-07-03 09:08:26 INFO  TS008:36 - =========================================================
+2026-07-03 09:08:26 INFO  TS008:37 - STARTING TEST CASE: TC_038_verifyDemandFeedList
+2026-07-03 09:08:26 INFO  TS008:38 - =========================================================
+2026-07-03 09:08:26 INFO  TS008:44 - Vendor Dashboard loaded successfully
+2026-07-03 09:08:26 INFO  TS008:49 - Live requirements heading is visible
+2026-07-03 09:08:26 INFO  TS008:53 - Scrolled to Live requirements section
+2026-07-03 09:08:30 INFO  TS008:60 - Demand feed list container is visible
+2026-07-03 09:08:30 ERROR TS008:114 - ASSERTION FAILED: At least one requirement item should be displayed in the list expected [true] but found [false]
+2026-07-03 09:08:35 INFO  TS008:125 - Providing user credentials...
+2026-07-03 09:08:35 INFO  TS008:128 - Trying to logging in...
+2026-07-03 09:08:38 INFO  TS008:126 - =========================================================
+2026-07-03 09:08:38 INFO  TS008:127 - STARTING TEST CASE: TC_039_verifySendOfferButtonFunctionality
+2026-07-03 09:08:38 INFO  TS008:128 - =========================================================
+2026-07-03 09:08:38 INFO  TS008:134 - Vendor Dashboard loaded successfully
+2026-07-03 09:08:39 INFO  TS008:138 - Scrolled to Live requirements section
+2026-07-03 09:08:43 INFO  TS008:144 - Clicked on the first 'Send Offer' button
+2026-07-03 09:08:45 INFO  TS008:151 - Offer form/modal is displayed successfully
+2026-07-03 09:08:45 INFO  TS008:153 - SUCCESS: TC_039_verifySendOfferButtonFunctionality passed successfully!
+2026-07-03 09:08:50 INFO  TS009:125 - Providing user credentials...
+2026-07-03 09:08:50 INFO  TS009:128 - Trying to logging in...
+2026-07-03 09:08:57 INFO  TS009:41 - =========================================================
+2026-07-03 09:08:57 INFO  TS009:42 - STARTING TEST CASE: TC_040_verifySubmitOffer
+2026-07-03 09:08:57 INFO  TS009:43 - =========================================================
+2026-07-03 09:08:57 INFO  TS009:49 - Vendor Dashboard loaded successfully
+2026-07-03 09:09:01 INFO  TS009:58 - Targeting Requirement ID: REQ_INDEX_0
+2026-07-03 09:09:03 INFO  TS009:66 - Baseline State -> Requirements Left: 9 | Total Offers Placed: 20
+2026-07-03 09:09:04 INFO  TS009:70 - Offer form submitted. Waiting for state synchronization...
+2026-07-03 09:09:07 INFO  TS009:76 - Post-Submission State -> Requirements Left: 9 | Total Offers Placed: 20
+2026-07-03 09:09:07 ERROR TS009:91 - ASSERTION FAILED: ❌ BUG DETECTED: My Offers panel count did not increment or took too long to increase ! Expected: 21, but got: 20 expected [21] but found [20]
+2026-07-03 09:09:12 INFO  TS009:125 - Providing user credentials...
+2026-07-03 09:09:13 INFO  TS009:128 - Trying to logging in...
+2026-07-03 09:09:19 INFO  TS009:102 - =========================================================
+2026-07-03 09:09:19 INFO  TS009:103 - STARTING TEST CASE: TC_041_verifyClearOfferForm
+2026-07-03 09:09:19 INFO  TS009:104 - =========================================================
+2026-07-03 09:09:19 INFO  TS009:111 - Vendor Dashboard loaded successfully
+2026-07-03 09:09:23 INFO  TS009:118 - Found 9 live requirements
+2026-07-03 09:09:26 INFO  TS009:126 - Offer form displayed
+2026-07-03 09:09:26 INFO  TS009:129 - Entering data into form fields...
+2026-07-03 09:09:26 INFO  TS009:131 - All data entered into form fields
+2026-07-03 09:09:27 INFO  TS009:136 - Form field values BEFORE Clear -> Price: 2500
+2026-07-03 09:09:27 INFO  TS009:141 - Clicking Clear button...
+2026-07-03 09:09:29 INFO  TS009:146 - Checking if form fields successfully cleared...
+2026-07-03 09:09:49 ERROR TS009:158 - ASSERTION FAILED: ❌ BUG DETECTED: The offer form closed after clicking Clear. Expected it to remain open with cleared fields. expected [true] but found [false]
+2026-07-03 09:09:55 INFO  TS010:125 - Providing user credentials...
+2026-07-03 09:09:55 INFO  TS010:128 - Trying to logging in...
+2026-07-03 09:10:01 INFO  TS010:44 - =========================================================
+2026-07-03 09:10:01 INFO  TS010:45 - STARTING TEST CASE: TC_042_verifyWithdrawOffer
+2026-07-03 09:10:01 INFO  TS010:46 - =========================================================
+2026-07-03 09:10:01 INFO  TS010:53 - Vendor Dashboard loaded successfully
+2026-07-03 09:10:02 ERROR TS010:85 - ASSERTION FAILED: ❌ Pre-condition Failed: There are no offers available to withdraw. Count is 0. expected [true] but found [false]
+2026-07-03 09:10:08 INFO  TS011:125 - Providing user credentials...
+2026-07-03 09:10:08 INFO  TS011:128 - Trying to logging in...
+2026-07-03 09:10:12 INFO  TS011:35 - =========================================================
+2026-07-03 09:10:12 INFO  TS011:36 - STARTING TEST CASE: TC_043_verifyProfileDetails
+2026-07-03 09:10:12 INFO  TS011:37 - =========================================================
+2026-07-03 09:10:12 INFO  TS011:57 - SUCCESS: TC_043_verifyProfileDetails passed successfully!
+2026-07-03 09:10:17 INFO  TS012:125 - Providing user credentials...
+2026-07-03 09:10:17 INFO  TS012:128 - Trying to logging in...
+2026-07-03 09:10:21 INFO  TS012:36 - =========================================================
+2026-07-03 09:10:21 INFO  TS012:37 - STARTING TEST CASE: TC_044_verifyMailMetrics
+2026-07-03 09:10:21 INFO  TS012:38 - =========================================================
+2026-07-03 09:10:22 INFO  TS012:56 - SUCCESS: TC_044_verifyMailMetrics passed successfully!
+2026-07-03 09:10:26 INFO  TS013:125 - Providing user credentials...
+2026-07-03 09:10:27 INFO  TS013:128 - Trying to logging in...
+2026-07-03 09:10:30 INFO  TS013:37 - =========================================================
+2026-07-03 09:10:30 INFO  TS013:38 - STARTING TEST CASE: TC_045_verifySignOut
+2026-07-03 09:10:30 INFO  TS013:39 - =========================================================
+2026-07-03 09:10:31 INFO  TS013:57 - SUCCESS: TC_045_verifySignOut passed successfully!
+2026-07-03 09:10:36 INFO  TS014:20 - Initializing TS014: Admin Dashboard Core Functionality
+2026-07-03 09:10:37 INFO  TS014:125 - Providing user credentials...
+2026-07-03 09:10:37 INFO  TS014:128 - Trying to logging in...
+2026-07-03 09:10:40 INFO  TS014:30 - Starting TC_046: Verifying main header and layout rendering
+2026-07-03 09:10:45 INFO  TS014:20 - Initializing TS014: Admin Dashboard Core Functionality
+2026-07-03 09:10:45 INFO  TS014:125 - Providing user credentials...
+2026-07-03 09:10:45 INFO  TS014:128 - Trying to logging in...
+2026-07-03 09:10:49 INFO  TS014:39 - Starting TC_047: Verifying dashboard browser refresh behavior
+2026-07-03 09:10:54 INFO  TS014:20 - Initializing TS014: Admin Dashboard Core Functionality
+2026-07-03 09:10:54 INFO  TS014:125 - Providing user credentials...
+2026-07-03 09:10:54 INFO  TS014:128 - Trying to logging in...
+2026-07-03 09:10:57 INFO  TS014:49 - Starting TC_048: Verifying default active time filter
+2026-07-03 09:11:02 INFO  TS014:20 - Initializing TS014: Admin Dashboard Core Functionality
+2026-07-03 09:11:02 INFO  TS014:125 - Providing user credentials...
+2026-07-03 09:11:03 INFO  TS014:128 - Trying to logging in...
+2026-07-03 09:11:06 INFO  TS014:57 - Starting TC_049: Verifying month and year filter interactions
+2026-07-03 09:11:11 INFO  TS014:20 - Initializing TS014: Admin Dashboard Core Functionality
+2026-07-03 09:11:11 INFO  TS014:125 - Providing user credentials...
+2026-07-03 09:11:11 INFO  TS014:128 - Trying to logging in...
+2026-07-03 09:11:15 INFO  TS014:70 - Starting TC_050: Verifying profile button functionality and navigation
+2026-07-03 09:11:21 INFO  TS015:19 - Initializing TS015: Admin Dashboard - Shop Approvals Management
+2026-07-03 09:11:21 INFO  TS015:125 - Providing user credentials...
+2026-07-03 09:11:21 INFO  TS015:128 - Trying to logging in...
+2026-07-03 09:11:25 INFO  TS015:29 - Starting TC_051: Verifying pending shop metadata rendering
+2026-07-03 09:11:29 INFO  TS015:35 - Successfully verified pending shop metadata rendering. Target first shop: XuvXm
+2026-07-03 09:11:34 INFO  TS015:19 - Initializing TS015: Admin Dashboard - Shop Approvals Management
+2026-07-03 09:11:34 INFO  TS015:125 - Providing user credentials...
+2026-07-03 09:11:35 INFO  TS015:128 - Trying to logging in...
+2026-07-03 09:11:38 INFO  TS015:40 - Starting TC_052: Verifying 'Approve' action execution
+2026-07-03 09:11:42 INFO  TS015:45 - Approving shop: XuvXm | Initial verified count: 0
+2026-07-03 09:12:03 INFO  TS015:53 - Refreshing page to fetch updated dashboard metrics.
+2026-07-03 09:12:19 INFO  TS016:21 - Initializing TS016: Admin Profile Management & Session Termination
+2026-07-03 09:12:19 INFO  TS016:125 - Providing user credentials...
+2026-07-03 09:12:19 INFO  TS016:128 - Trying to logging in...
+2026-07-03 09:12:23 INFO  TS016:31 - Navigating to Admin Profile Page
+2026-07-03 09:12:23 INFO  TS016:40 - Starting TC_054: Verifying profile visual elements and data boxes
+2026-07-03 09:12:27 INFO  TS016:21 - Initializing TS016: Admin Profile Management & Session Termination
+2026-07-03 09:12:28 INFO  TS016:125 - Providing user credentials...
+2026-07-03 09:12:28 INFO  TS016:128 - Trying to logging in...
+2026-07-03 09:12:32 INFO  TS016:31 - Navigating to Admin Profile Page
+2026-07-03 09:12:32 INFO  TS016:65 - Starting TC_055: Verifying browser refresh behavior on Profile Page
+2026-07-03 09:12:39 INFO  TS016:21 - Initializing TS016: Admin Profile Management & Session Termination
+2026-07-03 09:12:39 INFO  TS016:125 - Providing user credentials...
+2026-07-03 09:12:40 INFO  TS016:128 - Trying to logging in...
+2026-07-03 09:12:44 INFO  TS016:31 - Navigating to Admin Profile Page
+2026-07-03 09:12:44 INFO  TS016:84 - Starting TC_056: Verifying account sign out functionality
