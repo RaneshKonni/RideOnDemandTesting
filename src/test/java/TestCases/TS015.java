@@ -35,7 +35,7 @@ public class TS015 extends BaseClass {
         logger.info("Successfully verified pending shop metadata rendering. Target first shop: " + firstShop);
     }
 
-    @Test(priority = 2, dependsOnMethods = {"TC_051_VerifyPendingShopMetadataRenderingAccuracy"})
+    @Test(priority = 2)
     public void TC_052_VerifyApproveActionExecution() {
         logger.info("Starting TC_052: Verifying 'Approve' action execution");
 
@@ -61,7 +61,7 @@ public class TS015 extends BaseClass {
         Assert.assertEquals(updatedCount, initialCount + 1, "Dashboard 'Verified shops' count metric did not increment by 1.");
     }
 
-    @Test(priority = 3, dependsOnMethods = {"TC_052_VerifyApproveActionExecution"})
+    @Test(priority = 3)
     public void TC_053_VerifyRejectActionExecution() {
         logger.info("Starting TC_053: Verifying 'Reject' action execution");
 
