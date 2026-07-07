@@ -42,3 +42,12 @@ build/
 .mvn/
 
 .idea/
+
+reports/*
+!reports/.gitkeep
+
+screenshots/*
+!screenshots/.gitkeep
+
+logs/*
+!logs/.gitkeep
