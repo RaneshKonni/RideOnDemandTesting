@@ -9,7 +9,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TS005 extends BaseClass{
+public class TS006 extends BaseClass{
 
     CustomerDashboardPage customerDashboard;
     CustomerProfilePage customerProfile;

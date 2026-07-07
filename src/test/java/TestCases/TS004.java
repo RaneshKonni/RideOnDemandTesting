@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 
 import java.lang.reflect.Method;
 
-public class TS003 extends BaseClass {
+public class TS004 extends BaseClass {
 
 
     CustomerDashboardPage customerDashboard;

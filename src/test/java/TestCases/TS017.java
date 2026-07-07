@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TS016 extends BaseClass {
+public class TS017 extends BaseClass {
 
     private AdminDashboardPage adminDashboardPage;
     private AdminProfilePage adminProfilePage;
@@ -18,7 +18,7 @@ public class TS016 extends BaseClass {
 
     @BeforeMethod
     public void classSetup() {
-        logger.info("Initializing TS016: Admin Profile Management & Session Termination");
+        logger.info("Initializing TS017: Admin Profile Management & Session Termination");
 
         // 1. Log in and hard fail if the precondition is not met
         boolean isLoggedIn = loginUser(Role.ADMIN, ADMIN_EMAIL, ADMIN_PASSWORD);

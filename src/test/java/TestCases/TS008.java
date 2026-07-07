@@ -1,16 +1,13 @@
 package TestCases;
 
-import PageObjects.AuthPage;
 import PageObjects.VendorDashboardPage;
 import TestBase.BaseClass;
 import mapper.Role;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-public class TS007 extends BaseClass {
+public class TS008 extends BaseClass {
 
     @BeforeMethod
     public void setup() {

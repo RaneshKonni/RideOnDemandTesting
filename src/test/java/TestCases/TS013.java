@@ -6,13 +6,10 @@ import PageObjects.VendorProfilePage;
 import TestBase.BaseClass;
 import mapper.Role;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-public class TS012 extends BaseClass {
+public class TS013 extends BaseClass {
 
     AuthPage auth;
     VendorDashboardPage vendorDashboardPage;

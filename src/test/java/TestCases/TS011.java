@@ -4,20 +4,11 @@ import PageObjects.AuthPage;
 import PageObjects.VendorDashboardPage;
 import TestBase.BaseClass;
 import mapper.Role;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-import java.time.Duration;
-
-public class TS010 extends BaseClass {
+public class TS011 extends BaseClass {
     AuthPage auth;
     VendorDashboardPage vendor;
 

@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TS014 extends BaseClass {
+public class TS015 extends BaseClass {
 
     private AdminDashboardPage adminDashboardPage;
 
@@ -17,7 +17,7 @@ public class TS014 extends BaseClass {
 
     @BeforeMethod
     public void classSetup() {
-        logger.info("Initializing TS014: Admin Dashboard Core Functionality");
+        logger.info("Initializing TS015: Admin Dashboard Core Functionality");
 
         boolean isLoggedIn = loginUser(Role.ADMIN, ADMIN_EMAIL, ADMIN_PASSWORD);
         Assert.assertTrue(isLoggedIn, "Precondition Failed: Admin user could not log in.");

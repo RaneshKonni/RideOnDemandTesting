@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 import org.openqa.selenium.WebElement;
 
-public class TS006 extends BaseClass{
+public class TS007 extends BaseClass{
 
     CustomerDashboardPage customerDashboard;
     CustomerProfilePage customerProfile;
