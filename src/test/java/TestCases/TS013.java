@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class TS013 extends BaseClass {
+public class TS012 extends BaseClass {
 
     AuthPage auth;
     VendorDashboardPage vendorDashboardPage;
@@ -22,7 +22,6 @@ public class TS013 extends BaseClass {
 
     @BeforeMethod
     public void classSetup() throws InterruptedException {
-        auth = new AuthPage(driver);
         loginUser(Role.VENDOR, VENDOR_EMAIL, VENDOR_PASSWORD);
         vendorDashboardPage = new VendorDashboardPage(driver);
 
@@ -33,9 +32,9 @@ public class TS013 extends BaseClass {
     }
 
     @Test
-    public void TC_045_verifySignOut() {
+    public void TC_044_verifyMailMetrics() {
         logger.info("=========================================================");
-        logger.info("STARTING TEST CASE: TC_045_verifySignOut");
+        logger.info("STARTING TEST CASE: TC_044_verifyMailMetrics");
         logger.info("=========================================================");
 
         try {
@@ -43,24 +42,24 @@ public class TS013 extends BaseClass {
             dashboard.navigateToProfile();
 
             VendorProfilePage profilePage = new VendorProfilePage(driver);
-            profilePage.waitForProfileLoad();
+            // Ensure the mail card is visible before reading metrics
+            profilePage.waitForMailSection();
 
-            // 1. Perform Sign Out
-            profilePage.clickSignOut();
+            // Expected values (Adjust these based on your test environment data)
+            String expectedTotal = "0";
+            String expectedUnread = "0";
 
-            // 2. Verification
-            boolean isRedirected = new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(5))
-                    .until(org.openqa.selenium.support.ui.ExpectedConditions.urlContains("auth"));
+            // Assertions
+            Assert.assertEquals(profilePage.getTotalItemsCount(), expectedTotal, "Total items count mismatch!");
+            Assert.assertEquals(profilePage.getUnreadCount(), expectedUnread, "Unread items count mismatch!");
 
-            Assert.assertTrue(isRedirected, "Sign out failed: User was not redirected to the login page.");
-
-            logger.info("SUCCESS: TC_045_verifySignOut passed successfully!");
+            logger.info("SUCCESS: TC_044_verifyMailMetrics passed successfully!");
 
         } catch (AssertionError ae) {
             logger.error("ASSERTION FAILED: " + ae.getMessage());
             throw ae;
         } catch (Exception e) {
-            logger.error("FAILURE: Exception encountered during TC_045 execution!");
+            logger.error("FAILURE: Exception encountered during TC_044 execution!");
             logger.error("Exception Message: " + e.getMessage());
             Assert.fail("Test failed due to an exception: " + e.getMessage());
         }

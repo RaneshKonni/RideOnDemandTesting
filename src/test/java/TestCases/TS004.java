@@ -1,31 +1,49 @@
 package TestCases;
 
-import PageObjects.*;
+
+import PageObjects.CustomerDashboardPage;
+import PageObjects.CustomerProfilePage;
 import TestBase.BaseClass;
 import mapper.Role;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TS004 extends BaseClass {
+import java.lang.reflect.Method;
+
+public class TS003 extends BaseClass {
+
 
     CustomerDashboardPage customerDashboard;
     CustomerProfilePage customerProfile;
-    CustomerPostRequirementPage postRequirementPage;
-    CustomerOffersReceivedPage offersReceivedPage;
 
     @BeforeMethod
-    public void loginBeforeTest() {
+    public void loginBeforeTest(Method method) {
 
         try {
+
             logger.info("Logging in as customer.");
+
+            String email;
+            String password;
+
+            if (method.getName().equals("verifyDashboardForNewUser")) {
+
+                logger.info("Logging in as new customer.");
+
+                email = properties.getProperty("newCustomerEmail");
+                password = properties.getProperty("newCustomerPassword");
+
+            } else {
+
+                logger.info("Logging in as existing customer.");
+
+                email = properties.getProperty("testCustomerEmail");
+                password = properties.getProperty("testCustomerPassword");
+            }
+
             Assert.assertTrue(
-                    loginUser(
-                            Role.CUSTOMER,
-                            properties.getProperty("testCustomerEmail"),
-                            properties.getProperty("testCustomerPassword")
-                    ),
+                    loginUser(Role.CUSTOMER, email, password),
                     "Customer login failed."
             );
 
@@ -41,199 +59,80 @@ public class TS004 extends BaseClass {
     }
 
     /**
-     * TC_022 - Verify profile button is navigating to the expected page when clicked
-     * Prerequisites: Website is opened, Customer is authenticated, Customer is on dashboard
-     * Expected: Customer should be navigated to the profile page
+     * TC_020 - Verify dashboard displays correct content
      */
-    @Test(priority = 1)
-    public void verifyProfileButtonNavigationFromDashboard(){
-        try{
+    @Test(priority = 2)
+    public void verifyDashboardDisplayCorrectContent() {
 
-            logger.info("Executing TC_022");
+        logger.info("Executing TC_020 - Verify Customer Dashboard");
 
+        try {
 
+            Assert.assertTrue(customerDashboard.isWelcomeMessageDisplayed(),
+                    "Welcome message should be displayed.");
 
-            Assert.assertTrue(customerDashboard.isProfileButtonDisplayed(),
-                    "Profile button should be displayed on dashboard");
+            Assert.assertTrue(customerDashboard.isActiveRequirementsHeadingDisplayed(),
+                    "Active Requirements heading should be displayed.");
 
+            Assert.assertTrue(customerDashboard.isVehicleRequirementTextDisplayed(),
+                    "Vehicle requirement text should be displayed.");
 
-            customerDashboard.clickCustomerProfile();
+            Assert.assertTrue(customerDashboard.getWelcomeMessage().contains("Welcome"),
+                    "Invalid welcome message.");
 
+            Assert.assertTrue(customerDashboard.getVehicleRequirementText().contains("Need a vehicle"),
+                    "Invalid dashboard text.");
 
+            logger.info("TC_020 completed successfully.");
 
-            customerProfile = new CustomerProfilePage(driver);
+        } catch (Exception e) {
 
-
-            Assert.assertTrue(customerProfile.isProfilePageDisplayed(),
-                    "Should navigate to profile page");
-
-
-            logger.info("TC_022 completed successfully.");
-
-        }catch(Exception e){
-            logger.error("TC_022 FAILED: {}", e.getMessage());
-            Assert.fail("TC_022 FAILED: " + e.getMessage());
+            logger.error("TC_020 failed.", e);
+            Assert.fail("TC_020 failed : " + e.getMessage());
         }
     }
 
     /**
-     * TC_023 - Verify post requirement button is navigating to the expected page when clicked
-     * Prerequisites: Website is opened, Customer is authenticated, Customer is on dashboard
-     * Expected: Customer should be navigated to the post requirement page
+     * TC_021 - Verify dashboard for a new customer
      */
-    @Test(priority = 2)
-    public void verifyPostRequirementButtonNavigation(){
-        try{
+    @Test(priority = 1)
+    public void verifyDashboardForNewUser() {
 
-            logger.info("Executing TC_023");
+        logger.info("Executing TC_021 - Verify Dashboard For New User");
 
+        try {
 
-            // Verify post requirement button is displayed
-            Assert.assertTrue(customerDashboard.isPostRequirementButtonDisplayed(),
-                    "Post Requirement button should be displayed on dashboard");
+            Assert.assertTrue(customerDashboard.isWelcomeMessageDisplayed(),
+                    "Welcome message should be displayed.");
 
+            Assert.assertEquals(customerDashboard.getActiveRequirementsCount(), 0,
+                    "Active Requirements should be zero for a new customer.");
 
-            // Click post requirement button
-            customerDashboard.clickPostRequirement();
+            Assert.assertTrue(customerDashboard.isMyRequirementsSectionEmpty(),
+                    "My Requirements section should be empty.");
 
+            customerDashboard.clickCustomerProfile();
 
+            Thread.sleep(3000);
 
-            postRequirementPage = new CustomerPostRequirementPage(driver);
-
-            // Verify we are on post requirement page
-            Assert.assertTrue(postRequirementPage.isPostRequirementPageDisplayed(),
-                    "Should navigate to post requirement page");
-
-            postRequirementPage.clickBackToProfile();
             customerProfile = new CustomerProfilePage(driver);
 
             Assert.assertTrue(
                     customerProfile.isProfilePageDisplayed(),
-                    "Should navigate back to profile page."
+                    "Profile page did not open."
             );
 
-            logger.info("TC_023 completed successfully.");
-
-
-        }catch(Exception e){
-            logger.error("TC_023 FAILED: {}", e.getMessage());
-            Assert.fail("TC_023 FAILED: " + e.getMessage());
-        }
-    }
-
-    /**
-     * TC_024 - Verify accepted requirement is navigating to the Offers Received page
-     * Prerequisites: Website is opened, Customer is authenticated, Customer is on dashboard,
-     * at least one accepted requirement is available
-     * Expected: Customer should be navigated to the Offers Received page and
-     * essential offer details should be displayed
-     */
-    @Test(priority = 3)
-    public void verifyAcceptedRequirementNavigation() {
-
-        try {
-            logger.info("Executing TC_024");
-
-
-            // Verify Accepted requirement is displayed
             Assert.assertTrue(
-                    customerDashboard.isAcceptedRequirementDisplayed(),
-                    "Accepted requirement should be displayed on dashboard"
+                    logoutUser(),
+                    "Customer logout failed."
             );
 
+            logger.info("TC_021 completed successfully.");
 
-
-            // Click Accepted requirement
-            customerDashboard.clickAcceptedRequirement();
-
-            // Verify navigation
-            Assert.assertTrue(
-                    driver.getCurrentUrl().contains("/customer/offers/"),
-                    "Should navigate to Offers Received page"
-            );
-
-            offersReceivedPage = new CustomerOffersReceivedPage(driver);
-
-            // Verify page heading
-            Assert.assertTrue(
-                    offersReceivedPage.isOffersReceivedHeadingDisplayed(),
-                    "Offers Received heading should be displayed"
-            );
-
-            // Verify logo
-            Assert.assertTrue(
-                    offersReceivedPage.isLogoDisplayed(),
-                    "Logo should be displayed"
-            );
-
-            // Verify requirement id
-            Assert.assertFalse(
-                    offersReceivedPage.getRequirementId().trim().isEmpty(),
-                    "Requirement ID should be displayed."
-            );
-            // Verify total offers
-            Assert.assertFalse(
-                    offersReceivedPage.getTotalOffers().trim().isEmpty(),
-                    "Total offers should be displayed"
-            );
-
-            // Verify at least one offer exists
-            Assert.assertTrue(
-                    offersReceivedPage.getOffersCount() > 0,
-                    "At least one offer should be displayed"
-            );
-
-            // Verify price
-            Assert.assertFalse(
-                    offersReceivedPage.getPrice().trim().isEmpty(),
-                    "Price should be displayed"
-            );
-
-            // Verify offer status
-            Assert.assertTrue(
-                    offersReceivedPage.isStatusDisplayed(),
-                    "Offer status should be displayed"
-            );
-
-            // Verify WhatsApp link
-            Assert.assertTrue(
-                    offersReceivedPage.isWhatsAppDisplayed(),
-                    "WhatsApp link should be displayed"
-            );
-
-            // Verify Call link
-            Assert.assertTrue(
-                    offersReceivedPage.isCallDisplayed(),
-                    "Call link should be displayed"
-            );
-
-            // Verify Accept/Reject button
-            Assert.assertTrue(
-                    offersReceivedPage.isAcceptRejectButtonDisplayed(),
-                    "Accept/Reject button should be displayed"
-            );
-
-            logger.info("TC_024 completed successfully.");
-
-        }
-        catch (Exception e) {
-
-            logger.error("TC_024 failed.", e);
-            Assert.fail("TC_024 FAILED: " + e.getMessage());
-
-        }
-    }
-
-    @AfterMethod
-    public void logout() {
-
-        try {
-            logoutUser();
         } catch (Exception e) {
-            logger.warn("Logout skipped",e);
+
+            logger.error("TC_021 failed.", e);
+            Assert.fail("TC_021 failed : " + e.getMessage());
         }
-
     }
-
-
 }

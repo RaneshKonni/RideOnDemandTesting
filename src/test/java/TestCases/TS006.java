@@ -1,20 +1,18 @@
 package TestCases;
 
 import PageObjects.*;
+
 import TestBase.BaseClass;
 import mapper.Role;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import java.util.List;
-import org.openqa.selenium.WebElement;
 
-public class TS006 extends BaseClass{
+public class TS005 extends BaseClass{
 
     CustomerDashboardPage customerDashboard;
     CustomerProfilePage customerProfile;
-    CustomerPostRequirementPage postRequirementPage;
 
     @BeforeMethod
     public void loginBeforeTest() {
@@ -39,368 +37,186 @@ public class TS006 extends BaseClass{
                     "Login failed."
             );
 
-            customerDashboard.clickPostRequirement();
-
-            postRequirementPage = new CustomerPostRequirementPage(driver);
-
-            Assert.assertTrue(
-                    postRequirementPage.isPostRequirementPageDisplayed(),
-                    "Post Requirement page did not open."
-            );
-
-            logger.info("Customer login successful.");
-
-        }
-        catch (Exception e) {
-
-            logger.error("Login setup failed.", e);
-            Assert.fail("Login setup failed : " + e.getMessage());
-
-        }
-    }
-
-
-    /**
-     * TC_029 - Verify the content of the customer post requirement page is rendered properly
-     * Prerequisites: User is logged in as a customer
-     * Expected: Page should display "Post Requirement", "Create your rental requirement", and 3 steps
-     */
-    @Test(priority = 1)
-    public void verifyPostRequirementPageContent(){
-        try{
-            logger.info("Executing TC_029");
-            Assert.assertTrue(postRequirementPage.isPostRequirementPageDisplayed());
-            logger.info("TC_029 completed successfully.");
-        }catch(Exception e){
-            logger.error("TC_029 FAILED: {}", e.getMessage());
-            Assert.fail("TC_029 FAILED: " + e.getMessage());
-        }
-    }
-
-    /**
-     * TC_030 - Verify the customer is able to navigate to the profile page from post requirement page
-     * Prerequisites: User is logged in as a customer
-     * Expected: Customer should be able to navigate to profile page
-     */
-    @Test(priority = 2)
-    public void verifyNavigationToProfileFromPostRequirement(){
-        try{
-            logger.info("Executing TC_030");
-
-            postRequirementPage.clickBackToProfile();
+            customerDashboard.clickCustomerProfile();
 
             customerProfile = new CustomerProfilePage(driver);
 
             Assert.assertTrue(
                     customerProfile.isProfilePageDisplayed(),
-                    "Should navigate to profile page."
+                    "Profile page should be displayed."
             );
-            logger.info("TC_030 completed successfully.");
-        }catch(Exception e){
-            logger.error("TC_030 FAILED: {}", e.getMessage());
-            Assert.fail("TC_030 FAILED: " + e.getMessage());
-        }
-    }
 
-    /**
-     * TC_031 - Verify post requirement page handles invalid input and empty fields properly
-     * Prerequisites: User is logged in as a customer, on post requirement page
-     * Expected: Page should not allow empty or invalid values for dates, location, and budget
-     */
-    @Test(priority = 3)
-    public void verifyInvalidInputHandling(){
-        try{
-
-            logger.info("Executing TC_031");
-
-            logger.info("---------- Empty Field Test ----------");
-
-
-            postRequirementPage.clearStartDate();
-            postRequirementPage.clearEndDate();
-
-            // Leave every field empty
-            postRequirementPage.clickNext();
-
-            if (postRequirementPage.isPickupLocationFieldDisplayed()) {
-                logger.warn("Observation: Empty fields accepted.");
-                //Assert.assertTrue(false);
-            }
-
-
-            logger.info("---------- Invalid Date Test ----------");
-
-            postRequirementPage.clickBack();
-
-            postRequirementPage.setStartDate("01012024");
-            postRequirementPage.setEndDate("02012024");
-
-            postRequirementPage.clickNext();
-
-            if (postRequirementPage.isPickupLocationFieldDisplayed()) {
-                logger.warn("Observation: Past dates accepted.");
-
-            }
-
-            logger.info("---------- Invalid Budget Test ----------");
-
-            postRequirementPage.clearPickupLocation();
-            postRequirementPage.clearBudget();
-            postRequirementPage.setPickupLocation("Hyderabad");
-            postRequirementPage.setBudgetPerDay("-500");
-
-            postRequirementPage.clickNext();
-
-            if (postRequirementPage.isPostRequirementButtonDisplayed()) {
-                logger.warn("Observation: Negative budget accepted.");
-            }
-            boolean invalidAccepted = postRequirementPage.isPostRequirementButtonDisplayed();
-
-            if(invalidAccepted){
-                Assert.fail("Application accepted invalid data.");
-            }
-            logger.info("TC_031 completed successfully.");
-
-            Assert.fail("Observation: Application allows empty or invalid inputs. Validation may not be enforced.");
-        }catch(Exception e){
-            logger.error("TC_031 FAILED: {}", e.getMessage());
-            Assert.fail("TC_031 FAILED: " + e.getMessage());
-        }
-    }
-
-    /**
-     * TC_032 - Verify the vehicle type drop down is working
-     * Prerequisites: User is logged in as a customer, on post requirement page
-     * Expected: Dropdown should contain Bike, Scooty, Car, SUV options
-     */
-    @Test(priority = 4)
-    public void verifyVehicleTypeDropdown(){
-        try{
-            logger.info("Executing TC_032");
-
-            Assert.assertTrue(postRequirementPage.isVehicleTypeDropdownDisplayed(),
-                    "Vehicle type dropdown should be displayed");
-
-            // Get vehicle type options
-            List<WebElement> options = postRequirementPage.getVehicleTypeOptions();
-
-            // Verify dropdown has options
-            Assert.assertTrue(options.size() > 0, "Dropdown should have options");
-
-            // Get option texts and verify required options exist
-            boolean hasBike = false, hasScooter = false, hasCar = false, hasSUV = false;
-
-            for(WebElement option : options){
-                String optionText = option.getText().toLowerCase();
-                if(optionText.contains("bike")) hasBike = true;
-                if(optionText.contains("scooty")) hasScooter = true;
-                if(optionText.contains("car")) hasCar = true;
-                if(optionText.contains("suv")) hasSUV = true;
-            }
-
-            Assert.assertTrue(hasBike || hasScooter || hasCar || hasSUV,
-                    "Dropdown should contain vehicle options");
-
-            logger.info("TC_032 completed successfully.");
-
-
-        }catch(Exception e){
-            logger.error("TC_032 FAILED: {}", e.getMessage());
-            Assert.fail("TC_032 FAILED: " + e.getMessage());
-        }
-    }
-
-    /**
-     * TC_033 - Verify the date picker for start date and end date is working
-     * Prerequisites: User is logged in as a customer, on post requirement page
-     * Expected: Customer should be able to access and select dates from date picker
-     */
-    @Test(priority = 5)
-    public void verifyDatePickers() {
-        try {
-            logger.info("Executing TC_033");
-
-            Assert.assertTrue(postRequirementPage.isStartDateFieldDisplayed(),
-                    "Start Date field should be displayed");
-
-            postRequirementPage.clickStartDatePicker();
-
-
-            // Select Start Date
-            postRequirementPage.setStartDate("15072026");
-
-            // Verify End Date picker
-            Assert.assertTrue(postRequirementPage.isEndDateFieldDisplayed(),
-                    "End Date field should be displayed");
-
-            postRequirementPage.clickEndDatePicker();
-
-
-            // Select End Date earlier than Start Date
-            postRequirementPage.setEndDate("10072026");
-
-
-            // Continue to next step
-            postRequirementPage.clickNext();
-
-            // Current application behaviour
-            if(postRequirementPage.isPickupLocationFieldDisplayed()) {
-
-                logger.warn("Observation: Application allows End Date before Start Date.");
-
-                Assert.fail("Application should not allow End Date before Start Date.");
-            } else {
-                logger.info("Application correctly rejected invalid date range.");
-
-            }
-            logger.info("TC_033 completed successfully.");
+            logger.info("Customer login successful.");
 
         } catch (Exception e) {
-            logger.error("TC_033 FAILED: {}", e.getMessage());
-            Assert.fail("TC_033 FAILED: " + e.getMessage());
+
+            logger.error("Login setup failed.", e);
+            Assert.fail("Login setup failed : " + e.getMessage());
+        }
+    }
+
+
+    /**
+     * TC_024 - Verify the text "Profile & Notifications" and the logo is visible on the page
+     * Prerequisites: User logged in as customer
+     * Expected: "Profile & Notifications" text and logo should be displayed
+     */
+    @Test(priority = 1)
+    public void verifyProfileHeaderAndLogo(){
+        try{
+            logger.info("Executing TC_024");
+
+            // Verify Profile & Notifications text
+            Assert.assertTrue(customerProfile.isProfilePageDisplayed(),
+                    "Profile & Notifications text should be displayed");
+
+            // Verify logo
+            Assert.assertTrue(customerProfile.isLogoDisplayed(),
+                    "Logo should be displayed on profile page");
+
+            logger.info("TC_024 completed successfully.");
+
+
+        }catch(Exception e){
+            logger.error("TC_024 FAILED: {}", e.getMessage());
+            Assert.fail("TC_024 FAILED: " + e.getMessage());
         }
     }
 
     /**
-     * TC_034 - Verify the "next" button is working
-     * Prerequisites: User is logged in as a customer, on post requirement page step 1
-     * Expected: Clicking next should go to the next step
+     * TC_025 - Verify the customer section and account details has valid details and sign out button
+     * Prerequisites: User is logged in as a customer
+     * Expected: Account details should display email, mobile, city, and sign out button
      */
-    @Test(priority = 6)
-    public void verifyNextButtonFunctionality(){
+    @Test(priority = 2)
+    public void verifyAccountDetailsSection(){
         try{
-            logger.info("Executing TC_034");
-
-            Assert.assertTrue(postRequirementPage.isNextButtonDisplayed(),
-                    "Next button should be displayed");
-
-            // Fill in step 1 fields (assuming required fields)
-            postRequirementPage.setStartDate("10072027");
-            postRequirementPage.setEndDate("15072027");
-            postRequirementPage.selectVehicleType("Car");
-
-            // Click next
-            postRequirementPage.clickNext();
+            logger.info("Executing TC_025");
 
 
-            Assert.assertTrue(postRequirementPage.isPickupLocationFieldDisplayed(),"Should navigate to Step 2.");
+            // Verify Account Details heading
+            Assert.assertTrue(customerProfile.isAccountDetailsHeadingDisplayed(),
+                    "Account Details heading should be displayed");
 
-            logger.info("TC_034 completed successfully.");
+            // Verify email is displayed
+            Assert.assertTrue(customerProfile.isCustomerEmailDisplayed(),
+                    "Customer email should be displayed");
+            String email = customerProfile.getCustomerEmail();
+            Assert.assertEquals(
+                    email,
+                    properties.getProperty("testCustomerEmail"),
+                    "Customer email does not match."
+            );
 
+            // Verify mobile is displayed
+            Assert.assertTrue(customerProfile.isCustomerMobileDisplayed(),
+                    "Customer mobile should be displayed");
+            String mobile = customerProfile.getCustomerMobile();
+            Assert.assertFalse(mobile.trim().isEmpty(), "Mobile should not be empty");
+
+            // Verify city is displayed
+            Assert.assertTrue(customerProfile.isCustomerCityDisplayed(),
+                    "Customer city should be displayed");
+            String city = customerProfile.getCustomerCity();
+            Assert.assertFalse(city.trim().isEmpty(), "City should not be empty");
+
+            // Verify Sign Out button
+            Assert.assertTrue(customerProfile.isSignOutButtonDisplayed(),
+                    "Sign out button should be displayed");
+
+            logger.info("TC_025 completed successfully.");
 
         }catch(Exception e){
-            logger.error("TC_034 FAILED: {}", e.getMessage());
-            Assert.fail("TC_034 FAILED: " + e.getMessage());
+            logger.error("TC_025 FAILED: {}", e.getMessage());
+            Assert.fail("TC_025 FAILED: " + e.getMessage());
         }
     }
 
     /**
-     * TC_035 - Verify 1st step does not have "back" and last step does not have "next"
-     * Prerequisites: User is logged in as a customer, on post requirement page
-     * Expected: Step 1 should not have back button, last step should not have next button
+     * TC_026 - Verify "Requirements, offers and OTP updates" section properly
+     * Prerequisites: User is logged in as a customer
+     * Expected: Notifications section should display items and unread counts, or "No notifications" message
      */
-    @Test(priority = 7)
-    public void verifyButtonVisibilityAcrossSteps(){
+    @Test(priority = 3)
+    public void verifyNotificationsSection(){
         try{
-            logger.info("Executing TC_035");
-
-            Assert.assertFalse(postRequirementPage.isBackButtonDisplayed(),
-                    "Back button should not be visible on step 1");
-
-            Assert.assertTrue(postRequirementPage.isNextButtonDisplayed(),
-                    "Next button should be visible on step 1");
-
-            // Fill and go to next steps
-            postRequirementPage.setStartDate("27062027");
-            postRequirementPage.setEndDate("01072027");
-            postRequirementPage.selectVehicleType("Car");
-
-            postRequirementPage.clickNext();
+            logger.info("Executing TC_026");
 
 
-            // On step 2, both buttons should be visible
-            postRequirementPage.clearPickupLocation();
-            postRequirementPage.clearBudget();
-            postRequirementPage.setPickupLocation("Downtown");
-            postRequirementPage.setBudgetPerDay("500");
-            Assert.assertTrue(postRequirementPage.isBackButtonDisplayed(),
-                    "Back button should be visible on step 2");
-            Assert.assertTrue(postRequirementPage.isNextButtonDisplayed(),
-                    "Next button should be visible on step 2");
+            // Verify notifications heading
+            Assert.assertTrue(customerProfile.isNotificationsHeadingDisplayed(),
+                    "Notifications section heading should be displayed");
 
-            postRequirementPage.clickNext();
+            // Check if there are notifications or empty state
+            if(customerProfile.isNoNotificationsMessageDisplayed()){
+                String noNotifMsg = customerProfile.getNoNotificationsMessage();
+                Assert.assertTrue(noNotifMsg.contains("No customer notifications"),
+                        "Should show 'No customer notifications' message when empty");
+                logger.info("TC_026 PASSED: Notifications section shows empty state");
 
+            }else{
+                // Verify items count is displayed
+                Assert.assertTrue(customerProfile.isItemsCountDisplayed() ||
+                                customerProfile.isUnreadCountDisplayed(),
+                        "Either items or unread count should be displayed");
+                logger.info("TC_026 completed successfully.");
 
-            // On step 3 (last step), post requirement button should be displayed instead of next
-            Assert.assertTrue(postRequirementPage.isPostRequirementButtonDisplayed(),
-                    "Post Requirement button should be displayed on last step");
-            Assert.assertFalse(postRequirementPage.isNextButtonDisplayed(),
-                    "Next button should not be visible on last step");
-
-            logger.info("TC_035 completed successfully.");
-
+            }
 
         }catch(Exception e){
-            logger.error("TC_035 FAILED: {}", e.getMessage());
-            Assert.fail("TC_035 FAILED: " + e.getMessage());
+            logger.error("TC_026 FAILED: {}", e.getMessage());
+            Assert.fail("TC_026 FAILED: " + e.getMessage());
         }
     }
 
     /**
-     * TC_036 - Verify "back" and "post requirement" buttons are working in the last step
-     * Prerequisites: User is logged in as a customer, on last step of post requirement
-     * Expected: Back and Post Requirement buttons should work correctly
+     * TC_027 - Verify the customer has an option to go back to the dashboard page
+     * Prerequisites: User is logged in as a customer
+     * Expected: Customer should be able to navigate back to dashboard
      */
-    @Test(priority = 8)
-    public void verifyLastStepButtonsFunctionality(){
+//    @Test(priority = 4)
+//    public void verifyBackToDashboardNavigation(){
+//        try{
+//            customerProfile = new CustomerProfilePage(driver);
+//
+//            // Click back to dashboard
+//            customerProfile.clickBackToDashboard();
+//            Thread.sleep(2000);
+//
+//            customerDashboard = new CustomerDashboardPage(driver);
+//
+//            // Verify we are back on dashboard
+//            Assert.assertTrue(customerDashboard.isWelcomeMessageDisplayed(),
+//                "Should navigate back to customer dashboard");
+//
+
+//
+//        }catch(Exception e){
+//            Assert.fail("TC_027 FAILED: " + e.getMessage());
+//        }
+//    }
+
+    /**
+     * TC_028 - Verify the sign out button in the customer profile page is working
+     * Prerequisites: User is logged in as a customer
+     * Expected: Clicking sign out should successfully logout the customer
+     */
+    @Test(priority = 5)
+    public void verifySignOutFunctionality(){
         try{
-
-            // Step 1
-            postRequirementPage.setStartDate("10102027");
-            postRequirementPage.setEndDate("15102027");
-            postRequirementPage.selectVehicleType("Car");
-            postRequirementPage.clickNext();
+            logger.info("Executing TC_028");
 
 
-            // Step 2
-            postRequirementPage.clearBudget();
-            postRequirementPage.clearPickupLocation();
-            postRequirementPage.setPickupLocation("Park Street");
-            postRequirementPage.setBudgetPerDay("600");
-            postRequirementPage.clickNext();
-
-
-
-            // Verify Post Requirement button
-            Assert.assertTrue(postRequirementPage.isPostRequirementButtonDisplayed(),
-                    "Post Requirement button should be displayed on last step");
-
-            // Verify Back button
-            Assert.assertTrue(postRequirementPage.isBackButtonDisplayed(),
-                    "Back button should be visible on last step");
-
-            // Test back button functionality
-            postRequirementPage.clickBack();
-
-
-            // Should go back to step 2
-            Assert.assertTrue(postRequirementPage.isPickupLocationFieldDisplayed(),
-                    "Should be on step 2 after clicking back");
-
-            // Go forward again
-            postRequirementPage.clickNext();
-
-
-            // Should be on step 3 again
-            Assert.assertTrue(postRequirementPage.isPostRequirementButtonDisplayed(),
-                    "Should be back on step 3");
-
-            logger.info("TC_036 completed successfully.");
-
+            // Click sign out
+            Assert.assertTrue(
+                    logoutUser(),
+                    "Customer logout failed."
+            );
+            logger.info("TC_028 completed successfully.");
 
         }catch(Exception e){
-            logger.error("TC_036 FAILED: {}", e.getMessage());
-            Assert.fail("TC_036 FAILED: " + e.getMessage());
+            logger.error("TC_028 FAILED: {}", e.getMessage());
+            Assert.fail("TC_028 FAILED: " + e.getMessage());
         }
     }
 
@@ -408,21 +224,11 @@ public class TS006 extends BaseClass{
     public void logout() {
 
         try {
-
             if (!driver.getCurrentUrl().contains("/auth")) {
-
-                if (driver.getCurrentUrl().contains("/customer/post-requirement") && postRequirementPage != null) {
-                    postRequirementPage.clickBackToProfile();
-                }
-
                 logoutUser();
             }
-
-        }
-        catch (Exception e) {
-
-            logger.warn("Cleanup skipped.", e);
-
+        } catch (Exception e) {
+            logger.warn("Logout skipped", e);
         }
     }
 }

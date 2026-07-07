@@ -1,93 +1,94 @@
 package TestCases;
 
 import PageObjects.AdminDashboardPage;
-import PageObjects.AdminProfilePage;
 import TestBase.BaseClass;
 import mapper.Role;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TS016 extends BaseClass {
+public class TS015 extends BaseClass {
 
     private AdminDashboardPage adminDashboardPage;
-    private AdminProfilePage adminProfilePage;
 
     private static final String ADMIN_EMAIL = "t1@gmail.com";
     private static final String ADMIN_PASSWORD = "11111111";
 
     @BeforeMethod
     public void classSetup() {
-        logger.info("Initializing TS016: Admin Profile Management & Session Termination");
+        logger.info("Initializing TS015: Admin Dashboard - Shop Approvals Management");
 
-        // 1. Log in and hard fail if the precondition is not met
         boolean isLoggedIn = loginUser(Role.ADMIN, ADMIN_EMAIL, ADMIN_PASSWORD);
         Assert.assertTrue(isLoggedIn, "Precondition Failed: Admin user could not log in.");
 
         adminDashboardPage = new AdminDashboardPage(driver);
-        adminProfilePage = new AdminProfilePage(driver);
-
-        // 2. Navigate to Admin Profile Page
-        logger.info("Navigating to Admin Profile Page");
-        adminDashboardPage.clickAdminProfile();
-
-        Assert.assertTrue(adminProfilePage.isProfilePageDisplayed(), "Failed to navigate to Admin Profile Page.");
-        adminProfilePage.waitForProfileLoad();
     }
 
     @Test(priority = 1)
-    public void TC_054_VerifyProfileInformationDisplayDetails() {
-        logger.info("Starting TC_054: Verifying profile visual elements and data boxes");
+    public void TC_051_VerifyPendingShopMetadataRenderingAccuracy() {
+        logger.info("Starting TC_051: Verifying pending shop metadata rendering");
 
-        // 1. Verify Avatar and Pills
-        Assert.assertTrue(adminProfilePage.isAvatarDisplayed(), "Circular avatar is not displayed on the profile page.");
-        Assert.assertTrue(adminProfilePage.areStatusPillsDisplayed(), "Account status info pills are missing below the avatar.");
+        Assert.assertTrue(adminDashboardPage.hasPendingShops(), "No pending shop items found in the dashboard.");
 
-        // 2. Verify Data Boxes are populated
-        String fullName = adminProfilePage.getProfileFieldValue("Full name");
-        String email = adminProfilePage.getProfileFieldValue("Email");
-        String mobile = adminProfilePage.getProfileFieldValue("Mobile");
-        String city = adminProfilePage.getProfileFieldValue("City");
-        String role = adminProfilePage.getProfileFieldValue("Role");
-
-        Assert.assertFalse(fullName.isEmpty(), "Full name field is empty.");
-        Assert.assertFalse(email.isEmpty(), "Email field is empty.");
-        Assert.assertFalse(mobile.isEmpty(), "Mobile field is empty.");
-        Assert.assertFalse(city.isEmpty(), "City field is empty.");
-        Assert.assertFalse(role.isEmpty(), "Role field is empty.");
-
-        // Additional validation
-        Assert.assertEquals(email, ADMIN_EMAIL, "Profile email does not match the logged-in admin email.");
+        String firstShop = adminDashboardPage.getFirstShopName();
+        Assert.assertFalse(firstShop.isEmpty(), "The first pending shop item did not contain a valid shop title.");
+        logger.info("Successfully verified pending shop metadata rendering. Target first shop: " + firstShop);
     }
 
     @Test(priority = 2)
-    public void TC_055_VerifyProfileViewBrowserRefreshBehavior() {
-        logger.info("Starting TC_055: Verifying browser refresh behavior on Profile Page");
+    public void TC_052_VerifyApproveActionExecution() {
+        logger.info("Starting TC_052: Verifying 'Approve' action execution");
 
-        // 1. Capture data before refresh
-        String preRefreshEmail = adminProfilePage.getProfileFieldValue("Email");
+        int initialCount = adminDashboardPage.getVerifiedShopsCount();
+        String targetShop = adminDashboardPage.getFirstShopName();
 
-        // 2. Trigger hard refresh using BasePage utility
-        adminProfilePage.refreshPage();
-        adminProfilePage.waitForProfileLoad();
+        logger.info("Approving shop: " + targetShop + " | Initial verified count: " + initialCount);
+        adminDashboardPage.approveFirstShop();
 
-        Assert.assertTrue(adminProfilePage.isProfilePageDisplayed(), "Admin Profile failed to load after browser refresh.");
+        // 1. Verify UI State (Queue)
+        boolean disappeared = adminDashboardPage.waitForShopToDisappear(targetShop, 20);
+        Assert.assertTrue(disappeared, "Target shop '" + targetShop + "' was not cleared from the pending list after clicking Approve.");
 
-        // 3. Verify data persistence and session retention
-        String postRefreshEmail = adminProfilePage.getProfileFieldValue("Email");
-        Assert.assertFalse(postRefreshEmail.isEmpty(), "Profile data reset to empty after refresh.");
-        Assert.assertEquals(postRefreshEmail, preRefreshEmail, "Profile data was lost or corrupted after browser refresh.");
+        // Explicitly refresh the page to force the Angular frontend to fetch the latest metrics
+        logger.info("Refreshing page to fetch updated dashboard metrics.");
+        adminDashboardPage.refreshPage();
+
+        // 2. Verify Metrics State (Graph/Counters)
+        boolean matched = adminDashboardPage.waitForVerifiedShopsCountToBe(initialCount + 1, 20);
+        int updatedCount = adminDashboardPage.getVerifiedShopsCount();
+
+        Assert.assertTrue(matched, "Dashboard 'Verified shops' count did not reach expected value within timeout.");
+        Assert.assertEquals(updatedCount, initialCount + 1, "Dashboard 'Verified shops' count metric did not increment by 1.");
     }
 
     @Test(priority = 3)
-    public void TC_056_VerifyAccountSignOutFunctionTermination() {
-        logger.info("Starting TC_056: Verifying account sign out functionality");
+    public void TC_053_VerifyRejectActionExecution() {
+        logger.info("Starting TC_053: Verifying 'Reject' action execution");
 
-        adminProfilePage.clickSignOut();
+        Assert.assertTrue(adminDashboardPage.hasPendingShops(), "No pending shops remaining to test rejection.");
 
-        // Use the inherited waitForUrlToContain method from BasePage to handle the Angular routing delay
-        boolean redirectedToAuth = adminProfilePage.waitForUrlToContain("auth") || adminProfilePage.waitForUrlToContain("login");
+        int initialCount = adminDashboardPage.getVerifiedShopsCount();
+        String targetShop = adminDashboardPage.getFirstShopName();
 
-        Assert.assertTrue(redirectedToAuth, "User was not redirected to the authentication page after sign out.");
+        logger.info("Rejecting shop: " + targetShop + " | Initial verified count: " + initialCount);
+        adminDashboardPage.rejectFirstShop();
+
+        // 1. Verify UI State (Queue)
+        boolean disappearedReject = adminDashboardPage.waitForShopToDisappear(targetShop, 20);
+        if (!disappearedReject) {
+            boolean actionsEmpty = adminDashboardPage.isItemActionsEmpty(targetShop);
+            Assert.assertTrue(actionsEmpty, "Target shop was not cleared and actions are still present after clicking Reject.");
+        }
+
+        // Explicitly refresh the page to ensure metrics sync
+        logger.info("Refreshing page to confirm dashboard metrics remain stable.");
+        adminDashboardPage.refreshPage();
+
+        // 2. Verify Metrics State (Graph/Counters)
+        boolean matchedReject = adminDashboardPage.waitForVerifiedShopsCountToBe(initialCount, 15);
+        int updatedCount = adminDashboardPage.getVerifiedShopsCount();
+
+        Assert.assertTrue(matchedReject, "Dashboard 'Verified shops' count did not stabilize within timeout.");
+        Assert.assertEquals(updatedCount, initialCount, "Dashboard 'Verified shops' count changed unexpectedly after a rejection.");
     }
 }

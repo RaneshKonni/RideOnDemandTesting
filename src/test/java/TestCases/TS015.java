@@ -1,13 +1,14 @@
 package TestCases;
 
 import PageObjects.AdminDashboardPage;
+import PageObjects.AdminProfilePage;
 import TestBase.BaseClass;
 import mapper.Role;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TS015 extends BaseClass {
+public class TS014 extends BaseClass {
 
     private AdminDashboardPage adminDashboardPage;
 
@@ -16,7 +17,7 @@ public class TS015 extends BaseClass {
 
     @BeforeMethod
     public void classSetup() {
-        logger.info("Initializing TS015: Admin Dashboard - Shop Approvals Management");
+        logger.info("Initializing TS014: Admin Dashboard Core Functionality");
 
         boolean isLoggedIn = loginUser(Role.ADMIN, ADMIN_EMAIL, ADMIN_PASSWORD);
         Assert.assertTrue(isLoggedIn, "Precondition Failed: Admin user could not log in.");
@@ -25,70 +26,52 @@ public class TS015 extends BaseClass {
     }
 
     @Test(priority = 1)
-    public void TC_051_VerifyPendingShopMetadataRenderingAccuracy() {
-        logger.info("Starting TC_051: Verifying pending shop metadata rendering");
+    public void TC_046_VerifyMainHeaderAndLayoutRendering() {
+        logger.info("Starting TC_046: Verifying main header and layout rendering");
 
-        Assert.assertTrue(adminDashboardPage.hasPendingShops(), "No pending shop items found in the dashboard.");
-
-        String firstShop = adminDashboardPage.getFirstShopName();
-        Assert.assertFalse(firstShop.isEmpty(), "The first pending shop item did not contain a valid shop title.");
-        logger.info("Successfully verified pending shop metadata rendering. Target first shop: " + firstShop);
+        Assert.assertTrue(adminDashboardPage.adminDashboardMessage(), "Admin Dashboard header is not displayed.");
+        Assert.assertTrue(adminDashboardPage.isLogoVisible(), "Corporate logo is missing.");
+        Assert.assertTrue(adminDashboardPage.isPerformanceOverviewTitleDisplayed(), "Performance Overview title is missing.");
     }
 
     @Test(priority = 2)
-    public void TC_052_VerifyApproveActionExecution() {
-        logger.info("Starting TC_052: Verifying 'Approve' action execution");
+    public void TC_047_VerifyDashboardBrowserRefreshBehavior() {
+        logger.info("Starting TC_047: Verifying dashboard browser refresh behavior");
 
-        int initialCount = adminDashboardPage.getVerifiedShopsCount();
-        String targetShop = adminDashboardPage.getFirstShopName();
-
-        logger.info("Approving shop: " + targetShop + " | Initial verified count: " + initialCount);
-        adminDashboardPage.approveFirstShop();
-
-        // 1. Verify UI State (Queue)
-        boolean disappeared = adminDashboardPage.waitForShopToDisappear(targetShop, 20);
-        Assert.assertTrue(disappeared, "Target shop '" + targetShop + "' was not cleared from the pending list after clicking Approve.");
-
-        // Explicitly refresh the page to force the Angular frontend to fetch the latest metrics
-        logger.info("Refreshing page to fetch updated dashboard metrics.");
         adminDashboardPage.refreshPage();
 
-        // 2. Verify Metrics State (Graph/Counters)
-        boolean matched = adminDashboardPage.waitForVerifiedShopsCountToBe(initialCount + 1, 20);
-        int updatedCount = adminDashboardPage.getVerifiedShopsCount();
-
-        Assert.assertTrue(matched, "Dashboard 'Verified shops' count did not reach expected value within timeout.");
-        Assert.assertEquals(updatedCount, initialCount + 1, "Dashboard 'Verified shops' count metric did not increment by 1.");
+        Assert.assertTrue(adminDashboardPage.adminDashboardMessage(), "Dashboard header failed to render after refresh.");
+        Assert.assertTrue(adminDashboardPage.isDayFilterActive(), "Dashboard did not reset or maintain default 'Day' filter.");
     }
 
     @Test(priority = 3)
-    public void TC_053_VerifyRejectActionExecution() {
-        logger.info("Starting TC_053: Verifying 'Reject' action execution");
+    public void TC_048_VerifyDefaultActiveTimeFilter() {
+        logger.info("Starting TC_048: Verifying default active time filter");
 
-        Assert.assertTrue(adminDashboardPage.hasPendingShops(), "No pending shops remaining to test rejection.");
+        Assert.assertTrue(adminDashboardPage.areAllFiltersVisible(), "All filters (Day, Month, Year) should be visible.");
+        Assert.assertTrue(adminDashboardPage.isDayFilterActive(), "'Day' filter should be active by default.");
+    }
 
-        int initialCount = adminDashboardPage.getVerifiedShopsCount();
-        String targetShop = adminDashboardPage.getFirstShopName();
+    @Test(priority = 4)
+    public void TC_049_VerifyMonthYearFilterInteraction() {
+        logger.info("Starting TC_049: Verifying month and year filter interactions");
 
-        logger.info("Rejecting shop: " + targetShop + " | Initial verified count: " + initialCount);
-        adminDashboardPage.rejectFirstShop();
+        // Test Month Filter
+        adminDashboardPage.clickMonthFilter();
+        Assert.assertTrue(adminDashboardPage.isMonthFilterActive(), "Month filter failed to activate.");
 
-        // 1. Verify UI State (Queue)
-        boolean disappearedReject = adminDashboardPage.waitForShopToDisappear(targetShop, 20);
-        if (!disappearedReject) {
-            boolean actionsEmpty = adminDashboardPage.isItemActionsEmpty(targetShop);
-            Assert.assertTrue(actionsEmpty, "Target shop was not cleared and actions are still present after clicking Reject.");
-        }
+        // Test Year Filter
+        adminDashboardPage.clickYearFilter();
+        Assert.assertTrue(adminDashboardPage.isYearFilterActive(), "Year filter failed to activate.");
+    }
 
-        // Explicitly refresh the page to ensure metrics sync
-        logger.info("Refreshing page to confirm dashboard metrics remain stable.");
-        adminDashboardPage.refreshPage();
+    @Test(priority = 5)
+    public void TC_050_VerifyProfileButtonFunctionality() {
+        logger.info("Starting TC_050: Verifying profile button functionality and navigation");
 
-        // 2. Verify Metrics State (Graph/Counters)
-        boolean matchedReject = adminDashboardPage.waitForVerifiedShopsCountToBe(initialCount, 15);
-        int updatedCount = adminDashboardPage.getVerifiedShopsCount();
+        adminDashboardPage.clickAdminProfile();
 
-        Assert.assertTrue(matchedReject, "Dashboard 'Verified shops' count did not stabilize within timeout.");
-        Assert.assertEquals(updatedCount, initialCount, "Dashboard 'Verified shops' count changed unexpectedly after a rejection.");
+        AdminProfilePage profilePage = new AdminProfilePage(driver);
+        Assert.assertTrue(profilePage.isProfilePageDisplayed(), "Failed to navigate to Admin Profile Page.");
     }
 }

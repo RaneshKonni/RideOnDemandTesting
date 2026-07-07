@@ -11,154 +11,152 @@ import org.testng.annotations.Test;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class TS009 extends BaseClass {
-    AuthPage auth;
-    VendorDashboardPage vendor;
 
-    private static final String OFFER_PRICE = "1000";
-    private static final String OFFER_ITEM = "bike";
-    private static final String ITEM_REGISTRATION = "TN 39 123334";
-    private static final String OFFER_DESCRIPTION = "the bike will be new";
-    private static final String VENDOR_EMAIL = "vm@gmail.com";
-    private static final String VENDOR_PASSWORD = "12345678";
+public class TS008 extends BaseClass  {
+
+    VendorDashboardPage vendorDashboard;
 
     @BeforeMethod
-    public void classSetup() throws InterruptedException {
-        auth = new AuthPage(driver);
-        loginUser(Role.VENDOR, VENDOR_EMAIL, VENDOR_PASSWORD);
-        Thread.sleep(3000);
-        vendor = new VendorDashboardPage(driver);
-        if (!vendor.vendorDashboardMessage()) {
-            logger.warn("Initial login check failed. Attempting re-login...");
-            loginUser(Role.VENDOR, VENDOR_EMAIL, VENDOR_PASSWORD);
-            Thread.sleep(3000);
-            vendor = new VendorDashboardPage(driver);
-        }
+    public void setup() {
+        loginUser(Role.VENDOR, "vm@gmail.com", "12345678");
+        vendorDashboard = new VendorDashboardPage(driver);
     }
 
-    @Test(description = "Verify vendor can submit an offer for a live requirement")
-    public void TC_040_verifySubmitOffer() throws InterruptedException {
+    /**
+     * TC_038 - Verify Demand Feed list
+     * Prerequisites: User is logged in as a Vendor
+     * Steps:
+     * 1. Navigate to Vendor Dashboard (done in BeforeMethod)
+     * 2. Scroll to "Live requirements" section
+     * 3. Verify a list of requirements is displayed
+     * Expected: List should show requirements with location, price, dates, and notes
+     */
+    @Test
+    public void TC_038_verifyDemandFeedList() throws InterruptedException {
         logger.info("=========================================================");
-        logger.info("STARTING TEST CASE: TC_040_verifySubmitOffer");
+        logger.info("STARTING TEST CASE: TC_038_verifyDemandFeedList");
         logger.info("=========================================================");
 
         try {
-            vendor = new VendorDashboardPage(driver);
-
-            Assert.assertTrue(vendor.vendorDashboardMessage(), "❌ BUG DETECTED: Vendor Dashboard failed to load after login.");
+            // Step 1: Verify dashboard is loaded
+            Assert.assertTrue(vendorDashboard.vendorDashboardMessage(),
+                    "Vendor Dashboard should be displayed");
             logger.info("Vendor Dashboard loaded successfully");
 
-            vendor.scrollToLiveRequirements();
-            Thread.sleep(3000);
-            int initialRequirementCount = vendor.getRequirementItemsCount();
-            Assert.assertTrue(initialRequirementCount > 0, "❌ BUG DETECTED: 'Live Requirements' count pill shows 0 items available to pitch.");
+            // Step 2: Verify Live Requirements heading is displayed
+            Assert.assertTrue(vendorDashboard.isLiveRequirementsHeadingDisplayed(),
+                    "Live requirements heading should be displayed");
+            logger.info("Live requirements heading is visible");
 
-            String requirementId = vendor.getFirstRequirementId();
-            Assert.assertNotNull(requirementId, "❌ BUG DETECTED: The first requirement card exists but does not have a valid Requirement ID string.");
-            logger.info("Targeting Requirement ID: " + requirementId);
+            // Step 3: Scroll to Live Requirements section
+            vendorDashboard.scrollToLiveRequirements();
+            logger.info("Scrolled to Live requirements section");
 
-            vendor.clickFirstSendOfferButton();
+            Thread.sleep(3000); // Wait for 3 seconds to ensure the section is in view
 
-            Assert.assertTrue(vendor.isOfferFormDisplayed(), "❌ BUG DETECTED: Offer dialog overlay failed to open after clicking 'Send Offer'.");
-            Thread.sleep(2000);
+            // Step 4: Verify demand feed list is displayed
+            Assert.assertTrue(vendorDashboard.isDemandFeedListDisplayed(),
+                    "Demand feed list should be displayed");
+            logger.info("Demand feed list container is visible");
 
-            int initialOfferCount = vendor.getOfferItemsCount();
-            logger.info(String.format("Baseline State -> Requirements Left: %d | Total Offers Placed: %d", initialRequirementCount, initialOfferCount));
+            // Step 5: Verify list has requirements
+            int itemCount = vendorDashboard.getRequirementItemsCount();
+            Assert.assertTrue(itemCount > 0,
+                    "At least one requirement item should be displayed in the list");
+            logger.info("Found " + itemCount + " requirement items in the list");
 
-            vendor.enterOfferDetails(OFFER_PRICE, OFFER_ITEM, ITEM_REGISTRATION, OFFER_DESCRIPTION);
-            vendor.clickSubmitOfferButton();
-            logger.info("Offer form submitted. Waiting for state synchronization...");
-            Thread.sleep(3000);
+            // Step 6: Verify all requirements have all details (Car, Bike, location, price, dates, notes)
+            if (itemCount > 0) {
+                // Verify each requirement has all required details
+                for (int i = 0; i < itemCount; i++) {
+                    logger.info("Verifying Requirement #" + (i + 1));
 
-            int updatedRequirementCount = vendor.getRequirementItemsCount();
-            int updatedOfferCount = vendor.getOfferItemsCount();
+                    String vehicleType = vendorDashboard.getRequirementVehicleType(i);
+                    String location = vendorDashboard.getRequirementLocation(i);
+                    String price = vendorDashboard.getRequirementPrice(i);
+                    String dates = vendorDashboard.getRequirementDates(i);
+                    String notes = vendorDashboard.getRequirementNotes(i);
 
-            logger.info(String.format("Post-Submission State -> Requirements Left: %d | Total Offers Placed: %d", updatedRequirementCount, updatedOfferCount));
+                    // Verify each detail is not empty
+                    Assert.assertFalse(vehicleType.isEmpty(),
+                            "Vehicle type should be displayed for requirement #" + (i + 1) + " (e.g., Car, Bike)");
+                    logger.info("Vehicle Type: " + vehicleType);
 
-            Assert.assertEquals(
-                    updatedOfferCount,
-                    initialOfferCount + 1,
-                    String.format("❌ BUG DETECTED: My Offers panel count did not increment or took too long to increase ! Expected: %d, but got: %d", (initialOfferCount + 1), updatedOfferCount)
-            );
+                    Assert.assertFalse(location.isEmpty(),
+                            "Location should be displayed in requirement #" + (i + 1));
+                    logger.info("Location: " + location);
 
-            String submittedOfferId = vendor.getRecentlySubmittedOfferId();
+                    Assert.assertFalse(price.isEmpty(),
+                            "Price should be displayed in requirement #" + (i + 1));
+                    logger.info("Price: " + price);
 
-            logger.info("Recently submitted offer ID: " + submittedOfferId);
-            logger.info("Offer count increased from " + initialOfferCount + " to " + updatedOfferCount);
-            logger.info("SUCCESS: TC_040_verifySubmitOffer passed successfully!");
+                    Assert.assertFalse(dates.isEmpty(),
+                            "Dates should be displayed in requirement #" + (i + 1));
+                    logger.info("Dates: " + dates);
+
+                    // Notes may be optional, but verify it can be retrieved
+                    if (!notes.isEmpty()) {
+                        logger.info("Notes: " + notes);
+                    } else {
+                        logger.info("Notes: Not provided for requirement #" + (i + 1));
+                    }
+
+                    // Verify complete requirement details
+                    Assert.assertTrue(vendorDashboard.hasRequirementDetails(i),
+                            "Requirement #" + (i + 1) + " should have all details (vehicle, location, price, dates)");
+                    logger.info("All required details are present in requirement #" + (i + 1));
+                }
+            }
+
+            logger.info("SUCCESS: TC_038_verifyDemandFeedList passed successfully!");
 
         } catch (AssertionError ae) {
             logger.error("ASSERTION FAILED: " + ae.getMessage());
             throw ae;
         } catch (Exception e) {
-            logger.error("FAILURE: Exception encountered during TC_040 execution!");
+            logger.error("FAILURE: Exception encountered during TC_038 execution!");
             logger.error("Exception Message: " + e.getMessage());
             Assert.fail("Test failed due to an exception: " + e.getMessage());
         }
     }
 
-    @Test(description = "Verify that clicking Clear button clears the offer form fields")
-    public void TC_041_verifyClearOfferForm() throws InterruptedException {
+
+    @Test
+    public void TC_039_verifySendOfferButtonFunctionality() {
         logger.info("=========================================================");
-        logger.info("STARTING TEST CASE: TC_041_verifyClearOfferForm");
+        logger.info("STARTING TEST CASE: TC_039_verifySendOfferButtonFunctionality");
         logger.info("=========================================================");
 
         try {
-            vendor = new VendorDashboardPage(driver);
-
-            // --- PRE-CONDITION CHECK ---
-            Assert.assertTrue(vendor.vendorDashboardMessage(), "❌ BUG DETECTED: Vendor Dashboard failed to load.");
+            // Step 1: Verify dashboard is loaded
+            Assert.assertTrue(vendorDashboard.vendorDashboardMessage(),
+                    "Vendor Dashboard should be displayed");
             logger.info("Vendor Dashboard loaded successfully");
 
-            // --- STEP 1: Navigate to Live Requirements and Select Requirement ---
-            Thread.sleep(3000);
-            vendor.scrollToLiveRequirements();
-            int initialRequirementCount = vendor.getRequirementItemsCount();
-            Assert.assertTrue(initialRequirementCount > 0, "❌ BUG DETECTED: No live requirements available.");
-            logger.info("Found " + initialRequirementCount + " live requirements");
+            // Step 2: Scroll to Live Requirements section
+            vendorDashboard.scrollToLiveRequirements();
+            logger.info("Scrolled to Live requirements section");
 
-            // --- STEP 2: Click Send Offer Button ---
-            vendor.clickFirstSendOfferButton();
+            Thread.sleep(1000); // Wait for 1 second to ensure the section is in view
+
+            // Step 3: Click on the first "Send Offer" button
+            vendorDashboard.clickFirstSendOfferButton();
+            logger.info("Clicked on the first 'Send Offer' button");
+
             Thread.sleep(2000);
 
-            // --- STEP 3: Verify Offer Form is Displayed ---
-            Assert.assertTrue(vendor.isOfferFormDisplayed(), "❌ BUG DETECTED: Offer form did not open.");
-            logger.info("Offer form displayed");
+            // Step 4: Verify that the offer form/modal is displayed
+            Assert.assertTrue(vendorDashboard.isOfferFormDisplayed(),
+                    "Offer form/modal should be displayed after clicking 'Send Offer'");
+            logger.info("Offer form/modal is displayed successfully");
 
-            // --- STEP 4: Enter Text into Offer Form Fields ---
-            logger.info("Entering data into form fields...");
-            vendor.enterOfferDetails("2500", "car", "TN 12 AB 1234", "brand new car in excellent condition");
-            logger.info("All data entered into form fields");
-
-            // --- STEP 5: Verify Data Was Entered Before Clearing ---
-            Thread.sleep(1000);
-            String priceBeforeClear = vendor.getPriceFieldValue();
-            logger.info("Form field values BEFORE Clear -> Price: " + priceBeforeClear);
-
-            Assert.assertFalse(priceBeforeClear.isEmpty(), "❌ BUG: Price field should have value before clearing");
-
-            // --- STEP 6: Click Clear Button ---
-            logger.info("Clicking Clear button...");
-            vendor.clickClearOfferButton();
-            Thread.sleep(1500);
-
-            // --- STEP 7: Verify the Form Fields are Cleared ---
-            logger.info("Checking if form fields successfully cleared...");
-            Assert.assertTrue(vendor.isOfferFormDisplayed(), "❌ BUG DETECTED: The offer form closed after clicking Clear. Expected it to remain open with cleared fields.");
-
-            Assert.assertTrue(vendor.getPriceFieldValue().isEmpty(), "❌ BUG DETECTED: Price field was not cleared.");
-            Assert.assertTrue(vendor.getVehicleFieldValue().isEmpty(), "❌ BUG DETECTED: Vehicle model field was not cleared.");
-            Assert.assertTrue(vendor.getRegistrationFieldValue().isEmpty(), "❌ BUG DETECTED: Registration number field was not cleared.");
-            Assert.assertTrue(vendor.getNotesFieldValue().isEmpty(), "❌ BUG DETECTED: Notes field was not cleared.");
-
-            logger.info("Offer form fields successfully cleared!");
-            logger.info("SUCCESS: TC_041_verifyClearOfferForm passed successfully!");
+            logger.info("SUCCESS: TC_039_verifySendOfferButtonFunctionality passed successfully!");
 
         } catch (AssertionError ae) {
             logger.error("ASSERTION FAILED: " + ae.getMessage());
             throw ae;
         } catch (Exception e) {
-            logger.error("FAILURE: Exception encountered during TC_041 execution!");
+            logger.error("FAILURE: Exception encountered during TC_039 execution!");
             logger.error("Exception Message: " + e.getMessage());
             Assert.fail("Test failed due to an exception: " + e.getMessage());
         }

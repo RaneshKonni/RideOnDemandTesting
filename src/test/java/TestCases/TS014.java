@@ -1,77 +1,68 @@
 package TestCases;
 
-import PageObjects.AdminDashboardPage;
-import PageObjects.AdminProfilePage;
+import PageObjects.AuthPage;
+import PageObjects.VendorDashboardPage;
+import PageObjects.VendorProfilePage;
 import TestBase.BaseClass;
 import mapper.Role;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public class TS014 extends BaseClass {
+public class TS013 extends BaseClass {
 
-    private AdminDashboardPage adminDashboardPage;
+    AuthPage auth;
+    VendorDashboardPage vendorDashboardPage;
 
-    private static final String ADMIN_EMAIL = "t1@gmail.com";
-    private static final String ADMIN_PASSWORD = "11111111";
+    private static final String VENDOR_EMAIL = "vm@gmail.com";
+    private static final String VENDOR_PASSWORD = "12345678";
 
     @BeforeMethod
-    public void classSetup() {
-        logger.info("Initializing TS014: Admin Dashboard Core Functionality");
+    public void classSetup() throws InterruptedException {
+        auth = new AuthPage(driver);
+        loginUser(Role.VENDOR, VENDOR_EMAIL, VENDOR_PASSWORD);
+        vendorDashboardPage = new VendorDashboardPage(driver);
 
-        boolean isLoggedIn = loginUser(Role.ADMIN, ADMIN_EMAIL, ADMIN_PASSWORD);
-        Assert.assertTrue(isLoggedIn, "Precondition Failed: Admin user could not log in.");
-
-        adminDashboardPage = new AdminDashboardPage(driver);
+        // Initial dashboard verification
+        if (!vendorDashboardPage.vendorDashboardMessage()) {
+            loginUser(Role.VENDOR, VENDOR_EMAIL, VENDOR_PASSWORD);
+        }
     }
 
-    @Test(priority = 1)
-    public void TC_046_VerifyMainHeaderAndLayoutRendering() {
-        logger.info("Starting TC_046: Verifying main header and layout rendering");
+    @Test
+    public void TC_045_verifySignOut() {
+        logger.info("=========================================================");
+        logger.info("STARTING TEST CASE: TC_045_verifySignOut");
+        logger.info("=========================================================");
 
-        Assert.assertTrue(adminDashboardPage.adminDashboardMessage(), "Admin Dashboard header is not displayed.");
-        Assert.assertTrue(adminDashboardPage.isLogoVisible(), "Corporate logo is missing.");
-        Assert.assertTrue(adminDashboardPage.isPerformanceOverviewTitleDisplayed(), "Performance Overview title is missing.");
-    }
+        try {
+            VendorDashboardPage dashboard = new VendorDashboardPage(driver);
+            dashboard.navigateToProfile();
 
-    @Test(priority = 2)
-    public void TC_047_VerifyDashboardBrowserRefreshBehavior() {
-        logger.info("Starting TC_047: Verifying dashboard browser refresh behavior");
+            VendorProfilePage profilePage = new VendorProfilePage(driver);
+            profilePage.waitForProfileLoad();
 
-        adminDashboardPage.refreshPage();
+            // 1. Perform Sign Out
+            profilePage.clickSignOut();
 
-        Assert.assertTrue(adminDashboardPage.adminDashboardMessage(), "Dashboard header failed to render after refresh.");
-        Assert.assertTrue(adminDashboardPage.isDayFilterActive(), "Dashboard did not reset or maintain default 'Day' filter.");
-    }
+            // 2. Verification
+            boolean isRedirected = new org.openqa.selenium.support.ui.WebDriverWait(driver, java.time.Duration.ofSeconds(5))
+                    .until(org.openqa.selenium.support.ui.ExpectedConditions.urlContains("auth"));
 
-    @Test(priority = 3)
-    public void TC_048_VerifyDefaultActiveTimeFilter() {
-        logger.info("Starting TC_048: Verifying default active time filter");
+            Assert.assertTrue(isRedirected, "Sign out failed: User was not redirected to the login page.");
 
-        Assert.assertTrue(adminDashboardPage.areAllFiltersVisible(), "All filters (Day, Month, Year) should be visible.");
-        Assert.assertTrue(adminDashboardPage.isDayFilterActive(), "'Day' filter should be active by default.");
-    }
+            logger.info("SUCCESS: TC_045_verifySignOut passed successfully!");
 
-    @Test(priority = 4)
-    public void TC_049_VerifyMonthYearFilterInteraction() {
-        logger.info("Starting TC_049: Verifying month and year filter interactions");
-
-        // Test Month Filter
-        adminDashboardPage.clickMonthFilter();
-        Assert.assertTrue(adminDashboardPage.isMonthFilterActive(), "Month filter failed to activate.");
-
-        // Test Year Filter
-        adminDashboardPage.clickYearFilter();
-        Assert.assertTrue(adminDashboardPage.isYearFilterActive(), "Year filter failed to activate.");
-    }
-
-    @Test(priority = 5)
-    public void TC_050_VerifyProfileButtonFunctionality() {
-        logger.info("Starting TC_050: Verifying profile button functionality and navigation");
-
-        adminDashboardPage.clickAdminProfile();
-
-        AdminProfilePage profilePage = new AdminProfilePage(driver);
-        Assert.assertTrue(profilePage.isProfilePageDisplayed(), "Failed to navigate to Admin Profile Page.");
+        } catch (AssertionError ae) {
+            logger.error("ASSERTION FAILED: " + ae.getMessage());
+            throw ae;
+        } catch (Exception e) {
+            logger.error("FAILURE: Exception encountered during TC_045 execution!");
+            logger.error("Exception Message: " + e.getMessage());
+            Assert.fail("Test failed due to an exception: " + e.getMessage());
+        }
     }
 }

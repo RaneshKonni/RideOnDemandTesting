@@ -18,7 +18,7 @@ public class RandomDataGeneratorUtil {
                 RandomStringUtils.randomAlphabetic(7),
                 role
         );
-        if (user.getRole().equals("Vendor"))
+        if (user.getRole() == Role.VENDOR)
             user.setShopName(RandomStringUtils.randomAlphabetic(5));
         return user;
     }
