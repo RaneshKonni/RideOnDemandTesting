@@ -10,19 +10,19 @@
 
     <test name="TS001_REGISTRATION" preserve-order="true" verbose="2">
         <classes>
-            <class name="TestCases.TS001_Registration" />
+            <class name="TestCases.TS001" />
         </classes>
     </test>
 
     <test name="TS002_LOGIN" preserve-order="true" verbose="2">
         <classes>
-            <class name="TestCases.TS002_Login" />
+            <class name="TestCases.TS002" />
         </classes>
     </test>
 
-    <test name="TS002_LOGOUT" preserve-order="true" verbose="2">
+    <test name="TS003_LOGOUT" preserve-order="true" verbose="2">
         <classes>
-            <class name="TestCases.TS003_Logout" />
+            <class name="TestCases.TS003" />
         </classes>
     </test>
 
