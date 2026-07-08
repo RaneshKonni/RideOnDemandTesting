@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import TestBase.BaseClass;
 import utilities.RandomDataGeneratorUtil;
 
-public class TS001_Registration extends BaseClass {
+public class TS001 extends BaseClass {
 
 
     @Test(priority = 1)

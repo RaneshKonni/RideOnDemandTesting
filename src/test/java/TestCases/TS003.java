@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import TestBase.BaseClass;
 
-public class TS003_Logout extends BaseClass {
+public class TS003 extends BaseClass {
     @Test(priority = 1, dataProvider = "LogoutData", dataProviderClass = LogoutDataProvider.class)
     public void TC005_verifyLogout(Role role, String email, String password, String expectedResult) {
         logger.info("=========================================================");

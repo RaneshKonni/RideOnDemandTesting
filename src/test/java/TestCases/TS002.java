@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class TS002_Login extends BaseClass {
+public class TS002 extends BaseClass {
 
     @Test(priority = 7, dataProvider = "LoginData",dataProviderClass = LoginDataProvider.class)
     public void TC007_verifyLogin(Role role, String email, String password, String expectedResult) {
