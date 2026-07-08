@@ -28,44 +28,30 @@
 
     <test name="Customer Module Tests" preserve-order="true" verbose="2">
         <classes>
-            <class name="TestCases.TS003"/>
             <class name="TestCases.TS004"/>
             <class name="TestCases.TS005"/>
             <class name="TestCases.TS006"/>
+            <class name="TestCases.TS007"/>
         </classes>
     </test>
 
     <test name="Vendor Module Tests">
         <classes>
-            <class name="TestCases.TS007">
-            </class>
-
-            <class name="TestCases.TS008">
-            </class>
-
-            <class name="TestCases.TS009">
-            </class>
-
-            <class name="TestCases.TS010">
-
-            </class>
-
-            <class name="TestCases.TS011">
-            </class>
-
-            <class name="TestCases.TS012">
-            </class>
-
-            <class name="TestCases.TS013">
-            </class>
+            <class name="TestCases.TS008"/>
+            <class name="TestCases.TS009"/>
+            <class name="TestCases.TS010"/>
+            <class name="TestCases.TS011"/>
+            <class name="TestCases.TS012"/>
+            <class name="TestCases.TS013"/>
+            <class name="TestCases.TS014"/>
         </classes>
     </test>
 
     <test name="Admin Module Tests">
         <classes>
-            <class name="TestCases.TS014"/>
             <class name="TestCases.TS015"/>
             <class name="TestCases.TS016"/>
+            <class name="TestCases.TS017"/>
         </classes>
     </test>
 
